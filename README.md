@@ -1,0 +1,62 @@
+# Brief — marketing site
+
+The one-page marketing site for **Brief**, the Chrome extension that turns a
+30-second voice note, screenshot, or scribble into a clean tracker ticket —
+filed by your own coding agent.
+
+→ Extension repo: https://github.com/razi2001/brief
+
+## What's here
+
+A single, self-contained static page. No build step, no dependencies, no
+framework — just `index.html` with inline CSS/JS. The only external request is
+to Google Fonts (Instrument Serif + JetBrains Mono).
+
+```
+.
+├── index.html      ← the whole site
+├── 404.html        ← fallback page
+├── robots.txt
+├── LICENSE
+└── README.md
+```
+
+## Run it locally
+
+It's static, so anything that serves a folder works:
+
+```bash
+# Python
+python3 -m http.server 8000
+# then open http://localhost:8000
+
+# or just open the file directly
+open index.html
+```
+
+## Deploy
+
+### GitHub Pages
+1. Push this folder to a repo.
+2. Settings → Pages → Source: **Deploy from a branch** → `main` / root.
+3. (Optional) add a custom domain: drop a `CNAME` file containing your domain
+   (e.g. `brief.sh`) in the root, and point your DNS at GitHub Pages.
+
+### Netlify / Vercel / Cloudflare Pages
+No build command. Output/publish directory: the repo root. Drag-and-drop the
+folder or connect the repo — it just serves `index.html`.
+
+## Before you launch — two things to fill in
+
+Both are clearly marked near the bottom of `index.html` in the `<script>` block:
+
+- **`STORE_URL`** — your Chrome Web Store listing URL. It's wired to all the
+  "Add to Chrome" buttons (they currently point at the store homepage).
+- **`VIDEO`** — your demo embed (YouTube or Loom). Until set, the video tile
+  shows "Demo video coming soon".
+
+You may also want to swap the GitHub links if your extension repo URL changes.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
