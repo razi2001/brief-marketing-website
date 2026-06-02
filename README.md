@@ -15,6 +15,8 @@ to Google Fonts (Instrument Serif + JetBrains Mono).
 ```
 .
 ├── index.html      ← the whole site
+├── privacy.html    ← Privacy Policy (required by the Chrome Web Store)
+├── terms.html      ← Terms of Service
 ├── 404.html        ← fallback page
 ├── robots.txt
 ├── LICENSE
@@ -56,6 +58,16 @@ Both are clearly marked near the bottom of `index.html` in the `<script>` block:
   shows "Demo video coming soon".
 
 You may also want to swap the GitHub links if your extension repo URL changes.
+
+Once deployed, your Privacy Policy lives at `https://<your-domain>/privacy.html` — that's
+the URL the Chrome Web Store asks for when you submit the extension. Terms are at
+`/terms.html`. Both have a couple of placeholders to fill before publishing (a contact
+email, and the governing-law jurisdiction in Terms §8).
+
+Once deployed, your Privacy Policy will live at `https://<your-domain>/privacy.html` —
+that's the URL the Chrome Web Store asks for when you submit the extension. The Terms
+page is at `/terms.html`. Both have a couple of placeholders to fill before publishing
+(a contact email, and the governing-law jurisdiction in Terms §8).
 
 ## License
 
