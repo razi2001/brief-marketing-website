@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Not found — Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{--cream:#f5f1e8;--ink:#1a1612;--ink-2:#3a3530;--muted:#8a8378;--accent:#dd6936;
+    --display:'Instrument Serif',Georgia,serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+  *{margin:0;box-sizing:border-box}
+  body{background:var(--cream);color:var(--ink);font-family:var(--mono);min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px;
+    background-image:radial-gradient(900px 600px at 70% -10%, rgba(221,105,54,.10), transparent 60%)}
+  .logo{width:54px;height:54px;border-radius:14px;box-shadow:0 2px 8px rgba(26,22,18,.2)}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,9vw,72px);line-height:1;color:var(--ink)}
+  p{color:var(--ink-2);font-size:15px}
+  a{display:inline-flex;align-items:center;gap:8px;margin-top:8px;background:var(--accent);color:#fff;
+    text-decoration:none;font-size:14px;font-weight:500;padding:12px 20px;border-radius:11px;
+    box-shadow:0 3px 14px rgba(221,105,54,.28);transition:transform .08s,background .15s}
+  a:hover{background:#c95c2c;transform:translateY(-2px)}
+</style>
+</head>
+<body>
+  <svg class="logo" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="t" x1="20" y1="6" x2="112" y2="124" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#f08147"/><stop offset="0.52" stop-color="#dd6936"/><stop offset="1" stop-color="#bd4f1c"/>
+      </linearGradient>
+    </defs>
+    <rect width="128" height="128" rx="28" fill="url(#t)"/>
+    <g fill="#f7f3ea">
+      <path d="M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z"/>
+      <path d="M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z"/>
+    </g>
+  </svg>
+  <h1>Nothing here.</h1>
+  <p>This page doesn't exist — but your next ticket could.</p>
+  <a href="/">← Back to Brief</a>
+</body>
+</html>
