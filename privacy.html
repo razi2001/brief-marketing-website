@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Brief</title>
+<meta name="description" content="How Brief handles your data: local-first, nothing uploaded." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#f5f1e8; --cream-2:#ece6d6; --ink:#1a1612; --ink-2:#3a3530; --muted:#8a8378;
+    --accent:#dd6936; --accent-2:#c95c2c; --accent-soft:rgba(221,105,54,0.08);
+    --success:#168a5c; --hairline:rgba(26,22,18,0.12); --hairline-2:rgba(26,22,18,0.07);
+    --display:'Instrument Serif',Georgia,serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream); color:var(--ink); font-family:var(--mono); font-size:15px; line-height:1.7; -webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(1000px 600px at 85% -10%, rgba(221,105,54,.09), transparent 60%)}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 28px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  em{font-style:italic;color:var(--accent)}
+
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(10px);
+    background:rgba(245,241,232,.72);border-bottom:1px solid var(--hairline-2)}
+  .nav-in{max-width:760px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;gap:11px}
+  .brandmark{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .logo{width:30px;height:30px;border-radius:8px;box-shadow:0 1px 3px rgba(26,22,18,.18)}
+  .brandmark .wm{font-family:var(--display);font-size:21px;color:var(--ink)}
+  .nav-back{margin-left:auto;font-size:13px;color:var(--ink-2)}
+
+  header{padding:64px 0 26px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.06em;color:var(--accent);
+    background:var(--accent-soft);border:1px solid rgba(221,105,54,.2);padding:6px 13px;border-radius:999px;margin-bottom:22px}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,6.5vw,60px);line-height:1.04;color:var(--ink);margin-bottom:14px}
+  .updated{font-size:12.5px;color:var(--muted)}
+
+  .tldr{margin:30px 0 10px;background:linear-gradient(180deg,#fffdf9,#fbf6ee);border:1px solid rgba(221,105,54,.3);
+    border-radius:16px;padding:22px 24px}
+  .tldr h2{font-family:var(--display);font-weight:400;font-size:20px;margin-bottom:8px;color:var(--ink)}
+  .tldr p{font-size:14px;color:var(--ink-2);line-height:1.65}
+
+  main{padding:18px 0 30px}
+  section{padding:24px 0;border-top:1px solid var(--hairline-2)}
+  h2{font-family:var(--display);font-weight:400;font-size:25px;line-height:1.15;color:var(--ink);margin-bottom:12px}
+  h3{font-size:14px;font-weight:500;color:var(--ink);margin:18px 0 6px}
+  p{color:var(--ink-2);margin-bottom:12px}
+  ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin:6px 0 14px}
+  li{color:var(--ink-2);display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+  li .tick{color:var(--accent);flex:none;margin-top:2px;font-size:13px}
+  li.no .tick{color:var(--success)}
+  code{background:var(--cream-2);padding:2px 6px;border-radius:5px;font-size:13px}
+  .perm{border-left:2px solid var(--accent);padding:2px 0 2px 16px;margin:0 0 12px}
+  .perm b{font-weight:500;color:var(--ink)}
+  .perm span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
+
+  footer{padding:40px 0 56px;text-align:center;border-top:1px solid var(--hairline-2);margin-top:20px}
+  .foot-mark{display:inline-flex;align-items:center;gap:10px;margin-bottom:12px}
+  .foot-mark svg{width:24px;height:24px;border-radius:7px}
+  .foot-mark span{font-family:var(--display);font-size:19px}
+  footer .flinks{display:flex;gap:20px;justify-content:center;margin:12px 0 16px;flex-wrap:wrap}
+  footer .flinks a{font-size:13px;color:var(--ink-2)}
+  footer p{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="tile" x1="20" y1="6" x2="112" y2="124" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#f08147"/><stop offset="0.52" stop-color="#dd6936"/><stop offset="1" stop-color="#bd4f1c"/>
+  </linearGradient>
+  <symbol id="brieflogo" viewBox="0 0 128 128">
+    <rect width="128" height="128" rx="28" fill="url(#tile)"/>
+    <g fill="#f7f3ea">
+      <path d="M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z"/>
+      <path d="M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z"/>
+    </g>
+  </symbol>
+</defs></svg>
+
+<nav>
+  <div class="nav-in">
+    <a class="brandmark" href="/"><svg class="logo" viewBox="0 0 128 128"><use href="#brieflogo"/></svg><span class="wm">Brief</span></a>
+    <a class="nav-back" href="/">← Back to site</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Local-first by design</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: <span id="d"></span></p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tldr">
+    <h2>The short version</h2>
+    <p>Brief runs on your machine. Your recordings, screenshots, and notes are saved locally to your own <code>Downloads</code> folder and are <em>not</em> uploaded to us — we don't run a server that receives them, and we have no account system. The only data that ever leaves your device is what <em>you</em> choose to hand to your own coding agent. That's the whole story; the rest is detail.</p>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+
+    <section>
+      <h2>Who this covers</h2>
+      <p>This policy applies to the <b>Brief browser extension</b> (the “Extension”) and this website. Brief is an open-source tool that lets you capture a bug or idea — as a screen + voice recording, an annotated screenshot, or a typed note — and saves it locally as a “brief” for your own coding agent to turn into a tracker ticket.</p>
+    </section>
+
+    <section>
+      <h2>What Brief does and doesn’t collect</h2>
+      <p>We want to be precise, because “local-first” is the entire point of the product.</p>
+      <h3>We do not collect or receive:</h3>
+      <ul>
+        <li class="no"><span class="tick">✓</span> Your recordings, screenshots, or typed notes — these are written to your local <code>Downloads</code> folder and never sent to us.</li>
+        <li class="no"><span class="tick">✓</span> Your microphone audio or screen contents — we operate no server that receives them.</li>
+        <li class="no"><span class="tick">✓</span> Account information — there are no accounts, logins, or profiles.</li>
+        <li class="no"><span class="tick">✓</span> Analytics, tracking, advertising identifiers, or behavioral data inside the Extension.</li>
+        <li class="no"><span class="tick">✓</span> Your browsing history, cookies, passwords, or page contents beyond what a brief you create explicitly captures.</li>
+      </ul>
+      <h3>What is stored, and where:</h3>
+      <p>Everything a brief contains — the recording (<code>recording.webm</code>), sampled keyframes, any screenshot, the transcript, and captured console errors — is packaged into a zip and saved <b>locally on your own computer</b>, by default under <code>~/Downloads/brief/</code> (Windows: <code>%USERPROFILE%\Downloads\brief\</code>). These files stay on your machine until you or your agent delete them. We never see them.</p>
+    </section>
+
+    <section>
+      <h2>Speech recognition (important detail)</h2>
+      <p>To turn your voice into a transcript, the Extension uses your browser’s built-in speech-recognition feature (<code>webkitSpeechRecognition</code>). When you record with voice, <b>your browser</b> streams microphone audio to <b>your browser vendor’s speech-recognition service</b> (for Chrome, this is Google) to produce text. This processing is performed by your browser, not by Brief — we never receive your audio, and we don’t control or store it. It is subject to your browser vendor’s own privacy policy. If you prefer not to use it, don’t use the voice-recording capture (screenshots and typed notes never involve speech recognition).</p>
+    </section>
+
+    <section>
+      <h2>Console-error capture</h2>
+      <p>For bug reports, Brief can include error messages from the page you’re recording. This capture is narrow on purpose:</p>
+      <ul>
+        <li><span class="tick">›</span> It runs <b>only while you are actively recording</b>.</li>
+        <li><span class="tick">›</span> It runs <b>only on the single tab you are recording</b>.</li>
+        <li><span class="tick">›</span> It forwards <b>only error messages</b> into your local brief — no DOM contents, no cookies, no storage, no form data.</li>
+      </ul>
+      <p>These errors are written into your local brief file alongside everything else. They are not sent to us.</p>
+    </section>
+
+    <section>
+      <h2>What leaves your device — and only when you choose</h2>
+      <p>Brief itself never transmits your briefs anywhere. The one time brief data moves is when <b>you</b> decide to act on it: you export, copy a short prompt, and paste it into your own coding agent (for example a local agent on your machine, or a third-party agent you’ve chosen to use). At that point your agent reads the brief files in order to file a ticket in <b>your</b> tracker. What happens then is governed by the privacy policy and terms of whatever agent and tracker <em>you</em> use — we are not in that loop and receive nothing.</p>
+    </section>
+
+    <section>
+      <h2>Browser permissions, and why each is needed</h2>
+      <p>The Extension requests only the permissions it needs to capture a brief and save it locally:</p>
+      <div class="perm"><b>Tab capture / activeTab</b><span>To record the current tab’s screen (and start a screenshot) for the brief you’re creating.</span></div>
+      <div class="perm"><b>Scripting</b><span>To show the on-page recording bar and the screenshot annotator on the page you’re on.</span></div>
+      <div class="perm"><b>Storage</b><span>To keep your queue of briefs and your preferences locally in the browser.</span></div>
+      <div class="perm"><b>Downloads (and downloads.shelf)</b><span>To save each brief as a zip in your Downloads folder, and to keep that save quiet.</span></div>
+      <div class="perm"><b>Offscreen</b><span>To run the audio/screen recorder reliably in the background while you capture.</span></div>
+      <div class="perm"><b>Tabs</b><span>To know which tab to record and to coordinate the capture.</span></div>
+      <div class="perm"><b>Host access (all sites)</b><span>So the recording bar and screenshot tool work on whatever website you happen to be on. Brief does not read or transmit page contents beyond what a brief you create captures.</span></div>
+    </section>
+
+    <section>
+      <h2>Children</h2>
+      <p>Brief is a developer tool intended for adults and is not directed to children under 13 (or the equivalent age in your jurisdiction).</p>
+    </section>
+
+    <section>
+      <h2>Changes to this policy</h2>
+      <p>If Brief later offers an optional cloud-hosted version that processes briefs on a server, that service will have its own clearly-stated privacy terms, and using it will be your explicit choice — it will not change how the local, open-source Extension described here works. If we update this policy, we’ll revise the “last updated” date above.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions about privacy? Reach out via the project’s GitHub: <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">github.com/razi2001/brief</a>. <span style="color:var(--muted)">(Replace with your preferred contact email before publishing.)</span></p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-mark"><svg viewBox="0 0 128 128"><use href="#brieflogo"/></svg><span>Brief</span></div>
+    <div class="flinks">
+      <a href="/">Home</a>
+      <a href="/terms.html">Terms</a>
+      <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p>Local-first. Open source. © <span id="yr"></span> Brief</p>
+  </div>
+</footer>
+
+<script>
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var now=new Date();
+  document.getElementById('d').textContent = months[now.getMonth()]+" "+now.getFullYear();
+  document.getElementById('yr').textContent = now.getFullYear();
+</script>
+</body>
+</html>
