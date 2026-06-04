@@ -1,0 +1,19 @@
+:8080 {
+	root * /srv
+	encode gzip zstd
+
+	# Canonical: redirect /privacy.html -> /privacy (301)
+	@html path_regexp html ^/(.+)\.html$
+	redir @html /{re.html.1} permanent
+
+	# Resolve clean URLs: /privacy -> privacy.html, / -> index.html
+	try_files {path} {path}.html {path}/index.html
+
+	file_server
+
+	# Custom not-found page
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+}
