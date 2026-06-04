@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --cream:#f5f1e8; --cream-2:#ece6d6; --ink:#1a1612; --ink-2:#3a3530; --muted:#8a8378;
+    --cream:#f5f1e8; --cream-2:#ece6d6; --ink:#1a1612; --ink-2:#3a3530; --muted:#6b6359;
     --accent:#dd6936; --accent-2:#c95c2c; --accent-soft:rgba(221,105,54,0.08);
     --success:#168a5c; --hairline:rgba(26,22,18,0.12); --hairline-2:rgba(26,22,18,0.07);
     --display:'Instrument Serif',Georgia,serif; --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -23,6 +23,10 @@
   .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 28px}
   a{color:var(--accent);text-decoration:none}
   a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+  .skip-link{position:absolute;left:-9999px;top:0;padding:10px 16px;background:var(--ink);color:var(--cream);
+    font-size:13px;text-decoration:none;border-radius:0 0 8px 0;z-index:1000}
+  .skip-link:focus{left:0}
   em{font-style:italic;color:var(--accent)}
 
   nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(10px);
@@ -70,7 +74,9 @@
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <linearGradient id="tile" x1="20" y1="6" x2="112" y2="124" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="#f08147"/><stop offset="0.52" stop-color="#dd6936"/><stop offset="1" stop-color="#bd4f1c"/>
   </linearGradient>
@@ -83,9 +89,9 @@
   </symbol>
 </defs></svg>
 
-<nav>
+<nav aria-label="Primary">
   <div class="nav-in">
-    <a class="brandmark" href="/"><svg class="logo" viewBox="0 0 128 128"><use href="#brieflogo"/></svg><span class="wm">Brief</span></a>
+    <a class="brandmark" href="/" aria-label="Brief — home"><svg class="logo" viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#brieflogo"/></svg><span class="wm">Brief</span></a>
     <a class="nav-back" href="/">← Back to site</a>
   </div>
 </nav>
@@ -94,7 +100,7 @@
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span> Local-first by design</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: <span id="d"></span></p>
+    <p class="updated">Last updated: June 2026</p>
   </div>
 </header>
 
@@ -105,7 +111,7 @@
   </div>
 </div>
 
-<main>
+<main id="main-content">
   <div class="wrap">
 
     <section>
@@ -152,13 +158,15 @@
     <section>
       <h2>Browser permissions, and why each is needed</h2>
       <p>The Extension requests only the permissions it needs to capture a brief and save it locally:</p>
-      <div class="perm"><b>Tab capture / activeTab</b><span>To record the current tab’s screen (and start a screenshot) for the brief you’re creating.</span></div>
-      <div class="perm"><b>Scripting</b><span>To show the on-page recording bar and the screenshot annotator on the page you’re on.</span></div>
-      <div class="perm"><b>Storage</b><span>To keep your queue of briefs and your preferences locally in the browser.</span></div>
-      <div class="perm"><b>Downloads (and downloads.shelf)</b><span>To save each brief as a zip in your Downloads folder, and to keep that save quiet.</span></div>
-      <div class="perm"><b>Offscreen</b><span>To run the audio/screen recorder reliably in the background while you capture.</span></div>
-      <div class="perm"><b>Tabs</b><span>To know which tab to record and to coordinate the capture.</span></div>
-      <div class="perm"><b>Host access (all sites)</b><span>So the recording bar and screenshot tool work on whatever website you happen to be on. Brief does not read or transmit page contents beyond what a brief you create captures.</span></div>
+      <div class="perm"><b><code>activeTab</code></b><span>Start tab capture and inject the recording bar on the user-initiated active tab when the toolbar icon is clicked.</span></div>
+      <div class="perm"><b><code>tabs</code></b><span>Track the recording tab across navigations so the brief metadata reflects the URL and title of the page the user is describing, and re-deliver messages to the recording bar after navigation.</span></div>
+      <div class="perm"><b><code>scripting</code></b><span>Inject the in-page recording bar and the console-error listener on the active tab during recording.</span></div>
+      <div class="perm"><b><code>storage</code></b><span>Persist user settings (language preference, bar position, ticket-filing guidance) and the queue of locally saved briefs awaiting export.</span></div>
+      <div class="perm"><b><code>downloads</code></b><span>Write the brief zip to your Downloads folder (<code>~/Downloads/brief/</code>). This is the entire output of the extension.</span></div>
+      <div class="perm"><b><code>downloads.ui</code></b><span>Suppress the download bubble for each brief so saving doesn’t interrupt the user’s flow; the recording UI already shows a save confirmation.</span></div>
+      <div class="perm"><b><code>tabCapture</code></b><span>Record the visible content of the active tab as the screen-side of the brief, together with microphone audio.</span></div>
+      <div class="perm"><b><code>offscreen</code></b><span>Required by Manifest V3 to host the <code>MediaRecorder</code> API used to encode the captured tab + mic stream into a webm file.</span></div>
+      <div class="perm"><b>Host access (<code>&lt;all_urls&gt;</code>)</b><span>So the recording bar and console-error capture work on whatever website you happen to be on. Brief never performs background activity on pages; the content script forwards only error message strings while a recording is active on that specific tab (no DOM, cookies, storage, or form data).</span></div>
     </section>
 
     <section>
@@ -181,21 +189,18 @@
 
 <footer>
   <div class="wrap">
-    <div class="foot-mark"><svg viewBox="0 0 128 128"><use href="#brieflogo"/></svg><span>Brief</span></div>
-    <div class="flinks">
+    <div class="foot-mark"><svg viewBox="0 0 128 128" aria-hidden="true" focusable="false"><use href="#brieflogo"/></svg><span>Brief</span></div>
+    <nav class="flinks" aria-label="Footer">
       <a href="/">Home</a>
       <a href="/terms.html">Terms</a>
-      <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
-    </div>
-    <p>Local-first. Open source. © <span id="yr"></span> Brief</p>
+      <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+    <p>Local-first. Open source. © <span id="yr">2026</span> Brief</p>
   </div>
 </footer>
 
 <script>
-  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
-  var now=new Date();
-  document.getElementById('d').textContent = months[now.getMonth()]+" "+now.getFullYear();
-  document.getElementById('yr').textContent = now.getFullYear();
+  document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
