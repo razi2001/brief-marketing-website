@@ -168,47 +168,83 @@
   .sec-sub{color:var(--ink-2); max-width:58ch; font-size:15.5px}
   .divider{height:1px; background:var(--hair-2); max-width:1060px; margin:0 auto; position:relative; z-index:2}
 
-  /* PAIN section — sticky-note style quote cards */
+  /* PAIN section — attributed quote cards (real voices, sticky-note feel) */
   .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:46px}
-  @media(max-width:780px){ .pain-grid{grid-template-columns:1fr; gap:30px; max-width:340px; margin-left:auto; margin-right:auto} }
-  .pain-note{background:#fff5d6; border:1px solid #e8d99a; padding:24px 22px 20px;
+  @media(max-width:780px){ .pain-grid{grid-template-columns:1fr; gap:30px; max-width:360px; margin-left:auto; margin-right:auto} }
+  .pain-note{background:#fff5d6; border:1px solid #e8d99a; padding:22px 22px 18px;
     box-shadow:4px 5px 0 rgba(26,22,18,.07);
-    font-family:var(--display); color:#5b4f25; position:relative;
-    transition:transform .25s ease}
+    color:#3a3530; position:relative;
+    transition:transform .25s ease; display:flex; flex-direction:column; gap:14px}
   .pain-note:nth-child(1){transform:rotate(-2.4deg)}
   .pain-note:nth-child(2){transform:rotate(1.6deg)}
   .pain-note:nth-child(3){transform:rotate(-1.2deg)}
   .pain-note:hover{transform:rotate(0deg) translateY(-3px)}
-  .pain-note .quote{font-size:21px; line-height:1.25; font-style:italic; text-decoration:line-through; text-decoration-color:rgba(91,79,37,.45); text-decoration-thickness:1.5px}
-  .pain-note .quote::before{content:"\201C"; margin-right:1px; text-decoration:none}
-  .pain-note .quote::after{content:"\201D"; margin-left:1px; text-decoration:none}
-  .pain-note .byline{margin-top:12px; font-family:var(--mono); font-style:normal; font-size:11.5px; color:#8a7a3f; letter-spacing:.02em}
+  .pain-note .quote{font-family:var(--display); font-style:italic; font-size:20px; line-height:1.3; color:#3a3530}
+  .pain-note .quote::before{content:"\201C"}
+  .pain-note .quote::after{content:"\201D"}
+  .pain-note .who{display:flex; align-items:center; gap:9px; margin-top:auto; padding-top:10px; border-top:1px dashed rgba(91,79,37,.35)}
+  .pain-note .av{width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:11px; font-weight:600; color:#fff; flex:none; letter-spacing:.02em}
+  .pain-note .role{font-family:var(--mono); font-size:11.5px; color:#5b4f25; line-height:1.3}
+  .pain-note .role b{display:block; color:#3a3530; font-weight:500; font-size:12px}
   .pain-note .corner{position:absolute; top:0; right:0; width:22px; height:22px; background:linear-gradient(225deg, #f0e3a8 50%, transparent 50%)}
 
   /* how it works */
   .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:42px}
   @media(max-width:780px){ .steps{grid-template-columns:1fr; gap:16px} }
-  .step{background:#fffdf9; border:1px solid var(--hair); border-radius:16px; padding:26px 24px;
-    box-shadow:var(--shadow); transition:transform .18s, box-shadow .18s, border-color .18s}
+  .step{background:#fffdf9; border:1px solid var(--hair); border-radius:16px; padding:0;
+    box-shadow:var(--shadow); transition:transform .18s, box-shadow .18s, border-color .18s; overflow:hidden; display:flex; flex-direction:column}
   .step:nth-child(1){transform:rotate(-1deg)}
   .step:nth-child(2){transform:rotate(.8deg)}
   .step:nth-child(3){transform:rotate(-.5deg)}
   .step:hover{transform:rotate(0) translateY(-4px); box-shadow:var(--shadow-lg); border-color:rgba(221,105,54,.35)}
-  .step-n{font-family:var(--display); font-style:italic; font-size:38px; color:var(--acc); line-height:1; display:block; margin-bottom:14px}
-  .step h3{font-family:var(--display); font-weight:400; font-size:22px; margin-bottom:8px; color:var(--ink)}
-  .step p{font-size:14px; color:var(--ink-2); line-height:1.6}
-  .step .ico{margin-bottom:14px; color:var(--acc)}
+  .step-vis{height:130px; background:linear-gradient(180deg, #fbf6ee 0%, #fffdf9 100%); border-bottom:1px solid var(--hair-2); display:flex; align-items:center; justify-content:center; position:relative}
+  .step-body{padding:18px 22px 22px}
+  .step-n{font-family:var(--display); font-style:italic; font-size:30px; color:var(--acc); line-height:1; display:block; margin-bottom:8px}
+  .step h3{font-family:var(--display); font-weight:400; font-size:24px; margin-bottom:6px; color:var(--ink); line-height:1.1}
+  .step p{font-size:13.5px; color:var(--ink-2); line-height:1.55}
 
-  /* the ticket (merged before/after) */
-  .ticket-stage{margin-top:48px; display:grid; grid-template-columns:1fr; gap:30px; max-width:820px; margin-left:auto; margin-right:auto; position:relative}
-  .ticket-pair{display:grid; grid-template-columns:1.4fr .7fr; gap:30px; align-items:start}
-  @media(max-width:820px){ .ticket-pair{grid-template-columns:1fr; gap:36px} }
+  /* step 1: record bar */
+  .vis-rec{display:flex; align-items:center; gap:9px; background:#1c1814; color:var(--cream); padding:8px 14px; border-radius:99px; box-shadow:0 6px 20px rgba(0,0,0,.2)}
+  .vis-rec .dot{width:10px; height:10px; border-radius:50%; background:var(--acc); animation:beat 1s infinite}
+  .vis-rec .wave{display:inline-flex; align-items:center; gap:3px; height:18px}
+  .vis-rec .wave i{display:block; width:3px; background:var(--acc); border-radius:1.5px; animation:wave 1s ease-in-out infinite}
+  .vis-rec .wave i:nth-child(1){height:35%; animation-delay:0s}
+  .vis-rec .wave i:nth-child(2){height:65%; animation-delay:.1s}
+  .vis-rec .wave i:nth-child(3){height:90%; animation-delay:.2s}
+  .vis-rec .wave i:nth-child(4){height:55%; animation-delay:.3s}
+  .vis-rec .wave i:nth-child(5){height:75%; animation-delay:.4s}
+  .vis-rec .wave i:nth-child(6){height:40%; animation-delay:.5s}
+  .vis-rec .time{font-family:var(--mono); font-size:11px; color:rgba(245,241,232,.7)}
+  @keyframes wave{0%,100%{transform:scaleY(.7)}50%{transform:scaleY(1.1)}}
+
+  /* step 2: handoff */
+  .vis-flow{display:flex; align-items:center; gap:14px}
+  .vis-pill{background:#fff; border:1px solid var(--hair); border-radius:10px; padding:10px 12px; font-family:var(--mono); font-size:12px; color:var(--ink); box-shadow:0 2px 6px rgba(26,22,18,.06); display:inline-flex; align-items:center; gap:7px}
+  .vis-pill svg{flex:none}
+  .vis-pill.zip{transform:rotate(-2deg)}
+  .vis-pill.agent{transform:rotate(2deg); background:var(--ink); color:var(--cream); border-color:transparent}
+  .vis-flow .arr{color:var(--acc); display:inline-flex; align-items:center}
+
+  /* step 3: ticket */
+  .vis-tk{width:78%; max-width:200px; background:#fff; border:1px solid rgba(221,105,54,.3); border-radius:10px; padding:10px 11px; box-shadow:0 6px 18px rgba(26,22,18,.08); transform:rotate(-1.5deg)}
+  .vis-tk .row1{display:flex; align-items:center; gap:6px; margin-bottom:6px}
+  .vis-tk .id{font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:.02em}
+  .vis-tk .st{font-size:8.5px; padding:2px 6px; border-radius:99px; background:var(--acc-soft); color:var(--acc); border:1px solid rgba(221,105,54,.22); margin-left:auto}
+  .vis-tk .h{font-family:var(--display); font-size:13px; line-height:1.2; color:var(--ink); margin-bottom:7px}
+  .vis-tk .chips{display:flex; flex-wrap:wrap; gap:3px}
+  .vis-tk .chips span{font-family:var(--mono); font-size:8.5px; padding:2px 6px; border-radius:99px; background:var(--acc-soft); color:var(--acc); border:1px solid rgba(221,105,54,.18); display:inline-flex; align-items:center; gap:3px}
+  .vis-tk .chips span::before{content:"✓"; font-size:8px}
+
+  /* the ticket (merged before/after) — equal columns, simpler */
+  .ticket-stage{margin-top:48px; display:grid; grid-template-columns:1fr; gap:24px; max-width:920px; margin-left:auto; margin-right:auto; position:relative}
+  .ticket-pair{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch}
+  @media(max-width:820px){ .ticket-pair{grid-template-columns:1fr; gap:30px} }
   .verdict{display:flex; align-items:center; gap:10px; font-family:var(--mono); font-size:13px; font-weight:500; margin-bottom:10px}
   .verdict .mark{width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; color:#fff; flex:none}
   .verdict.good{color:var(--success)} .verdict.good .mark{background:var(--success)}
   .verdict.bad{color:#b8492f} .verdict.bad .mark{background:#d8553a}
-  .ticket{border-radius:14px; overflow:hidden; background:#fff; box-shadow:var(--shadow); border:1px solid var(--hair); font-size:13px}
-  .ticket.bad{transform:rotate(2.5deg); opacity:.75; filter:saturate(.85)}
+  .ticket{border-radius:14px; overflow:hidden; background:#fff; box-shadow:var(--shadow); border:1px solid var(--hair); font-size:13px; display:flex; flex-direction:column; height:100%}
+  .ticket.bad{opacity:.85}
   .ticket.good{box-shadow:var(--shadow-lg); border-color:rgba(221,105,54,.3)}
   .tk-bar{display:flex; align-items:center; gap:9px; padding:11px 14px; border-bottom:1px solid var(--hair-2); background:#faf8f3}
   .tk-id{font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.02em}
@@ -447,23 +483,32 @@
   <div class="wrap">
     <div class="sec-tag">RIGHT NOW</div>
     <h2 class="sec-h">Half the bugs your team saw never get filed.</h2>
-    <p class="sec-sub">Writing a good ticket means stopping work, finding the URL, screenshotting, writing repro steps, opening the tracker. Five minutes, ten times a day. Most people skip it. The tickets that do get written? Vague enough that engineering can't reproduce them anyway.</p>
+    <p class="sec-sub">Writing a good ticket takes five minutes. So nobody bothers.</p>
 
     <div class="pain-grid">
       <div class="pain-note">
         <div class="corner"></div>
-        <div class="quote">I'll get to it later.</div>
-        <div class="byline">— never does</div>
+        <div class="quote">I see bugs every day. Filing tickets takes too long, so I just don't.</div>
+        <div class="who">
+          <span class="av" style="background:linear-gradient(135deg,#a07d52,#6b4f2b)">SR</span>
+          <span class="role"><b>Sales rep</b>B2B SaaS</span>
+        </div>
       </div>
       <div class="pain-note">
         <div class="corner"></div>
-        <div class="quote">Wait, what page was that on?</div>
-        <div class="byline">— writes a vague ticket</div>
+        <div class="quote">I try to file every bug I catch. I forget half of them by lunch.</div>
+        <div class="who">
+          <span class="av" style="background:linear-gradient(135deg,#dd6936,#bd4f1c)">F</span>
+          <span class="role"><b>Founder</b>Seed-stage startup</span>
+        </div>
       </div>
       <div class="pain-note">
         <div class="corner"></div>
-        <div class="quote">Can't reproduce on my machine.</div>
-        <div class="byline">— ticket dies in backlog</div>
+        <div class="quote">I have twelve bugs in my notes app. Zero in the tracker.</div>
+        <div class="who">
+          <span class="av" style="background:linear-gradient(135deg,#5b8aa0,#3a6377)">PM</span>
+          <span class="role"><b>Product manager</b>Series B fintech</span>
+        </div>
       </div>
     </div>
   </div>
@@ -479,22 +524,59 @@
 
     <div class="steps">
       <div class="step">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
-        <span class="step-n">i.</span>
-        <h3>Record the brief</h3>
-        <p>Click the toolbar. Talk through the bug, or the feature you want. Brief captures your voice, the screen, console logs, and the URL while you do.</p>
+        <div class="step-vis">
+          <div class="vis-rec">
+            <span class="dot"></span>
+            <span class="wave"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="time">0:14</span>
+          </div>
+        </div>
+        <div class="step-body">
+          <span class="step-n">i.</span>
+          <h3>Record</h3>
+          <p>Hit the toolbar. Talk through the bug while it's on screen.</p>
+        </div>
       </div>
       <div class="step">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
-        <span class="step-n">ii.</span>
-        <h3>Hand it to your agent</h3>
-        <p>Hit Export. Drop the prompt into Claude Code, Cursor, Codex, or any agent that can reach your tracker.</p>
+        <div class="step-vis">
+          <div class="vis-flow">
+            <span class="vis-pill zip">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              brief.zip
+            </span>
+            <span class="arr">
+              <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h18M14 2l6 5-6 5"/></svg>
+            </span>
+            <span class="vis-pill agent">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4 C13 11, 17 15, 24 16 C17 17, 13 21, 12 28 L12 4 Z"/><path d="M12 4 C11 11, 7 15, 0 16 C7 17, 11 21, 12 28 L12 4 Z"/></svg>
+              your agent
+            </span>
+          </div>
+        </div>
+        <div class="step-body">
+          <span class="step-n">ii.</span>
+          <h3>Export</h3>
+          <p>Drop the prompt into Claude Code, Cursor, or any agent.</p>
+        </div>
       </div>
       <div class="step">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
-        <span class="step-n">iii.</span>
-        <h3>Get a real ticket</h3>
-        <p>Your agent reads everything Brief captured. A complete ticket lands in your tracker. Video, screenshot, console logs, repro steps, code references. All in.</p>
+        <div class="step-vis">
+          <div class="vis-tk">
+            <div class="row1">
+              <span class="id">ENG-242</span>
+              <span class="st">Ready</span>
+            </div>
+            <div class="h">Real bug. Real fix.</div>
+            <div class="chips">
+              <span>video</span><span>screenshot</span><span>logs</span><span>repro</span><span>code</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-body">
+          <span class="step-n">iii.</span>
+          <h3>Ship</h3>
+          <p>A complete ticket lands in your tracker. Every time.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -521,33 +603,15 @@
             </div>
             <div class="tk-in">
               <div class="tk-h">Checkout CTA overlaps order total on mobile (&lt; 390px)</div>
-              <div class="tk-by">
-                <span class="av agent">✦</span>
-                <span class="who">from a 20 second brief, with your repo in hand</span>
-              </div>
               <div class="tk-text">
-                <p>On <code>/checkout</code>, the "Place order" button overlaps the order total on viewports under ~390px, leaving the total untappable.</p>
-                <div class="h6">Screenshot</div>
-                <div class="tk-shot">
-                  <div class="browser-row"><i></i><i></i><i></i></div>
-                  <div class="shot-body"></div>
-                  <div class="ck-total"></div>
-                  <div class="ck-btn"></div>
-                  <div class="ann"></div>
-                </div>
-                <div class="h6">Likely cause</div>
-                <p>Fixed footer in <code>CheckoutSummary.tsx</code> doesn't reserve height at small breakpoints, so it stacks over <code>OrderTotal</code>.</p>
-                <div class="h6">Steps to reproduce</div>
-                <ol>
-                  <li>Open cart on mobile (or ≤390px)</li>
-                  <li>Proceed to checkout</li>
-                  <li>Button renders on top of the total</li>
-                </ol>
-                <div class="tk-foot">
-                  <span class="lbl">CheckoutSummary.tsx</span>
-                  <span class="lbl">screenshot attached</span>
-                  <span class="lbl">repro steps</span>
-                </div>
+                <p>Fixed footer in <code>CheckoutSummary.tsx</code> doesn't reserve height under ~390px, so it stacks over <code>OrderTotal</code>. Total becomes untappable.</p>
+              </div>
+              <div class="tk-foot">
+                <span class="lbl">✓ video</span>
+                <span class="lbl">✓ screenshot</span>
+                <span class="lbl">✓ console logs</span>
+                <span class="lbl">✓ repro steps</span>
+                <span class="lbl">✓ code refs</span>
               </div>
             </div>
           </div>
@@ -563,18 +627,15 @@
             </div>
             <div class="tk-in">
               <div class="tk-h">Investigate potential checkout experience issue</div>
-              <div class="tk-by">
-                <span class="av bot">AI</span>
-                <span class="who">never saw your screen, never read your code</span>
-              </div>
               <div class="tk-text">
-                <p>This ticket tracks the investigation of a potential issue that may affect the checkout experience. Users may, under certain circumstances, encounter unexpected behavior.</p>
-                <p>Acceptance criteria: relevant elements behave as expected; no visual or functional regressions. Further details to be gathered during triage.</p>
-                <div class="tk-foot">
-                  <span class="lbl">no file referenced</span>
-                  <span class="lbl">no screenshot</span>
-                  <span class="lbl">~80 words of nothing</span>
-                </div>
+                <p>This ticket tracks investigation of a potential issue that may affect the checkout experience. Users may, under certain circumstances, encounter unexpected behavior.</p>
+              </div>
+              <div class="tk-foot">
+                <span class="lbl">✕ no video</span>
+                <span class="lbl">✕ no screenshot</span>
+                <span class="lbl">✕ no logs</span>
+                <span class="lbl">✕ no repro</span>
+                <span class="lbl">✕ no code refs</span>
               </div>
             </div>
           </div>
