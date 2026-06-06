@@ -336,14 +336,27 @@
   .t-arrow-l3{bottom:46px; top:auto}
   .t-arrow-r3{bottom:46px; top:auto; transform:scaleX(-1)}
 
-  @media(max-width:1100px){
-    .tn-l1, .tn-l2, .tn-l3{right:calc(100% + 32px); width:130px}
-    .tn-r1, .tn-r2, .tn-r3{left:calc(100% + 32px); width:130px}
-    .t-arrow{width:32px}
-  }
-  @media(max-width:880px){
-    .tn-l1, .tn-l2, .tn-l3, .tn-r1, .tn-r2, .tn-r3{position:static; transform:none; width:auto; max-width:none; display:inline-block; margin:6px 6px 8px 0; right:auto; left:auto; bottom:auto; top:auto}
+  /* below ~1440px the external notes start clipping at the viewport edge,
+     so collapse them into a tidy inline row above each ticket instead */
+  @media(max-width:1440px){
+    .ticket-col{display:flex; flex-direction:column}
+    .tn-l1, .tn-l2, .tn-l3, .tn-r1, .tn-r2, .tn-r3{
+      position:static; transform:none; width:auto; max-width:none;
+      right:auto; left:auto; bottom:auto; top:auto;
+      display:inline-flex; flex-direction:column; vertical-align:top}
+    .ticket-col > .tnote{margin:0}
+    /* wrap the inline notes in a flex row via order, sitting before the card */
+    .tnote{order:0}
+    .ticket{order:5}
+    .ticket-col{gap:8px}
+    .ticket-col{flex-flow:row wrap; align-items:flex-start}
+    .ticket-col > .tnote{flex:0 0 auto}
+    .ticket-col > .ticket{flex:1 0 100%; margin-top:6px}
     .t-arrow{display:none}
+    .ticket-pair{padding:24px 0}
+  }
+  @media(max-width:520px){
+    .ticket-col > .tnote{flex:1 1 100%}
   }
 
   /* engineer comment thread at the bottom of each ticket */
