@@ -252,15 +252,15 @@
   .vis-pill.agent{transform:rotate(2deg); background:var(--ink); color:var(--cream); border-color:transparent}
   .vis-flow .arr{color:var(--acc); display:inline-flex; align-items:center}
 
-  /* step 3: ticket */
-  .vis-tk{width:78%; max-width:200px; background:#fff; border:1px solid rgba(221,105,54,.3); border-radius:10px; padding:10px 11px; box-shadow:0 6px 18px rgba(26,22,18,.08); transform:rotate(-1.5deg)}
+  /* step 3: mini ticket — matches the good ticket downstream */
+  .vis-tk{width:78%; max-width:210px; background:#fff; border:1px solid rgba(22,134,92,.3); border-radius:10px; padding:10px 11px; box-shadow:0 6px 18px rgba(26,22,18,.08); transform:rotate(-1.5deg)}
   .vis-tk .row1{display:flex; align-items:center; gap:6px; margin-bottom:6px}
   .vis-tk .id{font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:.02em}
-  .vis-tk .st{font-size:8.5px; padding:2px 6px; border-radius:99px; background:var(--acc-soft); color:var(--acc); border:1px solid rgba(221,105,54,.22); margin-left:auto}
+  .vis-tk .st{font-size:8.5px; padding:2px 6px; border-radius:99px; background:rgba(22,134,92,.12); color:#0e6843; border:1px solid rgba(22,134,92,.3); margin-left:auto}
   .vis-tk .h{font-family:var(--display); font-size:13px; line-height:1.2; color:var(--ink); margin-bottom:7px}
   .vis-tk .chips{display:flex; flex-wrap:wrap; gap:3px}
-  .vis-tk .chips span{font-family:var(--mono); font-size:8.5px; padding:2px 6px; border-radius:99px; background:var(--acc-soft); color:var(--acc); border:1px solid rgba(221,105,54,.18); display:inline-flex; align-items:center; gap:3px}
-  .vis-tk .chips span::before{content:"✓"; font-size:8px}
+  .vis-tk .chips span{font-family:var(--mono); font-size:8.5px; padding:2px 6px; border-radius:99px; background:rgba(22,134,92,.10); color:#0e6843; border:1px solid rgba(22,134,92,.28); display:inline-flex; align-items:center; gap:3px}
+  .vis-tk .chips span::before{content:"✓"; font-size:8px; color:#168a5c}
 
   /* the ticket (merged before/after) — equal columns, with annotation notes */
   .ticket-stage{margin-top:56px; display:grid; grid-template-columns:1fr; gap:24px; max-width:1000px; margin-left:auto; margin-right:auto; position:relative}
