@@ -335,33 +335,24 @@
   .t-arrow-l3{bottom:46px; top:auto}
   .t-arrow-r3{bottom:46px; top:auto; transform:scaleX(-1)}
 
-  /* As the viewport narrows, shrink the whole comparison (stage + notes +
-     arrows) so the side notes never overflow the screen — instead of
-     collapsing them. The tickets just get a bit smaller. */
+  /* There's only room for 2 columns + outboard side-notes above ~1440px.
+     Below that, stack into a single centered column and move the notes
+     into a tidy row of small tags UNDER each ticket (no absolute
+     positioning, so they can never overlap the cards). */
   @media(max-width:1440px){
-    .ticket-stage{max-width:900px}
-    .ticket-pair{gap:44px}
-    .tnote{width:138px; font-size:12.5px; padding:7px 11px}
-    .tn-l1, .tn-l2, .tn-l3{right:calc(100% + 36px)}
-    .tn-r1, .tn-r2, .tn-r3{left:calc(100% + 36px)}
-    .t-arrow{width:36px}
-  }
-  /* Below 1180px there isn't room for 2 columns + side notes without
-     cramping, so stack into one column and drop the notes into a tidy
-     wrapped row ABOVE each ticket. No more squeezed middle zone. */
-  @media(max-width:1180px){
     .ticket-stage{max-width:560px}
-    .ticket-pair{grid-template-columns:1fr; gap:56px; padding:24px 0}
-    .ticket-col{display:flex; flex-flow:row wrap; gap:8px; align-items:flex-start}
+    .ticket-pair{grid-template-columns:1fr; gap:48px; padding:24px 0}
+    .ticket-col{display:flex; flex-direction:column}
+    .ticket{order:0}
     .tn-l1, .tn-l2, .tn-l3, .tn-r1, .tn-r2, .tn-r3{
       position:static; transform:none; width:auto; max-width:none;
       right:auto; left:auto; top:auto; bottom:auto; text-align:left;
-      font-size:12.5px; order:0; flex:0 1 auto}
-    .ticket{order:5; flex:1 0 100%; margin-top:4px}
+      order:5; align-self:stretch; margin:0;
+      font-size:12px; padding:6px 11px}
+    .tn-l1{margin-top:10px}
+    .tn-r1{margin-top:10px}
+    .tnote .small{font-size:9.5px}
     .t-arrow{display:none}
-  }
-  @media(max-width:520px){
-    .tn-l1, .tn-l2, .tn-l3, .tn-r1, .tn-r2, .tn-r3{flex:1 1 100%}
   }
 
   /* engineer comment thread at the bottom of each ticket */
