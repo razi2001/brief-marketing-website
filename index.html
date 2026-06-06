@@ -125,7 +125,9 @@
     stroke-dasharray:160; stroke-dashoffset:160; animation:draw 1.2s .5s ease-out forwards}
   @keyframes draw{to{stroke-dashoffset:0}}
 
-  .lede{font-size:16px; color:var(--ink-2); margin:26px 0 30px; max-width:46ch; line-height:1.55}
+  .tagline{font-family:var(--display); font-size:clamp(22px,2.5vw,28px); color:var(--ink); margin:22px 0 14px; line-height:1.25; max-width:22ch}
+  .tagline b{font-weight:400}
+  .lede{font-size:15.5px; color:var(--ink-2); margin:0 0 30px; max-width:48ch; line-height:1.6}
   .lede b{color:var(--ink); font-weight:500}
 
   .cta-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
@@ -242,21 +244,6 @@
   .video-placeholder .vp-cap{font-family:var(--display); font-size:21px}
   .video-placeholder .vp-sub{font-size:12.5px; color:rgba(245,241,232,.6); letter-spacing:.04em}
 
-  /* FAQ */
-  .faq-h{font-family:var(--display); font-weight:400; font-size:clamp(38px,5vw,56px); line-height:1.04; color:var(--ink); text-align:center; margin:6px auto 4px; letter-spacing:-.005em}
-  .faq{max-width:680px; margin:32px auto 0}
-  details{border-bottom:1px solid var(--hair); padding:4px 0}
-  details summary{list-style:none; cursor:pointer; padding:20px 44px 20px 4px; position:relative;
-    font-size:17px; color:var(--ink); font-family:var(--display)}
-  details summary::-webkit-details-marker{display:none}
-  details summary::after{content:"+"; position:absolute; right:8px; top:50%; transform:translateY(-50%);
-    font-family:var(--mono); font-size:20px; color:var(--acc); transition:transform .2s}
-  details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
-  details .ans{padding:0 44px 22px 4px; color:var(--ink-2); font-size:14.5px; line-height:1.7}
-  details .ans code{background:var(--cream-2); padding:2px 6px; border-radius:5px; font-size:13px}
-  details .ans a{color:var(--acc); text-decoration:none}
-  details .ans a:hover{text-decoration:underline}
-
   /* quiet final CTA */
   .quiet-cta{padding:80px 0 60px; text-align:center; position:relative; z-index:2}
   .quiet-cta .lead{font-family:var(--display); font-style:italic; font-size:24px; color:var(--muted); margin-bottom:10px}
@@ -335,7 +322,6 @@
       <a href="#how">How it works</a>
       <a href="#why">Why Brief</a>
       <a href="/pricing.html">Pricing</a>
-      <a href="#faq">FAQ</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
       <a class="nav-cta" href="https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig" target="_blank" rel="noopener">Add to Chrome</a>
     </div>
@@ -389,9 +375,9 @@
         <span class="line">what's the</span>
         <span class="line"><em>brief<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>?</span>
       </h1>
+      <p class="tagline"><b>Talk through a bug. Your agent writes the ticket.</b></p>
       <p class="lede">
-        See a bug. Hit the toolbar and talk through it while it's on screen.
-        <b>Your own coding agent</b> reads the brief and writes the ticket, with your repo as context.
+        Hit the toolbar, say what's broken, hit export. Your coding agent reads the capture and files a proper ticket. Real component names, repro steps, screenshot attached.
       </p>
 
       <div class="cta-row">
@@ -443,27 +429,27 @@
 <section id="how">
   <div class="wrap">
     <div class="sec-tag">HOW IT WORKS</div>
-    <h2 class="sec-h">Three steps. That's the whole flow.</h2>
-    <p class="sec-sub">Brief captures the bug. Your agent writes the ticket. You stay in flow.</p>
+    <h2 class="sec-h">Thirty seconds. Three steps.</h2>
+    <p class="sec-sub">Not five minutes of writing a ticket nobody wants to read.</p>
 
     <div class="steps">
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
         <span class="step-n">i.</span>
         <h3>Talk it through</h3>
-        <p>Hit the toolbar and say what's wrong while it's on screen. Snap a screenshot. Type a line. Whatever's fastest.</p>
+        <p>Hit the toolbar. Say what's broken while you can see it. Snap a screenshot if you want.</p>
       </div>
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <span class="step-n">ii.</span>
-        <h3>It saves locally</h3>
-        <p>Each brief lands in a folder on your computer. Pile a few up through the day. No accounts. No upload.</p>
+        <h3>Brief saves it</h3>
+        <p>Lands as a zip in your Downloads folder. No accounts, no upload, no cloud.</p>
       </div>
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
         <span class="step-n">iii.</span>
-        <h3>Your agent writes it up</h3>
-        <p>Export, hand the prompt to your coding agent. It reads each brief and writes a proper ticket in your tracker. Code references, repro steps, screenshot attached.</p>
+        <h3>Your agent ships it</h3>
+        <p>Export. Hand the prompt to Claude Code, Cursor, or any agent. A real ticket lands in your tracker.</p>
       </div>
     </div>
   </div>
@@ -575,38 +561,6 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="faq">
-  <div class="wrap">
-    <div class="sec-tag" style="text-align:center">FAQ</div>
-    <h2 class="faq-h">Questions.</h2>
-
-    <div class="faq">
-      <details open>
-        <summary>What do I need to use it?</summary>
-        <div class="ans">Chrome (or any Chromium browser, including Edge, Brave, Arc) and a coding agent that can read files and reach your tracker. Claude Code, Cursor, Codex, or similar with Linear, Jira, GitHub, or Notion.</div>
-      </details>
-      <details>
-        <summary>Does anything get uploaded?</summary>
-        <div class="ans">No. Briefs save to <code>~/Downloads/brief/</code> on your own machine. The only thing that leaves is what your own agent reads when you hit Export.</div>
-      </details>
-      <details>
-        <summary>Why is the ticket actually better?</summary>
-        <div class="ans">Your agent works from inside your repo, so it can point at the real component, reference the real function, and match your team's conventions. A server that's never seen your code can't.</div>
-      </details>
-      <details>
-        <summary>How much does it cost?</summary>
-        <div class="ans">Free. MIT licensed. You bring the agent. See <a href="/pricing.html">pricing</a> for the full picture, including the upcoming Cloud version.</div>
-      </details>
-      <details>
-        <summary>Is there a hosted version?</summary>
-        <div class="ans">Yes, on the way. <a href="/pricing.html">Read about it.</a> The self-hosted version stays free and open source forever.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
 <section class="quiet-cta" id="ready">
   <div class="wrap">
     <p class="lead">ready?</p>
@@ -628,7 +582,6 @@
     <nav class="flinks" aria-label="Footer">
       <a href="#how">How it works</a>
       <a href="/pricing.html">Pricing</a>
-      <a href="#faq">FAQ</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
