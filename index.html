@@ -7,7 +7,7 @@
 <meta name="description" content="Voice your bug." />
 
 <meta property="og:title" content="Brief" />
-<meta property="og:description" content="Voice your bug. Your agent files the ticket." />
+<meta property="og:description" content="Talk through a bug. Your agent writes the ticket." />
 <meta property="og:type" content="website" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><defs><linearGradient id='t' x1='20' y1='6' x2='112' y2='124' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23f08147'/><stop offset='0.52' stop-color='%23dd6936'/><stop offset='1' stop-color='%23bd4f1c'/></linearGradient></defs><rect width='128' height='128' rx='28' fill='url(%23t)'/><g fill='%23f7f3ea'><path d='M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z'/><path d='M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z'/></g></svg>" />
@@ -243,7 +243,8 @@
   .video-placeholder .vp-sub{font-size:12.5px; color:rgba(245,241,232,.6); letter-spacing:.04em}
 
   /* FAQ */
-  .faq{max-width:760px; margin:38px auto 0}
+  .faq-h{font-family:var(--display); font-weight:400; font-size:clamp(38px,5vw,56px); line-height:1.04; color:var(--ink); text-align:center; margin:6px auto 4px; letter-spacing:-.005em}
+  .faq{max-width:680px; margin:32px auto 0}
   details{border-bottom:1px solid var(--hair); padding:4px 0}
   details summary{list-style:none; cursor:pointer; padding:20px 44px 20px 4px; position:relative;
     font-size:17px; color:var(--ink); font-family:var(--display)}
@@ -383,14 +384,14 @@
     </div>
 
     <div class="hero-r">
-      <span class="eyebrow">open source. local first. bring your own agent.</span>
+      <span class="eyebrow">an open-source chrome extension</span>
       <h1>
         <span class="line">what's the</span>
         <span class="line"><em>brief<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>?</span>
       </h1>
       <p class="lede">
-        Spot a bug. Hit the toolbar. Talk through it, snap it, or scribble.
-        <b>Your own coding agent</b> reads the brief and files a real ticket, with your code as context.
+        See a bug. Hit the toolbar and talk through it while it's on screen.
+        <b>Your own coding agent</b> reads the brief and writes the ticket, with your repo as context.
       </p>
 
       <div class="cta-row">
@@ -411,7 +412,7 @@
         </a>
       </div>
 
-      <p class="privacy-note">audio and screen stay on your machine</p>
+      <p class="privacy-note">audio and screen stay on your machine. always.</p>
     </div>
   </div>
 
@@ -442,27 +443,27 @@
 <section id="how">
   <div class="wrap">
     <div class="sec-tag">HOW IT WORKS</div>
-    <h2 class="sec-h">Three steps. The boring part disappears.</h2>
-    <p class="sec-sub">Brief captures what you mean in the moment. Your coding agent, the one already sitting in your repo, turns it into a proper ticket with your code as context.</p>
+    <h2 class="sec-h">Three steps. That's the whole flow.</h2>
+    <p class="sec-sub">Brief captures the bug. Your agent writes the ticket. You stay in flow.</p>
 
     <div class="steps">
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
         <span class="step-n">i.</span>
-        <h3>Capture it</h3>
-        <p>Hit the toolbar. Talk through the bug while it's on screen, snap and annotate, or just type a line. Whatever's fastest.</p>
+        <h3>Talk it through</h3>
+        <p>Hit the toolbar and say what's wrong while it's on screen. Snap a screenshot. Type a line. Whatever's fastest.</p>
       </div>
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <span class="step-n">ii.</span>
-        <h3>It queues locally</h3>
-        <p>Each brief saves to a folder on your machine. Stack a few through the day. No accounts. No upload.</p>
+        <h3>It saves locally</h3>
+        <p>Each brief lands in a folder on your computer. Pile a few up through the day. No accounts. No upload.</p>
       </div>
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
         <span class="step-n">iii.</span>
-        <h3>Your agent files it</h3>
-        <p>Hit Export. Paste the prompt into your coding agent. It reads each brief, files a clean ticket in your tracker, and cleans up after itself.</p>
+        <h3>Your agent writes it up</h3>
+        <p>Export, hand the prompt to your coding agent. It reads each brief and writes a proper ticket in your tracker. Code references, repro steps, screenshot attached.</p>
       </div>
     </div>
   </div>
@@ -472,15 +473,15 @@
 
 <section id="why">
   <div class="wrap">
-    <div class="sec-tag">THE TICKET</div>
-    <h2 class="sec-h">Say no to the contextless wall of text.</h2>
-    <p class="sec-sub">A generic chatbot pads, hedges, and writes three paragraphs about nothing. Your own agent saw your screen and read your code. The ticket comes out sharp.</p>
+    <div class="sec-tag">WHY BRIEF</div>
+    <h2 class="sec-h">Same bug. Better ticket.</h2>
+    <p class="sec-sub">A hosted chatbot writes the same vague ticket every time. Your own agent saw the bug and read your code. The difference shows up in triage.</p>
 
     <div class="ticket-stage">
       <div class="ticket-pair">
 
         <div>
-          <div class="verdict good"><span class="mark">✓</span> Filed by your agent</div>
+          <div class="verdict good"><span class="mark">✓</span> Written by your agent</div>
           <div class="ticket good">
             <div class="tk-bar">
               <span class="tk-id">ENG-242</span>
@@ -491,7 +492,7 @@
               <div class="tk-h">Checkout CTA overlaps order total on mobile (&lt; 390px)</div>
               <div class="tk-by">
                 <span class="av agent">✦</span>
-                <span class="who">filed by <b>your agent</b>, from a 20 second brief</span>
+                <span class="who">from a 20 second brief, with your repo in hand</span>
               </div>
               <div class="tk-text">
                 <p>On <code>/checkout</code>, the "Place order" button overlaps the order total on viewports under ~390px, leaving the total untappable.</p>
@@ -522,7 +523,7 @@
         </div>
 
         <div>
-          <div class="verdict bad"><span class="mark">✕</span> A chatbot's version</div>
+          <div class="verdict bad"><span class="mark">✕</span> What a chatbot wrote</div>
           <div class="ticket bad">
             <div class="tk-bar">
               <span class="tk-id">ENG-241</span>
@@ -533,7 +534,7 @@
               <div class="tk-h">Investigate potential checkout experience issue</div>
               <div class="tk-by">
                 <span class="av bot">AI</span>
-                <span class="who">no repo, no screen</span>
+                <span class="who">never saw your screen, never read your code</span>
               </div>
               <div class="tk-text">
                 <p>This ticket tracks the investigation of a potential issue that may affect the checkout experience. Users may, under certain circumstances, encounter unexpected behavior.</p>
@@ -549,7 +550,7 @@
         </div>
 
       </div>
-      <p class="ticket-caption">Same bug. One was pasted from a chatbot. The other came from your agent, with your code as context.</p>
+      <p class="ticket-caption">Same bug. The chatbot guessed. Your agent read the code.</p>
     </div>
   </div>
 </section>
@@ -559,14 +560,14 @@
 <section id="watch">
   <div class="wrap">
     <div class="sec-tag">WATCH</div>
-    <h2 class="sec-h">From spoken bug to filed ticket. Under a minute.</h2>
-    <p class="sec-sub">A quick walkthrough of the whole loop: capture a brief, queue a couple more, export, and watch the agent file them.</p>
+    <h2 class="sec-h">Watch a bug become a ticket.</h2>
+    <p class="sec-sub">60 seconds. Start to filed.</p>
 
     <div class="video-shell" id="videoShell">
       <button class="video-placeholder" id="videoPlaceholder" aria-label="Play demo video">
         <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
         <div>
-          <div class="vp-cap">Watch the demo</div>
+          <div class="vp-cap">Play</div>
           <div class="vp-sub">60 seconds. No sound needed.</div>
         </div>
       </button>
@@ -579,28 +580,28 @@
 <section id="faq">
   <div class="wrap">
     <div class="sec-tag" style="text-align:center">FAQ</div>
-    <h2 class="sec-h" style="margin:0 auto 6px; text-align:center">Questions, briefly answered.</h2>
+    <h2 class="faq-h">Questions.</h2>
 
     <div class="faq">
       <details open>
-        <summary>What do I need for it to work?</summary>
-        <div class="ans">Chrome (or any Chromium browser, including Edge, Brave, Arc) and a coding agent with file access and a tracker connected. Claude Code, Cursor, or similar with a Linear, Jira, GitHub, or Notion integration. Brief does the capturing; your agent does the filing.</div>
+        <summary>What do I need to use it?</summary>
+        <div class="ans">Chrome (or any Chromium browser, including Edge, Brave, Arc) and a coding agent that can read files and reach your tracker. Claude Code, Cursor, Codex, or similar with Linear, Jira, GitHub, or Notion.</div>
       </details>
       <details>
-        <summary>Does my voice or screen get uploaded anywhere?</summary>
-        <div class="ans">No. Brief is local-first. Every capture is written to <code>~/Downloads/brief/</code> on your own machine. Nothing is sent to a server. The only thing that ever leaves is what your own agent reads when you explicitly export.</div>
+        <summary>Does anything get uploaded?</summary>
+        <div class="ans">No. Briefs save to <code>~/Downloads/brief/</code> on your own machine. The only thing that leaves is what your own agent reads when you hit Export.</div>
       </details>
       <details>
-        <summary>Why is the ticket better than one from a hosted tool?</summary>
-        <div class="ans">Because your own agent files it from inside your repo, it has your codebase as context. It can point at the actual component, reference the real function, and match your team's ticket conventions. A server that's never seen your code can't do that.</div>
+        <summary>Why is the ticket actually better?</summary>
+        <div class="ans">Your agent works from inside your repo, so it can point at the real component, reference the real function, and match your team's conventions. A server that's never seen your code can't.</div>
       </details>
       <details>
         <summary>How much does it cost?</summary>
-        <div class="ans">The extension is free and open source (MIT). You bring your own coding agent, so there's no per-ticket cost from us. See <a href="/pricing.html">pricing</a> for the full picture, including the upcoming Cloud version.</div>
+        <div class="ans">Free. MIT licensed. You bring the agent. See <a href="/pricing.html">pricing</a> for the full picture, including the upcoming Cloud version.</div>
       </details>
       <details>
-        <summary>Will there ever be a hosted version?</summary>
-        <div class="ans">Yes. A Cloud version for small teams who'd rather not run their own agent is on the way. <a href="/pricing.html">Read about it here.</a> The self-hosted version stays free and open source forever.</div>
+        <summary>Is there a hosted version?</summary>
+        <div class="ans">Yes, on the way. <a href="/pricing.html">Read about it.</a> The self-hosted version stays free and open source forever.</div>
       </details>
     </div>
   </div>
@@ -632,7 +633,7 @@
       <a href="/terms.html">Terms</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
     </nav>
-    <p>Local first. Open source. Built for people who'd rather talk than type. © <span id="yr"></span> Brief</p>
+    <p>Local first. Open source. For people who'd rather talk than write tickets. © <span id="yr"></span> Brief</p>
   </div>
 </footer>
 
