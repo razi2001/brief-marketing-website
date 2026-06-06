@@ -335,13 +335,13 @@
   .t-arrow-l3{bottom:46px; top:auto}
   .t-arrow-r3{bottom:46px; top:auto; transform:scaleX(-1)}
 
-  /* There's only room for 2 columns + outboard side-notes above ~1440px.
-     Below that, stack into a single centered column and move the notes
-     into a tidy row of small tags UNDER each ticket (no absolute
-     positioning, so they can never overlap the cards). */
+  /* There's only room for the outboard side-notes above ~1440px. Below
+     that we keep the two tickets side by side but move the notes into a
+     tidy stack of small tags UNDER each card (no absolute positioning,
+     so they can never overlap). */
   @media(max-width:1440px){
-    .ticket-stage{max-width:560px}
-    .ticket-pair{grid-template-columns:1fr; gap:48px; padding:24px 0}
+    .ticket-stage{max-width:920px}
+    .ticket-pair{gap:40px}
     .ticket-col{display:flex; flex-direction:column}
     .ticket{order:0}
     .tn-l1, .tn-l2, .tn-l3, .tn-r1, .tn-r2, .tn-r3{
@@ -349,10 +349,14 @@
       right:auto; left:auto; top:auto; bottom:auto; text-align:left;
       order:5; align-self:stretch; margin:0;
       font-size:12px; padding:6px 11px}
-    .tn-l1{margin-top:10px}
-    .tn-r1{margin-top:10px}
+    .tn-l1, .tn-r1{margin-top:10px}
     .tnote .small{font-size:9.5px}
     .t-arrow{display:none}
+  }
+  /* Only on iPad-and-smaller do the two tickets stack into one column. */
+  @media(max-width:820px){
+    .ticket-stage{max-width:560px}
+    .ticket-pair{grid-template-columns:1fr; gap:48px; padding:24px 0}
   }
 
   /* engineer comment thread at the bottom of each ticket */
