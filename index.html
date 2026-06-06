@@ -325,15 +325,21 @@
   @media(max-width:820px){ .tn-tl,.tn-tr{position:static; transform:none; max-width:none; display:inline-block; margin:6px 6px 8px 0} }
 
   /* engineer comment thread at the bottom of each ticket */
-  .tk-comment{padding:11px 14px; border-top:1px solid var(--hair-2); display:flex; align-items:flex-start; gap:10px; background:rgba(26,22,18,.025)}
+  .tk-comment{position:relative; padding:20px 14px 13px; border-top:1px dashed var(--hair); display:flex; align-items:flex-start; gap:10px; background:rgba(26,22,18,.025)}
+  .tk-c-label{position:absolute; top:-12px; left:14px; padding:3px 10px; font-family:var(--mono); font-size:10px; letter-spacing:.06em; background:#fff; border:1px solid var(--hair); border-radius:99px; display:inline-flex; align-items:center; gap:6px; font-weight:500; white-space:nowrap}
+  .ticket.good .tk-c-label{color:#0e6843; border-color:rgba(22,134,92,.45); background:#f4faf0}
+  .ticket.bad  .tk-c-label{color:#b8492f; border-color:rgba(184,73,47,.45); background:#fef4ef}
   .tk-comment .av{width:24px; height:24px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:9.5px; font-weight:600; color:#fff; letter-spacing:.02em}
   .ticket.good .tk-comment .av{background:linear-gradient(135deg,#7aa68a,#3f7a55)}
   .ticket.bad  .tk-comment .av{background:linear-gradient(135deg,#a89687,#73604f)}
   .tk-comment .body{font-size:11.5px; color:var(--ink-2); line-height:1.5; flex:1; min-width:0}
   .tk-comment .body .name{font-family:var(--mono); font-size:10.5px; font-weight:500; color:var(--ink); letter-spacing:.02em}
   .tk-comment .body .name .time{color:var(--muted); margin-left:6px; font-weight:400}
-  .tk-comment .body p{margin:3px 0 0; font-style:italic; color:var(--ink-2)}
-  .tk-comment .body p + p{margin-top:3px}
+  .tk-comment .body p{margin:4px 0 0; font-style:italic; color:var(--ink-2); padding-left:14px; position:relative; line-height:1.55}
+  .tk-comment .body p::before{content:"↳"; position:absolute; left:0; top:0; font-style:normal; opacity:.55; font-family:var(--mono); font-size:12px}
+  .ticket.good .tk-comment .body p::before{color:#0e6843; opacity:.7}
+  .ticket.bad  .tk-comment .body p::before{color:#b8492f; opacity:.7}
+  .tk-comment .body p + p{margin-top:4px}
 
   /* good-ticket chips and structured body */
   .lbl.good{background:rgba(22,134,92,.10); color:#0e6843; border:1px solid rgba(22,134,92,.28)}
@@ -752,6 +758,7 @@
               </div>
             </div>
             <div class="tk-comment">
+              <span class="tk-c-label">💬 1 reply</span>
               <span class="av">EM</span>
               <div class="body">
                 <span class="name">Em (engineer) <span class="time">2 min ago</span></span>
@@ -785,6 +792,7 @@
               </div>
             </div>
             <div class="tk-comment">
+              <span class="tk-c-label">💬 3 follow-ups</span>
               <span class="av">EM</span>
               <div class="body">
                 <span class="name">Em (engineer) <span class="time">5 min ago</span></span>
