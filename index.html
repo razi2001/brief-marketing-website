@@ -313,10 +313,10 @@
   /* notes sit fully OUTSIDE each ticket column, never overlap */
   .tn-l1, .tn-l2, .tn-l3{right:calc(100% + 56px)}
   .tn-r1, .tn-r2, .tn-r3{left:calc(100% + 56px)}
-  .tn-l1, .tn-r1{top:30px}
-  .tn-l2, .tn-r2{top:230px}
-  .tn-l3{bottom:100px; top:auto}
-  .tn-r3{bottom:100px; top:auto}
+  .tn-l1, .tn-r1{top:24px}
+  .tn-l2, .tn-r2{top:210px}
+  .tn-l3{bottom:34px; top:auto}
+  .tn-r3{bottom:34px; top:auto}
   .tn-l1{transform:rotate(-4deg)}
   .tn-l2{transform:rotate(3deg)}
   .tn-l3{transform:rotate(-3deg)}
@@ -331,10 +331,10 @@
   .t-arrow.bad{color:#7a3a26}
   .t-arrow-l1, .t-arrow-l2, .t-arrow-l3{right:100%}
   .t-arrow-r1, .t-arrow-r2, .t-arrow-r3{left:100%; transform:scaleX(-1)}
-  .t-arrow-l1, .t-arrow-r1{top:42px}
-  .t-arrow-l2, .t-arrow-r2{top:242px}
-  .t-arrow-l3{bottom:112px; top:auto}
-  .t-arrow-r3{bottom:112px; top:auto; transform:scaleX(-1)}
+  .t-arrow-l1, .t-arrow-r1{top:36px}
+  .t-arrow-l2, .t-arrow-r2{top:222px}
+  .t-arrow-l3{bottom:46px; top:auto}
+  .t-arrow-r3{bottom:46px; top:auto; transform:scaleX(-1)}
 
   @media(max-width:1100px){
     .tn-l1, .tn-l2, .tn-l3{right:calc(100% + 32px); width:130px}
@@ -765,7 +765,7 @@
             <path d="M3,11 Q22,7 48,12"/>
             <path d="M40,6 L50,12 L42,18"/>
           </svg>
-          <span class="tnote good tn-l3">no follow-up questions<span class="small">engineer ships it today</span></span>
+          <span class="tnote good tn-l3">no follow-up questions<span class="small">engineer just ships it</span></span>
           <svg class="t-arrow t-arrow-l3 good" viewBox="0 0 56 22" aria-hidden="true">
             <path d="M3,8 Q22,18 48,12"/>
             <path d="M40,6 L50,12 L42,18"/>
@@ -819,7 +819,7 @@
             <path d="M3,11 Q22,7 48,12"/>
             <path d="M40,6 L50,12 L42,18"/>
           </svg>
-          <span class="tnote bad tn-r3">questions + friction added<span class="small">3 rounds of triage</span></span>
+          <span class="tnote bad tn-r3">more questions, more friction<span class="small">days of back-and-forth</span></span>
           <svg class="t-arrow t-arrow-r3 bad" viewBox="0 0 56 22" aria-hidden="true">
             <path d="M3,8 Q22,18 48,12"/>
             <path d="M40,6 L50,12 L42,18"/>
