@@ -266,37 +266,29 @@
   .vis-tk .chips span::before{content:"✓"; font-size:8px; color:#168a5c}
 
   /* benchmark strip — head-to-head comparison above the tickets */
-  .benchmark{display:grid; grid-template-columns:1fr auto 1fr; gap:30px; align-items:center; max-width:940px; margin:40px auto 0; padding:24px 36px; background:rgba(255,255,255,.55); border:1px solid var(--hair-2); border-radius:18px; position:relative; z-index:2}
-  .b-side{display:flex; flex-direction:column; gap:12px}
-  .b-good{text-align:right}
+  .benchmark{display:grid; grid-template-columns:1fr auto 1fr; gap:36px; align-items:center; max-width:1000px; margin:48px auto 0; padding:30px 40px; background:#fff; border:1px solid rgba(26,22,18,.12); border-radius:20px; box-shadow:0 2px 6px rgba(26,22,18,.05), 0 18px 50px rgba(26,22,18,.08); position:relative; z-index:2}
+  .b-side{display:flex; flex-direction:column; gap:18px; min-width:0}
+  .b-eyebrow{font-family:var(--display); font-size:18px; font-weight:400; display:inline-flex; align-items:center; gap:9px; line-height:1.2}
+  .b-good{text-align:left}
   .b-bad{text-align:left}
-  .b-eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.14em; font-weight:500; display:inline-flex; align-items:center; gap:7px}
-  .b-good .b-eyebrow{color:var(--success); justify-content:flex-end}
+  .b-good .b-eyebrow{color:#0e6843}
   .b-bad .b-eyebrow{color:#b8492f}
-  .b-eyebrow .dot{width:7px; height:7px; border-radius:50%}
-  .b-good .b-eyebrow .dot{background:var(--success)}
-  .b-bad .b-eyebrow .dot{background:#d8553a}
-  .b-line{font-family:var(--display); font-style:italic; font-size:17px; color:var(--ink-2); line-height:1.3}
-  .b-stats{display:flex; gap:22px}
-  .b-good .b-stats{justify-content:flex-end}
-  .b-bad .b-stats{justify-content:flex-start}
-  .b-stats > div{display:flex; flex-direction:column; align-items:flex-start; gap:2px}
-  .b-good .b-stats > div{align-items:flex-end}
-  .b-stats b{font-family:var(--display); font-size:26px; line-height:1; font-weight:400}
+  .b-eyebrow .dot{width:9px; height:9px; border-radius:50%; flex:none}
+  .b-good .b-eyebrow .dot{background:var(--success); box-shadow:0 0 0 3px rgba(22,134,92,.15)}
+  .b-bad .b-eyebrow .dot{background:#d8553a; box-shadow:0 0 0 3px rgba(216,85,58,.15)}
+  .b-stats{display:grid; grid-template-columns:repeat(5,1fr); gap:14px}
+  .b-stats > div{display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center}
+  .b-stats b{font-family:var(--display); font-size:32px; line-height:1; font-weight:400}
   .b-good .b-stats b{color:#0e6843}
   .b-bad .b-stats b{color:#b8492f}
-  .b-stats span{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em; text-transform:lowercase}
-  .b-vs{font-family:var(--display); font-style:italic; font-size:34px; color:var(--acc); padding:0 4px; line-height:1; position:relative}
-  .b-vs::before, .b-vs::after{content:""; position:absolute; left:50%; width:1px; height:18px; background:rgba(221,105,54,.35); transform:translateX(-50%)}
-  .b-vs::before{top:-26px}
-  .b-vs::after{bottom:-26px}
-  @media(max-width:780px){
-    .benchmark{grid-template-columns:1fr; gap:18px; padding:22px 22px}
-    .b-good,.b-bad{text-align:center}
-    .b-good .b-eyebrow,.b-bad .b-eyebrow{justify-content:center}
-    .b-good .b-stats,.b-bad .b-stats{justify-content:center}
-    .b-good .b-stats > div,.b-bad .b-stats > div{align-items:center}
-    .b-vs{padding:4px 0}
+  .b-stats span{font-family:var(--mono); font-size:9.5px; color:var(--muted); letter-spacing:.04em; text-transform:lowercase; line-height:1.3}
+  .b-vs{font-family:var(--display); font-style:italic; font-size:42px; color:var(--acc); padding:0 4px; line-height:1; position:relative; align-self:center}
+  .b-vs::before, .b-vs::after{content:""; position:absolute; left:50%; width:1px; height:30px; background:rgba(221,105,54,.3); transform:translateX(-50%)}
+  .b-vs::before{top:-44px}
+  .b-vs::after{bottom:-44px}
+  @media(max-width:880px){
+    .benchmark{grid-template-columns:1fr; gap:24px; padding:24px 22px}
+    .b-vs{padding:6px 0}
     .b-vs::before,.b-vs::after{display:none}
   }
 
@@ -730,21 +722,23 @@
 
     <div class="benchmark">
       <div class="b-side b-good">
-        <span class="b-eyebrow"><span class="dot"></span> With Brief</span>
-        <span class="b-line">the brief, your screen, your code in hand</span>
+        <span class="b-eyebrow"><span class="dot"></span> Ticket created with Brief</span>
         <div class="b-stats">
-          <div><b>30s</b><span>to write</span></div>
-          <div><b>5</b><span>attachments</span></div>
+          <div><b>20s</b><span>to write</span></div>
+          <div><b>✓</b><span>attachment</span></div>
+          <div><b>✓</b><span>console logs</span></div>
+          <div><b>✓</b><span>repro steps</span></div>
           <div><b>0</b><span>follow-ups</span></div>
         </div>
       </div>
       <div class="b-vs">vs</div>
       <div class="b-side b-bad">
-        <span class="b-eyebrow"><span class="dot"></span> Without</span>
-        <span class="b-line">a chatbot guessing, no context</span>
+        <span class="b-eyebrow"><span class="dot"></span> Ticket from your agent alone</span>
         <div class="b-stats">
           <div><b>5min</b><span>to write</span></div>
-          <div><b>0</b><span>attachments</span></div>
+          <div><b>✕</b><span>attachment</span></div>
+          <div><b>✕</b><span>console logs</span></div>
+          <div><b>✕</b><span>repro steps</span></div>
           <div><b>3</b><span>follow-ups</span></div>
         </div>
       </div>
