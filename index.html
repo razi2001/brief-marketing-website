@@ -36,22 +36,49 @@
   .wrap{max-width:1060px; margin:0 auto; padding:0 28px; position:relative; z-index:2}
   a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
 
-  /* drifting clouds backdrop */
-  .clouds{position:absolute; left:0; right:0; top:0; height:140vh; z-index:0; pointer-events:none; overflow:hidden}
-  .cloud{position:absolute}
-  .cloud svg{display:block; width:100%; height:auto}
-  .c1{top:6%;  left:4%;  width:170px; opacity:.7;  animation:drift1 60s linear infinite}
-  .c2{top:14%; right:6%; width:220px; opacity:.7;  animation:drift2 80s -20s linear infinite}
-  .c3{top:28%; left:42%; width:130px; opacity:.5;  animation:drift1 90s -40s linear infinite}
-  .c4{top:44%; right:18%; width:190px; opacity:.55; animation:drift2 100s -10s linear infinite}
-  .c5{top:60%; left:8%;  width:150px; opacity:.45; animation:drift1 110s -60s linear infinite}
-  .c6{top:78%; right:24%; width:170px; opacity:.5;  animation:drift2 130s -30s linear infinite}
-  @keyframes drift1{0%{transform:translateX(0)}100%{transform:translateX(36px)}}
-  @keyframes drift2{0%{transform:translateX(0)}100%{transform:translateX(-30px)}}
+  /* per-section themes (background + cloud tint) */
+  body{background:var(--cream); transition:background .6s ease}
+  section, header.hero, footer{position:relative; transition:background .6s ease; overflow:hidden}
+  .theme-cream { background:#f5f1e8; --cloud:#fffdf6 }
+  .theme-peach { background:#f1e3ce; --cloud:#fdf2dc }
+  .theme-sage  { background:#e7ede0; --cloud:#f8fcec }
+  .theme-apricot{background:#f4e2cc; --cloud:#fef0d4 }
+  .theme-amber { background:#ece0c2; --cloud:#fbf0ce }
+  .theme-dusk  { background:#e9dec4; --cloud:#fbf1d4 }
+  /* every full-width band gets a 1px soft divider into the next */
+  section + section, header + section, section + .quiet-cta, .quiet-cta + footer{box-shadow:inset 0 1px 0 rgba(26,22,18,.05)}
+
+  /* clouds — one container per section, parallax layers for 2.5D drift */
+  .sec-clouds{position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+  .sec-clouds .cloud{position:absolute; color:var(--cloud, #fffdf6); will-change:transform}
+  .sec-clouds .cloud svg{display:block; width:100%; height:auto}
+  /* back layer — large, faded, slow */
+  .sec-clouds .bg-1{top:8%;  left:-4%; width:260px; opacity:.32; animation:drift-r 180s linear infinite}
+  .sec-clouds .bg-2{top:54%; right:-6%; width:300px; opacity:.28; animation:drift-l 210s -40s linear infinite}
+  /* mid layer */
+  .sec-clouds .mid-1{top:22%; left:36%; width:180px; opacity:.55; animation:drift-r 120s -20s linear infinite}
+  .sec-clouds .mid-2{top:68%; left:18%; width:160px; opacity:.5;  animation:drift-l 140s -60s linear infinite}
+  .sec-clouds .mid-3{top:38%; right:8%; width:200px; opacity:.55; animation:drift-r 130s -90s linear infinite}
+  /* front layer — small, opaque, faster */
+  .sec-clouds .fg-1{top:12%; right:20%; width:110px; opacity:.85; animation:drift-l 80s linear infinite}
+  .sec-clouds .fg-2{top:78%; left:46%; width:100px; opacity:.8;  animation:drift-r 70s -25s linear infinite}
+  @keyframes drift-r{
+    0%{transform:translate3d(0,0,0)}
+    50%{transform:translate3d(40px,-4px,0)}
+    100%{transform:translate3d(0,0,0)}
+  }
+  @keyframes drift-l{
+    0%{transform:translate3d(0,0,0)}
+    50%{transform:translate3d(-40px,3px,0)}
+    100%{transform:translate3d(0,0,0)}
+  }
+
+  /* legacy global clouds container kept hidden for backward-compat */
+  .clouds{display:none}
 
   /* nav */
-  nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(10px);
-    background:rgba(245,241,232,.72); border-bottom:1px solid var(--hair-2)}
+  nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(14px);
+    background:rgba(245,241,232,.55); border-bottom:1px solid var(--hair-2)}
   .nav-in{max-width:1060px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; gap:22px}
   .brandmark{display:flex; align-items:center; gap:11px; text-decoration:none}
   .logo{width:30px; height:30px; border-radius:8px; box-shadow:0 1px 3px rgba(26,22,18,.18)}
@@ -151,7 +178,7 @@
   .marquee{margin-top:36px; border-top:1px solid var(--hair-2); border-bottom:1px solid var(--hair-2); padding:20px 0;
     overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
             mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
-    background:rgba(245,241,232,.55); position:relative; z-index:2}
+    background:transparent; position:relative; z-index:2}
   .marquee-track{display:flex; gap:48px; white-space:nowrap; animation:scroll 32s linear infinite; width:max-content}
   .marquee-track span{font-family:var(--display); font-size:24px; color:var(--ink-2); display:inline-flex; align-items:center; gap:14px}
   .marquee-track .sep{color:var(--acc); font-size:16px}
@@ -338,7 +365,7 @@
 
   /* reduced motion */
   @media (prefers-reduced-motion: reduce){
-    .cloud, .marquee-track, .device, .bubble{animation:none!important; transition:none!important}
+    .cloud, .sec-clouds .cloud, .marquee-track, .device, .bubble{animation:none!important; transition:none!important}
     .device{transform:rotate(-1.4deg)}
     h1 em .uline path, .doodle path, .quiet-cta .uline path{animation:none; stroke-dashoffset:0}
     .step:nth-child(1),.step:nth-child(2),.step:nth-child(3){transform:none}
@@ -367,19 +394,11 @@
         <path d="M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z"/>
       </g>
     </symbol>
-    <symbol id="cloudA" viewBox="0 0 100 36"><path d="M16 28 C6 28 4 18 12 16 C10 8 22 4 26 12 C30 4 46 6 46 16 C56 14 60 24 52 28 Z" fill="#fffdf6"/></symbol>
-    <symbol id="cloudB" viewBox="0 0 120 40"><path d="M14 32 C2 32 2 18 12 18 C8 10 24 4 30 14 C34 4 54 6 54 18 C60 12 78 14 76 22 C90 22 90 34 80 34 Z" fill="#fffdf6"/></symbol>
+    <symbol id="cloudA" viewBox="0 0 100 36"><path d="M16 28 C6 28 4 18 12 16 C10 8 22 4 26 12 C30 4 46 6 46 16 C56 14 60 24 52 28 Z" fill="currentColor"/></symbol>
+    <symbol id="cloudB" viewBox="0 0 120 40"><path d="M14 32 C2 32 2 18 12 18 C8 10 24 4 30 14 C34 4 54 6 54 18 C60 12 78 14 76 22 C90 22 90 34 80 34 Z" fill="currentColor"/></symbol>
   </defs>
 </svg>
 
-<div class="clouds" aria-hidden="true">
-  <div class="cloud c1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
-  <div class="cloud c2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
-  <div class="cloud c3"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
-  <div class="cloud c4"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
-  <div class="cloud c5"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
-  <div class="cloud c6"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
-</div>
 
 <nav aria-label="Primary">
   <div class="nav-in">
@@ -398,7 +417,15 @@
 </nav>
 
 <a id="top"></a>
-<header class="hero">
+<header class="hero theme-cream">
+  <div class="sec-clouds" aria-hidden="true">
+    <div class="cloud bg-1"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud bg-2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud mid-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud mid-3"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud fg-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud fg-2"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  </div>
   <div class="wrap hero-grid">
 
     <div class="device-col">
@@ -493,9 +520,13 @@
   </div>
 </header>
 
-<div class="divider"></div>
-
-<section id="pain">
+<section id="pain" class="theme-peach">
+  <div class="sec-clouds" aria-hidden="true">
+    <div class="cloud bg-1"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud mid-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud mid-2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud fg-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  </div>
   <div class="wrap">
     <div class="sec-tag">RIGHT NOW</div>
     <h2 class="sec-h">Half the bugs your team saw never get filed.</h2>
@@ -530,9 +561,13 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="how">
+<section id="how" class="theme-sage">
+  <div class="sec-clouds" aria-hidden="true">
+    <div class="cloud bg-2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud mid-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud mid-3"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud fg-2"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  </div>
   <div class="wrap">
     <div class="sec-tag">HOW IT WORKS</div>
     <h2 class="sec-h">Three steps. About thirty seconds.</h2>
@@ -595,9 +630,13 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="why">
+<section id="why" class="theme-apricot">
+  <div class="sec-clouds" aria-hidden="true">
+    <div class="cloud bg-1"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud bg-2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud mid-2"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud fg-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  </div>
   <div class="wrap">
     <div class="sec-tag">WITH BRIEF vs WITHOUT</div>
     <h2 class="sec-h">Same bug. Two tickets.</h2>
@@ -671,9 +710,13 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
-<section id="watch">
+<section id="watch" class="theme-amber">
+  <div class="sec-clouds" aria-hidden="true">
+    <div class="cloud bg-1"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud mid-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud mid-3"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud fg-2"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  </div>
   <div class="wrap">
     <div class="sec-tag">WATCH</div>
     <h2 class="sec-h">Watch a bug become a ticket.</h2>
@@ -691,7 +734,12 @@
   </div>
 </section>
 
-<section class="quiet-cta" id="ready">
+<section class="quiet-cta theme-dusk" id="ready">
+  <div class="sec-clouds" aria-hidden="true">
+    <div class="cloud bg-2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud mid-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud fg-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  </div>
   <div class="wrap">
     <p class="lead">ready?</p>
     <a class="link" href="https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig" target="_blank" rel="noopener">
@@ -701,7 +749,7 @@
   </div>
 </section>
 
-<footer>
+<footer class="theme-cream">
   <div class="wrap">
     <div class="foot-mark">
       <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#brieflogo"/></svg>
