@@ -45,7 +45,7 @@
   .theme-apricot{background:#f4e2cc; --cloud:#fef0d4 }
   .theme-honey { background:#ebe1c8; --cloud:#f7eed8 } /* watch — subtle warm */
   .theme-bright{ background:#f5f1e8; --cloud:#fffdf6 } /* quiet CTA — base cream, calming */
-  .theme-grey  { background:#e6e4df; --cloud:#efedea } /* footer — light neutral grey, uniform */
+  .theme-grey  { background:#dde2d6; --cloud:#e8ece2 } /* footer — light sage-grey, flows from the CTA's sage */
   /* every full-width band gets a 1px soft divider into the next */
   section + section, header + section, section + .quiet-cta, .quiet-cta + footer{box-shadow:inset 0 1px 0 rgba(26,22,18,.05)}
 
@@ -77,8 +77,8 @@
   /* legacy global clouds container kept hidden for backward-compat */
   .clouds{display:none}
 
-  /* nav */
-  nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(14px);
+  /* nav (top bar only — scoped so the footer's <nav> doesn't inherit it) */
+  body > nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(14px);
     background:rgba(245,241,232,.55); border-bottom:1px solid var(--hair-2)}
   .nav-in{max-width:1060px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; gap:22px}
   .brandmark{display:flex; align-items:center; gap:11px; text-decoration:none}
