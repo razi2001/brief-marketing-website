@@ -67,6 +67,9 @@
     stroke-dasharray:160; stroke-dashoffset:160; animation:draw 1.2s .5s ease-out forwards}
   @keyframes draw{to{stroke-dashoffset:0}}
   .lede{font-size:16px; color:var(--ink-2); margin:0 auto 12px; max-width:54ch; line-height:1.6}
+  .lede em{font-style:italic; color:var(--acc); position:relative; display:inline-block}
+  .lede em .uline{position:absolute; left:-3px; right:-3px; bottom:-3px; width:calc(100% + 6px); height:7px; pointer-events:none}
+  .lede em .uline path{stroke:var(--acc); stroke-width:1.8; fill:none; stroke-linecap:round; stroke-dasharray:160; stroke-dashoffset:160; animation:draw 1.2s .6s ease-out forwards}
 
   .cards{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:920px; margin:50px auto 0; padding:0 28px; position:relative; z-index:2}
   @media(max-width:780px){ .cards{grid-template-columns:1fr} }
@@ -137,7 +140,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .cloud{animation:none!important}
-    h1 em .uline path{animation:none; stroke-dashoffset:0}
+    h1 em .uline path, .lede em .uline path{animation:none; stroke-dashoffset:0}
   }
 </style>
 </head>
@@ -187,8 +190,8 @@
 <header>
   <div class="wrap">
     <span class="eyebrow">pricing</span>
-    <h1>free if you bring an <em>agent<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>.</h1>
-    <p class="lede">Self-host with your own coding agent and it stays free forever. Want a managed version for your team? A hosted one is on the way.</p>
+    <h1>free if you bring an agent.</h1>
+    <p class="lede">Self-host with your own coding agent and it stays free forever.<br>Want a managed version for your team? A hosted one is <em>on the way<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>.</p>
   </div>
 </header>
 
