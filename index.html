@@ -168,6 +168,23 @@
   .sec-sub{color:var(--ink-2); max-width:58ch; font-size:15.5px}
   .divider{height:1px; background:var(--hair-2); max-width:1060px; margin:0 auto; position:relative; z-index:2}
 
+  /* PAIN section — sticky-note style quote cards */
+  .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:46px}
+  @media(max-width:780px){ .pain-grid{grid-template-columns:1fr; gap:30px; max-width:340px; margin-left:auto; margin-right:auto} }
+  .pain-note{background:#fff5d6; border:1px solid #e8d99a; padding:24px 22px 20px;
+    box-shadow:4px 5px 0 rgba(26,22,18,.07);
+    font-family:var(--display); color:#5b4f25; position:relative;
+    transition:transform .25s ease}
+  .pain-note:nth-child(1){transform:rotate(-2.4deg)}
+  .pain-note:nth-child(2){transform:rotate(1.6deg)}
+  .pain-note:nth-child(3){transform:rotate(-1.2deg)}
+  .pain-note:hover{transform:rotate(0deg) translateY(-3px)}
+  .pain-note .quote{font-size:21px; line-height:1.25; font-style:italic; text-decoration:line-through; text-decoration-color:rgba(91,79,37,.45); text-decoration-thickness:1.5px}
+  .pain-note .quote::before{content:"\201C"; margin-right:1px; text-decoration:none}
+  .pain-note .quote::after{content:"\201D"; margin-left:1px; text-decoration:none}
+  .pain-note .byline{margin-top:12px; font-family:var(--mono); font-style:normal; font-size:11.5px; color:#8a7a3f; letter-spacing:.02em}
+  .pain-note .corner{position:absolute; top:0; right:0; width:22px; height:22px; background:linear-gradient(225deg, #f0e3a8 50%, transparent 50%)}
+
   /* how it works */
   .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:42px}
   @media(max-width:780px){ .steps{grid-template-columns:1fr; gap:16px} }
@@ -426,30 +443,58 @@
 
 <div class="divider"></div>
 
+<section id="pain">
+  <div class="wrap">
+    <div class="sec-tag">RIGHT NOW</div>
+    <h2 class="sec-h">Half the bugs your team saw never get filed.</h2>
+    <p class="sec-sub">Writing a good ticket means stopping work, finding the URL, screenshotting, writing repro steps, opening the tracker. Five minutes, ten times a day. Most people skip it. The tickets that do get written? Vague enough that engineering can't reproduce them anyway.</p>
+
+    <div class="pain-grid">
+      <div class="pain-note">
+        <div class="corner"></div>
+        <div class="quote">I'll get to it later.</div>
+        <div class="byline">— never does</div>
+      </div>
+      <div class="pain-note">
+        <div class="corner"></div>
+        <div class="quote">Wait, what page was that on?</div>
+        <div class="byline">— writes a vague ticket</div>
+      </div>
+      <div class="pain-note">
+        <div class="corner"></div>
+        <div class="quote">Can't reproduce on my machine.</div>
+        <div class="byline">— ticket dies in backlog</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <section id="how">
   <div class="wrap">
     <div class="sec-tag">HOW IT WORKS</div>
-    <h2 class="sec-h">Thirty seconds. Three steps.</h2>
-    <p class="sec-sub">Not five minutes of writing a ticket nobody wants to read.</p>
+    <h2 class="sec-h">Three steps. About thirty seconds.</h2>
+    <p class="sec-sub">Brief captures everything. Your agent does the writing. Your team actually files things. Engineering actually fixes them.</p>
 
     <div class="steps">
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
         <span class="step-n">i.</span>
-        <h3>Talk it through</h3>
-        <p>Hit the toolbar. Say what's broken while you can see it. Snap a screenshot if you want.</p>
+        <h3>Record the brief</h3>
+        <p>Click the toolbar. Talk through the bug, or the feature you want. Brief captures your voice, the screen, console logs, and the URL while you do.</p>
       </div>
       <div class="step">
-        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
         <span class="step-n">ii.</span>
-        <h3>Brief saves it</h3>
-        <p>Lands as a zip in your Downloads folder. No accounts, no upload, no cloud.</p>
+        <h3>Hand it to your agent</h3>
+        <p>Hit Export. Drop the prompt into Claude Code, Cursor, Codex, or any agent that can reach your tracker.</p>
       </div>
       <div class="step">
         <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>
         <span class="step-n">iii.</span>
-        <h3>Your agent ships it</h3>
-        <p>Export. Hand the prompt to Claude Code, Cursor, or any agent. A real ticket lands in your tracker.</p>
+        <h3>Get a real ticket</h3>
+        <p>Your agent reads everything Brief captured. A complete ticket lands in your tracker. Video, screenshot, console logs, repro steps, code references. All in.</p>
       </div>
     </div>
   </div>
@@ -459,15 +504,15 @@
 
 <section id="why">
   <div class="wrap">
-    <div class="sec-tag">WHY BRIEF</div>
-    <h2 class="sec-h">Same bug. Better ticket.</h2>
-    <p class="sec-sub">A hosted chatbot writes the same vague ticket every time. Your own agent saw the bug and read your code. The difference shows up in triage.</p>
+    <div class="sec-tag">SAME BUG, TWO TICKETS</div>
+    <h2 class="sec-h">One you can ship. One you can't.</h2>
+    <p class="sec-sub">On the left, what your agent writes when it has the brief, your screen, and your code in hand. On the right, the contextless paragraph a hosted chatbot guesses at. The difference shows up the second engineering tries to fix it.</p>
 
     <div class="ticket-stage">
       <div class="ticket-pair">
 
         <div>
-          <div class="verdict good"><span class="mark">✓</span> Written by your agent</div>
+          <div class="verdict good"><span class="mark">✓</span> Written from a brief</div>
           <div class="ticket good">
             <div class="tk-bar">
               <span class="tk-id">ENG-242</span>
@@ -509,7 +554,7 @@
         </div>
 
         <div>
-          <div class="verdict bad"><span class="mark">✕</span> What a chatbot wrote</div>
+          <div class="verdict bad"><span class="mark">✕</span> Guessed by a chatbot</div>
           <div class="ticket bad">
             <div class="tk-bar">
               <span class="tk-id">ENG-241</span>
@@ -536,7 +581,7 @@
         </div>
 
       </div>
-      <p class="ticket-caption">Same bug. The chatbot guessed. Your agent read the code.</p>
+      <p class="ticket-caption">Triagable on day one. Or three paragraphs of nothing.</p>
     </div>
   </div>
 </section>
