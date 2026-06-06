@@ -43,9 +43,9 @@
   .theme-peach { background:#f1e3ce; --cloud:#fdf2dc }
   .theme-sage  { background:#e7ede0; --cloud:#f8fcec }
   .theme-apricot{background:#f4e2cc; --cloud:#fef0d4 }
-  .theme-honey { background:#e2d4ad; --cloud:#f4e8c6 } /* warm sand — the cinema moment, gentler */
-  .theme-bright{ background:#faf3df; --cloud:#fffaeb } /* lightest — the CTA wakes you up */
-  .theme-tan   { background:#d6c79f; --cloud:#e9d9b3 } /* footer — solid warm tan, clearly distinct */
+  .theme-honey { background:#ebe1c8; --cloud:#f7eed8 } /* watch — subtle warm */
+  .theme-bright{ background:#f5f1e8; --cloud:#fffdf6 } /* quiet CTA — base cream, calming */
+  .theme-tan   { background:#dccdab; --cloud:#ecdcbb } /* footer — warm tan grounding */
   /* every full-width band gets a 1px soft divider into the next */
   section + section, header + section, section + .quiet-cta, .quiet-cta + footer{box-shadow:inset 0 1px 0 rgba(26,22,18,.05)}
 
@@ -93,7 +93,7 @@
   @media(max-width:680px){ .nav-links a:not(.nav-cta){display:none} }
 
   /* HERO */
-  header.hero{padding:80px 0 56px; position:relative}
+  header.hero{padding:48px 0 56px; position:relative}
   .hero-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:64px; align-items:center}
   @media(max-width:880px){
     .hero-grid{grid-template-columns:1fr; gap:50px}
@@ -528,7 +528,7 @@
       </h1>
       <p class="tagline"><b>Talk through a bug. Your agent writes the ticket.</b></p>
       <p class="lede">
-        Hit the toolbar, say what's broken, hit export. Your coding agent reads the capture and files a <strong>proper ticket</strong>. <strong>Real component names</strong>, repro steps, screenshot attached.
+        Hit the toolbar, say what's broken, hit export. Your coding agent reads the capture and files a <strong>proper ticket</strong>.
       </p>
 
       <div class="cta-row">
@@ -537,10 +537,10 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
             Add to Chrome
           </a>
-          <svg class="doodle" viewBox="0 0 120 54" aria-hidden="true">
-            <path d="M 60,46 Q 50,32 30,28"/>
-            <path d="M 36,22 L 30,28 L 36,34"/>
-            <text x="64" y="38">it's free</text>
+          <svg class="doodle" viewBox="0 0 140 54" aria-hidden="true">
+            <path d="M 92,42 Q 70,32 50,12"/>
+            <path d="M 44,18 L 50,12 L 58,16"/>
+            <text x="96" y="42">it's free</text>
           </svg>
         </span>
         <a class="btn btn-ghost" href="https://github.com/razi2001/brief" target="_blank" rel="noopener">
@@ -549,7 +549,6 @@
         </a>
       </div>
 
-      <p class="privacy-note">audio and screen stay on your machine. always.</p>
     </div>
   </div>
 
