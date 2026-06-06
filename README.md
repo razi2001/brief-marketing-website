@@ -14,7 +14,8 @@ to Google Fonts (Instrument Serif + JetBrains Mono).
 
 ```
 .
-├── index.html      ← the whole site
+├── index.html      ← landing page
+├── pricing.html    ← Self-hosted (free) and Cloud (coming soon)
 ├── privacy.html    ← Privacy Policy (required by the Chrome Web Store)
 ├── terms.html      ← Terms of Service
 ├── 404.html        ← fallback page
@@ -48,14 +49,16 @@ open index.html
 No build command. Output/publish directory: the repo root. Drag-and-drop the
 folder or connect the repo — it just serves `index.html`.
 
-## Before you launch — two things to fill in
+## Before you launch — one thing to fill in
 
-Both are clearly marked near the bottom of `index.html` in the `<script>` block:
+Near the bottom of `index.html` in the `<script>` block:
 
-- **`STORE_URL`** — your Chrome Web Store listing URL. It's wired to all the
-  "Add to Chrome" buttons (they currently point at the store homepage).
 - **`VIDEO`** — your demo embed (YouTube or Loom). Until set, the video tile
   shows "Demo video coming soon".
+
+The Chrome Web Store URL is hard-coded across all "Add to Chrome" buttons
+(home, pricing, nav, final CTA) and points at the live listing:
+`https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig`.
 
 You may also want to swap the GitHub links if your extension repo URL changes.
 

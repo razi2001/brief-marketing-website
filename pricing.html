@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brief</title>
+<meta name="description" content="Pricing." />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><defs><linearGradient id='t' x1='20' y1='6' x2='112' y2='124' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23f08147'/><stop offset='0.52' stop-color='%23dd6936'/><stop offset='1' stop-color='%23bd4f1c'/></linearGradient></defs><rect width='128' height='128' rx='28' fill='url(%23t)'/><g fill='%23f7f3ea'><path d='M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z'/><path d='M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z'/></g></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --cream:#f5f1e8; --cream-2:#ece6d6; --cream-3:#e4ddca;
+    --ink:#1a1612; --ink-2:#3a3530; --muted:#8a8378;
+    --acc:#dd6936; --acc-2:#c95c2c; --acc-soft:rgba(221,105,54,.10);
+    --hair:rgba(26,22,18,.10); --hair-2:rgba(26,22,18,.07);
+    --success:#168a5c;
+    --display:'Instrument Serif',Georgia,serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+    --shadow:0 1px 2px rgba(26,22,18,.04),0 8px 30px rgba(26,22,18,.07);
+    --shadow-lg:0 2px 6px rgba(26,22,18,.05),0 22px 60px rgba(26,22,18,.13);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream); color:var(--ink); font-family:var(--mono); font-size:15px; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden; position:relative; min-height:100vh}
+  a{color:inherit}
+  em{font-style:italic; color:var(--acc)}
+  .wrap{max-width:1060px; margin:0 auto; padding:0 28px; position:relative; z-index:2}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
+
+  .clouds{position:absolute; left:0; right:0; top:0; height:140vh; z-index:0; pointer-events:none; overflow:hidden}
+  .cloud{position:absolute}
+  .cloud svg{display:block; width:100%; height:auto}
+  .c1{top:6%;  left:4%;  width:170px; opacity:.7;  animation:drift1 60s linear infinite}
+  .c2{top:14%; right:6%; width:220px; opacity:.7;  animation:drift2 80s -20s linear infinite}
+  .c3{top:30%; left:42%; width:130px; opacity:.5;  animation:drift1 90s -40s linear infinite}
+  .c4{top:50%; right:18%; width:190px; opacity:.55; animation:drift2 100s -10s linear infinite}
+  .c5{top:68%; left:8%;  width:150px; opacity:.45; animation:drift1 110s -60s linear infinite}
+  @keyframes drift1{0%{transform:translateX(0)}100%{transform:translateX(36px)}}
+  @keyframes drift2{0%{transform:translateX(0)}100%{transform:translateX(-30px)}}
+
+  nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(10px);
+    background:rgba(245,241,232,.72); border-bottom:1px solid var(--hair-2)}
+  .nav-in{max-width:1060px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; gap:22px}
+  .brandmark{display:flex; align-items:center; gap:11px; text-decoration:none}
+  .logo{width:30px; height:30px; border-radius:8px; box-shadow:0 1px 3px rgba(26,22,18,.18)}
+  .brandmark .wm{font-family:var(--display); font-size:22px; color:var(--ink); line-height:1}
+  .nav-links{margin-left:auto; display:flex; align-items:center; gap:24px}
+  .nav-links a{font-size:13px; color:var(--ink-2); text-decoration:none; transition:color .15s}
+  .nav-links a:hover{color:var(--acc)}
+  .nav-links a.current{color:var(--acc)}
+  .nav-cta{font-size:12.5px; padding:8px 14px; border-radius:9px; background:var(--ink);
+    color:var(--cream)!important; text-decoration:none; transition:transform .1s, background .15s}
+  .nav-cta:hover{background:#000; transform:translateY(-1px)}
+  @media(max-width:680px){ .nav-links a:not(.nav-cta):not(.current){display:none} }
+
+  header{padding:80px 0 28px; text-align:center}
+  .eyebrow{display:inline-block; font-size:12px; color:var(--acc); margin-bottom:16px; letter-spacing:.04em}
+  h1{font-family:var(--display); font-weight:400; font-size:clamp(44px,6vw,72px); line-height:1.02; max-width:18ch; margin:0 auto 18px; letter-spacing:-.005em}
+  h1 em{font-style:italic; color:var(--acc); position:relative; display:inline-block}
+  h1 em .uline{position:absolute; left:-4px; right:-4px; bottom:-2px; width:calc(100% + 8px); height:8px; pointer-events:none}
+  h1 em .uline path{stroke:var(--acc); stroke-width:2; fill:none; stroke-linecap:round;
+    stroke-dasharray:160; stroke-dashoffset:160; animation:draw 1.2s .5s ease-out forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .lede{font-size:16px; color:var(--ink-2); margin:0 auto 12px; max-width:54ch; line-height:1.6}
+
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:920px; margin:50px auto 0; padding:0 28px; position:relative; z-index:2}
+  @media(max-width:780px){ .cards{grid-template-columns:1fr} }
+
+  .card{border-radius:18px; padding:30px 28px 26px; position:relative; display:flex; flex-direction:column}
+  .card.now{background:linear-gradient(180deg,#fffdf9,#fbf6ee); border:1px solid rgba(221,105,54,.32); box-shadow:var(--shadow-lg)}
+  .card.soon{background:rgba(228,221,202,.55); border:1px dashed rgba(26,22,18,.22)}
+
+  .card-top{display:flex; align-items:center; gap:11px; margin-bottom:18px}
+  .card-ic{width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center; flex:none}
+  .card.now .card-ic{background:var(--acc-soft); color:var(--acc)}
+  .card.soon .card-ic{background:rgba(140,131,120,.18); color:var(--muted)}
+  .card-badge{margin-left:auto; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:99px; font-weight:500}
+  .card.now .card-badge{background:var(--acc); color:#fff}
+  .card.soon .card-badge{background:rgba(140,131,120,.24); color:#6b6459}
+
+  .card h2{font-family:var(--display); font-weight:400; font-size:30px; color:var(--ink); margin-bottom:6px; line-height:1.1}
+  .card.soon h2{color:var(--ink-2)}
+  .card .tag{font-size:14px; color:var(--ink-2); line-height:1.55; margin-bottom:18px}
+  .card.soon .tag{color:var(--muted)}
+
+  .price{display:flex; align-items:baseline; gap:8px; margin:6px 0 22px}
+  .price .v{font-family:var(--display); font-size:48px; line-height:1; color:var(--ink)}
+  .card.soon .price .v{color:var(--ink-2); font-style:italic; font-size:38px}
+  .price .u{font-size:13px; color:var(--muted)}
+
+  .feat{list-style:none; display:flex; flex-direction:column; gap:11px; margin:0 0 24px; flex:1}
+  .feat li{font-size:14px; color:var(--ink-2); display:flex; align-items:flex-start; gap:10px; line-height:1.5}
+  .card.soon .feat li{color:var(--muted)}
+  .feat li .tick{flex:none; margin-top:1px; color:var(--acc); font-size:13px}
+  .card.soon .feat li .tick{color:var(--muted)}
+
+  .cta-row{display:flex; gap:10px; flex-wrap:wrap}
+  .btn{display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:14px; font-weight:500;
+    padding:12px 18px; border-radius:11px; text-decoration:none; cursor:pointer; border:0;
+    transition:transform .15s, box-shadow .15s, background .15s; color:inherit; position:relative}
+  .btn-primary{background:var(--ink); color:var(--cream); box-shadow:0 3px 0 var(--acc)}
+  .btn-primary:hover{transform:translate(-1px,-2px); box-shadow:0 5px 0 var(--acc); background:#000}
+  .btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--hair)}
+  .btn-ghost:hover{border-color:var(--ink); transform:translate(-1px,-2px)}
+  .btn-quiet{background:transparent; color:var(--ink-2); border:1px solid var(--hair)}
+  .btn-quiet:hover{border-color:var(--ink-2); transform:translate(-1px,-2px)}
+
+  .card-foot{margin-top:18px; padding-top:16px; border-top:1px solid var(--hair-2); font-size:12px; color:var(--muted)}
+
+  /* pricing FAQ */
+  .pricing-faq{max-width:760px; margin:80px auto 0; padding:0 28px}
+  .pf-h{font-family:var(--display); font-weight:400; font-size:30px; color:var(--ink); text-align:center; margin-bottom:28px}
+  details{border-bottom:1px solid var(--hair); padding:4px 0}
+  details summary{list-style:none; cursor:pointer; padding:18px 44px 18px 4px; position:relative;
+    font-size:17px; color:var(--ink); font-family:var(--display)}
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+"; position:absolute; right:8px; top:50%; transform:translateY(-50%);
+    font-family:var(--mono); font-size:20px; color:var(--acc); transition:transform .2s}
+  details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+  details .ans{padding:0 44px 20px 4px; color:var(--ink-2); font-size:14.5px; line-height:1.7}
+
+  footer{padding:48px 0 60px; text-align:center; margin-top:60px; position:relative; z-index:2}
+  .foot-mark{display:inline-flex; align-items:center; gap:10px; margin-bottom:14px}
+  .foot-mark svg{width:26px; height:26px; border-radius:7px}
+  .foot-mark span{font-family:var(--display); font-size:20px}
+  .foot-mark .sep{color:var(--acc); font-size:12px; margin:0 4px}
+  .foot-mark em{font-family:var(--display); font-style:italic; color:var(--muted); font-size:15px}
+  footer .flinks{display:flex; gap:22px; justify-content:center; margin:16px 0 18px; flex-wrap:wrap}
+  footer .flinks a{font-size:13px; color:var(--ink-2); text-decoration:none}
+  footer .flinks a:hover{color:var(--acc)}
+  footer p{font-size:12.5px; color:var(--muted)}
+
+  @media (prefers-reduced-motion: reduce){
+    .cloud{animation:none!important}
+    h1 em .uline path{animation:none; stroke-dashoffset:0}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="tile" x1="20" y1="6" x2="112" y2="124" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f08147"/><stop offset="0.52" stop-color="#dd6936"/><stop offset="1" stop-color="#bd4f1c"/>
+    </linearGradient>
+    <symbol id="brieflogo" viewBox="0 0 128 128">
+      <rect x="0" y="0" width="128" height="128" rx="28" fill="url(#tile)"/>
+      <g fill="#f7f3ea">
+        <path d="M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z"/>
+        <path d="M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z"/>
+      </g>
+    </symbol>
+    <symbol id="cloudA" viewBox="0 0 100 36"><path d="M16 28 C6 28 4 18 12 16 C10 8 22 4 26 12 C30 4 46 6 46 16 C56 14 60 24 52 28 Z" fill="#fffdf6"/></symbol>
+    <symbol id="cloudB" viewBox="0 0 120 40"><path d="M14 32 C2 32 2 18 12 18 C8 10 24 4 30 14 C34 4 54 6 54 18 C60 12 78 14 76 22 C90 22 90 34 80 34 Z" fill="#fffdf6"/></symbol>
+  </defs>
+</svg>
+
+<div class="clouds" aria-hidden="true">
+  <div class="cloud c1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  <div class="cloud c2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+  <div class="cloud c3"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  <div class="cloud c4"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+  <div class="cloud c5"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+</div>
+
+<nav aria-label="Primary">
+  <div class="nav-in">
+    <a class="brandmark" href="/" aria-label="Brief, home">
+      <svg class="logo" viewBox="0 0 128 128" aria-hidden="true"><use href="#brieflogo"/></svg>
+      <span class="wm">Brief</span>
+    </a>
+    <div class="nav-links">
+      <a href="/#how">How it works</a>
+      <a href="/#why">Why Brief</a>
+      <a href="/pricing.html" class="current">Pricing</a>
+      <a href="/#faq">FAQ</a>
+      <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
+      <a class="nav-cta" href="https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig" target="_blank" rel="noopener">Add to Chrome</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="eyebrow">pricing</span>
+    <h1>simple, <em>honest<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em> pricing.</h1>
+    <p class="lede">Bring your own agent and it's free forever. Want it managed for your team? A hosted version is on the way.</p>
+  </div>
+</header>
+
+<div class="cards">
+
+  <article class="card now">
+    <div class="card-top">
+      <div class="card-ic">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
+        </svg>
+      </div>
+      <span class="card-badge">Available now</span>
+    </div>
+    <h2>Self-hosted</h2>
+    <p class="tag">Free and open source. Your agent, your machine, your code.</p>
+    <div class="price"><span class="v">$0</span><span class="u">forever</span></div>
+    <ul class="feat">
+      <li><span class="tick">✓</span> Fully local. Audio and screen never leave your machine.</li>
+      <li><span class="tick">✓</span> Works with Claude Code, Cursor, Codex, Continue, or any agent with file and tracker access.</li>
+      <li><span class="tick">✓</span> Files tickets in Linear, Jira, GitHub Issues, Notion, or any tracker your agent can reach.</li>
+      <li><span class="tick">✓</span> Unlimited captures. Unlimited briefs.</li>
+      <li><span class="tick">✓</span> MIT licensed. Fork it, audit it, run it.</li>
+    </ul>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
+        Add to Chrome
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/razi2001/brief" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+        Star on GitHub
+      </a>
+    </div>
+    <p class="card-foot">You bring your own coding agent. There's no per ticket cost from us.</p>
+  </article>
+
+  <article class="card soon">
+    <div class="card-top">
+      <div class="card-ic">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17.5 19a4.5 4.5 0 0 0 0-9 6.5 6.5 0 0 0-12.5 2.2A4.5 4.5 0 0 0 6.5 19z"/>
+        </svg>
+      </div>
+      <span class="card-badge">Coming soon</span>
+    </div>
+    <h2>Cloud</h2>
+    <p class="tag">For small, fast teams who want it managed. No local agent, no setup.</p>
+    <div class="price"><span class="v">tbd</span><span class="u">we'll keep it fair</span></div>
+    <ul class="feat">
+      <li><span class="tick">✓</span> No local AI required. We file the tickets for you.</li>
+      <li><span class="tick">✓</span> Built for small agile teams. Shared inbox of briefs across the squad.</li>
+      <li><span class="tick">✓</span> Same trackers (Linear, Jira, GitHub Issues, Notion).</li>
+      <li><span class="tick">✓</span> SAML SSO, audit log, team level templates.</li>
+      <li><span class="tick">✓</span> Hosted in EU and US. Briefs encrypted at rest.</li>
+    </ul>
+    <div class="cta-row">
+      <a class="btn btn-quiet" href="mailto:razi.fezzani@get-brief.app?subject=Brief%20Cloud%20waitlist">
+        Join the waitlist
+      </a>
+    </div>
+    <p class="card-foot">Ship when it's good. No firm date yet.</p>
+  </article>
+
+</div>
+
+<div class="pricing-faq">
+  <h2 class="pf-h">Pricing questions</h2>
+  <details open>
+    <summary>Why is the self-hosted version free?</summary>
+    <div class="ans">Because you bring the agent. We don't pay for inference, you don't pay us. The extension is MIT licensed and the source is on <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener" style="color:var(--acc); text-decoration:none">GitHub</a>.</div>
+  </details>
+  <details>
+    <summary>How is Cloud different?</summary>
+    <div class="ans">Same captures, but a hosted backend files the tickets so you don't need to wire up your own agent. Good for teams who'd rather not run one.</div>
+  </details>
+  <details>
+    <summary>Will Cloud replace the open-source version?</summary>
+    <div class="ans">No. Self-hosted stays free and on GitHub forever. Cloud is an option for teams who want it managed, not a replacement.</div>
+  </details>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-mark">
+      <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#brieflogo"/></svg>
+      <span>Brief</span>
+      <span class="sep">✦</span>
+      <em>voice your bug.</em>
+    </div>
+    <nav class="flinks" aria-label="Footer">
+      <a href="/#how">How it works</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <p>Local first. Open source. © <span id="yr"></span> Brief</p>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>

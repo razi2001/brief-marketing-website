@@ -3,92 +3,110 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Terms of Service — Brief</title>
-<meta name="description" content="The terms for using Brief: a free, open-source, local-first tool, provided as-is." />
+<title>Brief</title>
+<meta name="description" content="Terms of service." />
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><defs><linearGradient id='t' x1='20' y1='6' x2='112' y2='124' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23f08147'/><stop offset='0.52' stop-color='%23dd6936'/><stop offset='1' stop-color='%23bd4f1c'/></linearGradient></defs><rect width='128' height='128' rx='28' fill='url(%23t)'/><g fill='%23f7f3ea'><path d='M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z'/><path d='M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z'/></g></svg>" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
 <style>
   :root{
     --cream:#f5f1e8; --cream-2:#ece6d6; --ink:#1a1612; --ink-2:#3a3530; --muted:#8a8378;
-    --accent:#dd6936; --accent-2:#c95c2c; --accent-soft:rgba(221,105,54,0.08);
-    --success:#168a5c; --hairline:rgba(26,22,18,0.12); --hairline-2:rgba(26,22,18,0.07);
+    --acc:#dd6936; --acc-2:#c95c2c; --acc-soft:rgba(221,105,54,.08);
+    --success:#168a5c; --hair:rgba(26,22,18,.12); --hair-2:rgba(26,22,18,.07);
     --display:'Instrument Serif',Georgia,serif; --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{background:var(--cream); color:var(--ink); font-family:var(--mono); font-size:15px; line-height:1.7; -webkit-font-smoothing:antialiased}
-  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(1000px 600px at 85% -10%, rgba(221,105,54,.09), transparent 60%)}
-  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 28px}
-  a{color:var(--accent);text-decoration:none}
+  .wrap{position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 28px}
+  a{color:var(--acc); text-decoration:none}
   a:hover{text-decoration:underline}
-  em{font-style:italic;color:var(--accent)}
+  a:focus-visible{outline:2px solid var(--acc); outline-offset:3px; border-radius:3px}
+  em{font-style:italic; color:var(--acc)}
 
-  nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(10px);
-    background:rgba(245,241,232,.72);border-bottom:1px solid var(--hairline-2)}
-  .nav-in{max-width:760px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;gap:11px}
-  .brandmark{display:flex;align-items:center;gap:11px;text-decoration:none}
-  .logo{width:30px;height:30px;border-radius:8px;box-shadow:0 1px 3px rgba(26,22,18,.18)}
-  .brandmark .wm{font-family:var(--display);font-size:21px;color:var(--ink)}
-  .nav-back{margin-left:auto;font-size:13px;color:var(--ink-2)}
+  nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(10px);
+    background:rgba(245,241,232,.72); border-bottom:1px solid var(--hair-2)}
+  .nav-in{max-width:760px; margin:0 auto; padding:14px 28px; display:flex; align-items:center; gap:11px}
+  .brandmark{display:flex; align-items:center; gap:11px; text-decoration:none; color:inherit}
+  .logo{width:30px; height:30px; border-radius:8px; box-shadow:0 1px 3px rgba(26,22,18,.18)}
+  .brandmark .wm{font-family:var(--display); font-size:22px; color:var(--ink); line-height:1}
+  .nav-back{margin-left:auto; font-size:13px; color:var(--ink-2); text-decoration:none}
+  .nav-back:hover{color:var(--acc)}
 
-  header{padding:64px 0 26px}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.06em;color:var(--accent);
-    background:var(--accent-soft);border:1px solid rgba(221,105,54,.2);padding:6px 13px;border-radius:999px;margin-bottom:22px}
-  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
-  h1{font-family:var(--display);font-weight:400;font-size:clamp(38px,6.5vw,60px);line-height:1.04;color:var(--ink);margin-bottom:14px}
-  .updated{font-size:12.5px;color:var(--muted)}
+  header{padding:72px 0 26px}
+  .eyebrow{display:inline-block; font-size:12px; letter-spacing:.04em; color:var(--acc); margin-bottom:18px}
+  h1{font-family:var(--display); font-weight:400; font-size:clamp(40px,6.5vw,62px); line-height:1.02; color:var(--ink); margin-bottom:14px; letter-spacing:-.005em}
+  h1 em{font-style:italic; color:var(--acc); position:relative; display:inline-block}
+  h1 em .uline{position:absolute; left:-4px; right:-4px; bottom:-2px; width:calc(100% + 8px); height:7px; pointer-events:none}
+  h1 em .uline path{stroke:var(--acc); stroke-width:1.8; fill:none; stroke-linecap:round; stroke-dasharray:160; stroke-dashoffset:160; animation:draw 1.2s .4s ease-out forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .updated{font-size:12.5px; color:var(--muted)}
 
-  .tldr{margin:30px 0 10px;background:linear-gradient(180deg,#fffdf9,#fbf6ee);border:1px solid rgba(221,105,54,.3);
-    border-radius:16px;padding:22px 24px}
-  .tldr h2{font-family:var(--display);font-weight:400;font-size:20px;margin-bottom:8px;color:var(--ink)}
-  .tldr p{font-size:14px;color:var(--ink-2);line-height:1.65}
+  .tldr{margin:30px 0 10px; background:linear-gradient(180deg,#fffdf9,#fbf6ee); border:1px solid rgba(221,105,54,.3); border-radius:16px; padding:22px 24px}
+  .tldr h2{font-family:var(--display); font-weight:400; font-size:20px; margin-bottom:8px; color:var(--ink)}
+  .tldr p{font-size:14px; color:var(--ink-2); line-height:1.65}
 
   main{padding:18px 0 30px}
-  section{padding:24px 0;border-top:1px solid var(--hairline-2)}
-  h2{font-family:var(--display);font-weight:400;font-size:25px;line-height:1.15;color:var(--ink);margin-bottom:12px}
-  p{color:var(--ink-2);margin-bottom:12px}
-  ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin:6px 0 14px}
-  li{color:var(--ink-2);display:flex;align-items:flex-start;gap:10px;line-height:1.6}
-  li .tick{color:var(--accent);flex:none;margin-top:2px;font-size:13px}
-  code{background:var(--cream-2);padding:2px 6px;border-radius:5px;font-size:13px}
+  section{padding:24px 0; border-top:1px solid var(--hair-2)}
+  h2{font-family:var(--display); font-weight:400; font-size:25px; line-height:1.15; color:var(--ink); margin-bottom:12px}
+  h2 .sp{color:var(--acc); margin-right:6px; font-size:13px; vertical-align:middle}
+  p{color:var(--ink-2); margin-bottom:12px}
+  ul{list-style:none; display:flex; flex-direction:column; gap:9px; margin:6px 0 14px}
+  li{color:var(--ink-2); display:flex; align-items:flex-start; gap:10px; line-height:1.6}
+  li .tick{color:var(--acc); flex:none; margin-top:2px; font-size:13px}
+  code{background:var(--cream-2); padding:2px 6px; border-radius:5px; font-size:13px}
 
-  footer{padding:40px 0 56px;text-align:center;border-top:1px solid var(--hairline-2);margin-top:20px}
-  .foot-mark{display:inline-flex;align-items:center;gap:10px;margin-bottom:12px}
-  .foot-mark svg{width:24px;height:24px;border-radius:7px}
-  .foot-mark span{font-family:var(--display);font-size:19px}
-  footer .flinks{display:flex;gap:20px;justify-content:center;margin:12px 0 16px;flex-wrap:wrap}
-  footer .flinks a{font-size:13px;color:var(--ink-2)}
-  footer p{font-size:12px;color:var(--muted)}
+  footer{padding:40px 0 56px; text-align:center; border-top:1px solid var(--hair-2); margin-top:20px}
+  .foot-mark{display:inline-flex; align-items:center; gap:10px; margin-bottom:14px}
+  .foot-mark svg{width:24px; height:24px; border-radius:7px}
+  .foot-mark span{font-family:var(--display); font-size:19px}
+  .foot-mark .sep{color:var(--acc); font-size:11px; margin:0 4px}
+  .foot-mark em{font-family:var(--display); font-style:italic; color:var(--muted); font-size:14px}
+  footer .flinks{display:flex; gap:20px; justify-content:center; margin:12px 0 16px; flex-wrap:wrap}
+  footer .flinks a{font-size:13px; color:var(--ink-2); text-decoration:none}
+  footer .flinks a:hover{color:var(--acc)}
+  footer p{font-size:12px; color:var(--muted)}
+
+  @media (prefers-reduced-motion: reduce){
+    h1 em .uline path{animation:none; stroke-dashoffset:0}
+  }
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <linearGradient id="tile" x1="20" y1="6" x2="112" y2="124" gradientUnits="userSpaceOnUse">
-    <stop offset="0" stop-color="#f08147"/><stop offset="0.52" stop-color="#dd6936"/><stop offset="1" stop-color="#bd4f1c"/>
-  </linearGradient>
-  <symbol id="brieflogo" viewBox="0 0 128 128">
-    <rect width="128" height="128" rx="28" fill="url(#tile)"/>
-    <g fill="#f7f3ea">
-      <path d="M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z"/>
-      <path d="M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z"/>
-    </g>
-  </symbol>
-</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="tile" x1="20" y1="6" x2="112" y2="124" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f08147"/><stop offset="0.52" stop-color="#dd6936"/><stop offset="1" stop-color="#bd4f1c"/>
+    </linearGradient>
+    <symbol id="brieflogo" viewBox="0 0 128 128">
+      <rect width="128" height="128" rx="28" fill="url(#tile)"/>
+      <g fill="#f7f3ea">
+        <path d="M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z"/>
+        <path d="M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
 
-<nav>
+<nav aria-label="Primary">
   <div class="nav-in">
-    <a class="brandmark" href="/"><svg class="logo" viewBox="0 0 128 128"><use href="#brieflogo"/></svg><span class="wm">Brief</span></a>
+    <a class="brandmark" href="/" aria-label="Brief, home">
+      <svg class="logo" viewBox="0 0 128 128" aria-hidden="true"><use href="#brieflogo"/></svg>
+      <span class="wm">Brief</span>
+    </a>
     <a class="nav-back" href="/">← Back to site</a>
   </div>
 </nav>
 
 <header>
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span> Free &amp; open source</span>
-    <h1>Terms of Service</h1>
+    <span class="eyebrow">terms</span>
+    <h1>The boring but <em>necessary<svg class="uline" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q30,1 60,5 T120,5 T198,4"/></svg></em> bits.</h1>
     <p class="updated">Last updated: <span id="d"></span></p>
   </div>
 </header>
@@ -96,7 +114,7 @@
 <div class="wrap">
   <div class="tldr">
     <h2>The short version</h2>
-    <p>Brief is a free, open-source tool you run yourself. It’s provided <em>as-is</em>, with no warranty. You bring your own coding agent and tracker — Brief just captures your notes locally and hands them to your agent when you ask. What your agent and tracker do with them is between you and them.</p>
+    <p>Brief is a free, open-source tool you run yourself. It's provided <em>as is</em>, with no warranty. You bring your own coding agent and tracker. Brief just captures your notes locally and hands them to your agent when you ask. What your agent and tracker do with them is between you and them.</p>
   </div>
 </div>
 
@@ -104,17 +122,17 @@
   <div class="wrap">
 
     <section>
-      <h2>1. What you’re agreeing to</h2>
-      <p>These terms govern your use of the <b>Brief browser extension</b> (the “Extension”) and this website. By installing or using the Extension, you agree to these terms. If you don’t agree, don’t use it. Brief is open-source software; your use of the source code is also governed by its open-source license (MIT), available in the project repository.</p>
+      <h2><span class="sp">✦</span> 1. What you're agreeing to</h2>
+      <p>These terms govern your use of the <b>Brief browser extension</b> (the "Extension") and this website. By installing or using the Extension, you agree to these terms. If you don't agree, don't use it. Brief is open-source software; your use of the source code is also governed by its open-source license (MIT), available in the project repository.</p>
     </section>
 
     <section>
-      <h2>2. What Brief is</h2>
-      <p>Brief lets you capture a bug or idea — as a screen + voice recording, an annotated screenshot, or a typed note — and saves it locally on your machine as a “brief.” You then hand that brief to your own coding agent, which files a ticket in your own tracker. Brief is a capture-and-handoff tool; it does not itself file tickets, and it requires a separate coding agent (which you provide) to do anything useful with a brief.</p>
+      <h2><span class="sp">✦</span> 2. What Brief is</h2>
+      <p>Brief lets you capture a bug or idea, as a screen plus voice recording, an annotated screenshot, or a typed note, and saves it locally on your machine as a "brief." You then hand that brief to your own coding agent, which files a ticket in your own tracker. Brief is a capture-and-handoff tool; it does not itself file tickets, and it requires a separate coding agent (which you provide) to do anything useful with a brief.</p>
     </section>
 
     <section>
-      <h2>3. You bring your own agent and tracker</h2>
+      <h2><span class="sp">✦</span> 3. You bring your own agent and tracker</h2>
       <p>Brief does not include, control, or take responsibility for the coding agent or issue tracker you use with it. When you export a brief and hand it to your agent:</p>
       <ul>
         <li><span class="tick">›</span> Your agent reads the brief and acts on it. Brief has no control over what your agent does, what it files, or where.</li>
@@ -124,33 +142,33 @@
     </section>
 
     <section>
-      <h2>4. Acceptable use</h2>
-      <p>Use Brief lawfully. Don’t use it to capture or distribute content you have no right to, to violate anyone’s privacy, or to break the terms of the websites you’re recording. Only record screens and audio you’re entitled to record. You are solely responsible for what you capture.</p>
+      <h2><span class="sp">✦</span> 4. Acceptable use</h2>
+      <p>Use Brief lawfully. Don't use it to capture or distribute content you have no right to, to violate anyone's privacy, or to break the terms of the websites you're recording. Only record screens and audio you're entitled to record. You are solely responsible for what you capture.</p>
     </section>
 
     <section>
-      <h2>5. No warranty</h2>
-      <p>Brief is provided <b>“as is” and “as available,” without warranties of any kind</b>, express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement. We don’t warrant that it will be error-free, uninterrupted, or that transcription, capture, or any ticket your agent files will be accurate or complete. Voice transcription in particular relies on your browser’s speech recognition and can be imperfect.</p>
+      <h2><span class="sp">✦</span> 5. No warranty</h2>
+      <p>Brief is provided <b>"as is" and "as available," without warranties of any kind</b>, express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement. We don't warrant that it will be error free, uninterrupted, or that transcription, capture, or any ticket your agent files will be accurate or complete. Voice transcription in particular relies on your browser's speech recognition and can be imperfect.</p>
     </section>
 
     <section>
-      <h2>6. Limitation of liability</h2>
-      <p>To the maximum extent permitted by law, the authors and contributors of Brief are <b>not liable</b> for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, work, or tickets, arising out of or related to your use of the Extension — including anything your own coding agent or tracker does with a brief. Brief is free software; you use it at your own risk.</p>
+      <h2><span class="sp">✦</span> 6. Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, the authors and contributors of Brief are <b>not liable</b> for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, work, or tickets, arising out of or related to your use of the Extension. That includes anything your own coding agent or tracker does with a brief. Brief is free software; you use it at your own risk.</p>
     </section>
 
     <section>
-      <h2>7. Changes</h2>
-      <p>We may update the Extension and these terms over time. If a future optional cloud-hosted version is offered, it will carry its own terms (and, where it involves payment, separate terms of sale); those will be presented separately and won’t change the terms for the free, local Extension described here. Material changes to these terms will be reflected in the “last updated” date above.</p>
+      <h2><span class="sp">✦</span> 7. Changes</h2>
+      <p>We may update the Extension and these terms over time. If a future optional cloud-hosted version is offered, it will carry its own terms (and, where it involves payment, separate terms of sale). Those will be presented separately and won't change the terms for the free, local Extension described here. Material changes to these terms will be reflected in the "last updated" date above.</p>
     </section>
 
     <section>
-      <h2>8. Governing law</h2>
-      <p>These terms are governed by the laws of <span style="color:var(--muted)">[your jurisdiction — fill in before publishing]</span>, without regard to conflict-of-laws rules. If any provision is found unenforceable, the rest remains in effect.</p>
+      <h2><span class="sp">✦</span> 8. Governing law</h2>
+      <p>These terms are governed by the laws of <span style="color:var(--muted)">[your jurisdiction, fill in before publishing]</span>, without regard to conflict of laws rules. If any provision is found unenforceable, the rest remains in effect.</p>
     </section>
 
     <section>
-      <h2>9. Contact</h2>
-      <p>Questions about these terms? Reach out via the project’s GitHub: <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">github.com/razi2001/brief</a>. <span style="color:var(--muted)">(Replace with your preferred contact email before publishing.)</span></p>
+      <h2><span class="sp">✦</span> 9. Contact</h2>
+      <p>Questions about these terms? Reach out via the project's GitHub: <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">github.com/razi2001/brief</a>. <span style="color:var(--muted)">(Replace with your preferred contact email before publishing.)</span></p>
     </section>
 
   </div>
@@ -158,13 +176,19 @@
 
 <footer>
   <div class="wrap">
-    <div class="foot-mark"><svg viewBox="0 0 128 128"><use href="#brieflogo"/></svg><span>Brief</span></div>
-    <div class="flinks">
+    <div class="foot-mark">
+      <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#brieflogo"/></svg>
+      <span>Brief</span>
+      <span class="sep">✦</span>
+      <em>voice your bug.</em>
+    </div>
+    <nav class="flinks" aria-label="Footer">
       <a href="/">Home</a>
+      <a href="/pricing.html">Pricing</a>
       <a href="/privacy.html">Privacy</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
-    </div>
-    <p>Local-first. Open source. © <span id="yr"></span> Brief</p>
+    </nav>
+    <p>Local first. Open source. © <span id="yr"></span> Brief</p>
   </div>
 </footer>
 
