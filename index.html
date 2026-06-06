@@ -292,6 +292,9 @@
     .b-vs::before,.b-vs::after{display:none}
   }
 
+  /* this section must NOT clip — its clouds are clipped by .sec-clouds, but
+     the ticket notes need to spill into the side gutters */
+  #why{overflow:visible}
   /* the ticket (merged before/after) — equal columns, with annotation notes */
   .ticket-stage{margin-top:40px; display:grid; grid-template-columns:1fr; gap:24px; max-width:1000px; margin-left:auto; margin-right:auto; position:relative}
   .ticket-pair{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:stretch; padding:28px 0 24px}
@@ -310,13 +313,16 @@
   .tnote.good{background:#e5efd6; border:1px solid #bcd1a0; color:#2c5a37}
   .tnote.bad{background:#ffe1d6; border:1px solid #e8b0a0; color:#7a3a26}
   .tnote .small{display:block; font-family:var(--mono); font-style:normal; font-size:10px; opacity:.78; margin-top:2px; letter-spacing:.02em}
-  /* notes sit fully OUTSIDE each ticket column, never overlap */
-  .tn-l1, .tn-l2, .tn-l3{right:calc(100% + 56px)}
-  .tn-r1, .tn-r2, .tn-r3{left:calc(100% + 56px)}
-  .tn-l1, .tn-r1{top:24px}
-  .tn-l2, .tn-r2{top:210px}
-  .tn-l3{bottom:34px; top:auto}
-  .tn-r3{bottom:34px; top:auto}
+  /* notes hang in the gutter beside each ticket. They overlap the card's
+     outer edge slightly (the empty padding zone, never the text) so they
+     fit at any width down to mobile. Text is aligned toward the card so
+     if the outer tip ever clips it's only the blank end. */
+  .tn-l1, .tn-l2, .tn-l3{right:calc(100% - 16px); text-align:right}
+  .tn-r1, .tn-r2, .tn-r3{left:calc(100% - 16px)}
+  .tn-l1, .tn-r1{top:18px}
+  .tn-l2, .tn-r2{top:206px}
+  .tn-l3{bottom:30px; top:auto}
+  .tn-r3{bottom:30px; top:auto}
   .tn-l1{transform:rotate(-4deg)}
   .tn-l2{transform:rotate(3deg)}
   .tn-l3{transform:rotate(-3deg)}
@@ -325,38 +331,33 @@
   .tn-r3{transform:rotate(3deg)}
 
   /* SVG arrows bridging each note to the ticket */
-  .t-arrow{position:absolute; width:56px; height:22px; pointer-events:none; z-index:3}
+  .t-arrow{position:absolute; width:34px; height:22px; pointer-events:none; z-index:3}
   .t-arrow path{stroke:currentColor; stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round}
   .t-arrow.good{color:#2c5a37}
   .t-arrow.bad{color:#7a3a26}
-  .t-arrow-l1, .t-arrow-l2, .t-arrow-l3{right:100%}
-  .t-arrow-r1, .t-arrow-r2, .t-arrow-r3{left:100%; transform:scaleX(-1)}
-  .t-arrow-l1, .t-arrow-r1{top:36px}
-  .t-arrow-l2, .t-arrow-r2{top:222px}
-  .t-arrow-l3{bottom:46px; top:auto}
-  .t-arrow-r3{bottom:46px; top:auto; transform:scaleX(-1)}
+  .t-arrow-l1, .t-arrow-l2, .t-arrow-l3{right:calc(100% - 18px)}
+  .t-arrow-r1, .t-arrow-r2, .t-arrow-r3{left:calc(100% - 18px); transform:scaleX(-1)}
+  .t-arrow-l1, .t-arrow-r1{top:30px}
+  .t-arrow-l2, .t-arrow-r2{top:218px}
+  .t-arrow-l3{bottom:42px; top:auto}
+  .t-arrow-r3{bottom:42px; top:auto; transform:scaleX(-1)}
 
-  /* below ~1440px the external notes start clipping at the viewport edge,
-     so collapse them into a tidy inline row above each ticket instead */
-  @media(max-width:1440px){
-    .ticket-col{display:flex; flex-direction:column}
-    .tn-l1, .tn-l2, .tn-l3, .tn-r1, .tn-r2, .tn-r3{
-      position:static; transform:none; width:auto; max-width:none;
-      right:auto; left:auto; bottom:auto; top:auto;
-      display:inline-flex; flex-direction:column; vertical-align:top}
-    .ticket-col > .tnote{margin:0}
-    /* wrap the inline notes in a flex row via order, sitting before the card */
-    .tnote{order:0}
-    .ticket{order:5}
-    .ticket-col{gap:8px}
-    .ticket-col{flex-flow:row wrap; align-items:flex-start}
-    .ticket-col > .tnote{flex:0 0 auto}
-    .ticket-col > .ticket{flex:1 0 100%; margin-top:6px}
-    .t-arrow{display:none}
-    .ticket-pair{padding:24px 0}
+  /* wider gutters when there's room: push notes fully clear of the card */
+  @media(min-width:1200px){
+    .tn-l1, .tn-l2, .tn-l3{right:calc(100% + 18px); text-align:left}
+    .tn-r1, .tn-r2, .tn-r3{left:calc(100% + 18px)}
+    .t-arrow-l1, .t-arrow-l2, .t-arrow-l3{right:100%; width:48px}
+    .t-arrow-r1, .t-arrow-r2, .t-arrow-r3{left:100%; width:48px}
   }
-  @media(max-width:520px){
-    .ticket-col > .tnote{flex:1 1 100%}
+  /* only on true mobile do they drop below the card as inline tags */
+  @media(max-width:760px){
+    .ticket-col{display:flex; flex-flow:row wrap; gap:8px; align-items:flex-start}
+    .tn-l1, .tn-l2, .tn-l3, .tn-r1, .tn-r2, .tn-r3{
+      position:static; transform:none; width:auto; max-width:none; text-align:left;
+      right:auto; left:auto; bottom:auto; top:auto; order:0}
+    .ticket{order:5; flex:1 0 100%; margin-top:4px}
+    .t-arrow{display:none}
+    .ticket-pair{padding:20px 0}
   }
 
   /* engineer comment thread at the bottom of each ticket */
