@@ -302,8 +302,8 @@
 
   /* the ticket (merged before/after) — equal columns, with annotation notes */
   .ticket-stage{margin-top:40px; display:grid; grid-template-columns:1fr; gap:24px; max-width:1000px; margin-left:auto; margin-right:auto; position:relative}
-  .ticket-pair{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:stretch; padding:86px 0 24px}
-  @media(max-width:820px){ .ticket-pair{grid-template-columns:1fr; gap:90px; padding:86px 0 24px} }
+  .ticket-pair{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:stretch; padding:28px 0 24px}
+  @media(max-width:820px){ .ticket-pair{grid-template-columns:1fr; gap:120px; padding:28px 0 24px} }
   .ticket-col{position:relative}
   .ticket{border-radius:14px; overflow:hidden; background:#fff; box-shadow:var(--shadow); border:1px solid var(--hair); font-size:13px; display:flex; flex-direction:column; position:relative; z-index:2; height:100%}
   .ticket.bad{opacity:.92}
@@ -312,21 +312,45 @@
   .ticket .tk-foot{margin-top:auto}
 
   /* annotation sticky-notes around tickets — kept OUTSIDE the card so they never hide text */
-  .tnote{position:absolute; padding:6px 10px;
-    font-family:var(--display); font-style:italic; font-size:13px;
-    box-shadow:3px 3px 0 rgba(26,22,18,.08); z-index:4; max-width:160px; line-height:1.22}
+  .tnote{position:absolute; padding:8px 12px;
+    font-family:var(--display); font-style:italic; font-size:13.5px;
+    box-shadow:3px 3px 0 rgba(26,22,18,.08); z-index:4; width:150px; line-height:1.22}
   .tnote.good{background:#e5efd6; border:1px solid #bcd1a0; color:#2c5a37}
   .tnote.bad{background:#ffe1d6; border:1px solid #e8b0a0; color:#7a3a26}
-  .tnote .arr{display:inline-block; margin:0 3px; color:inherit; font-style:normal; opacity:.75}
   .tnote .small{display:block; font-family:var(--mono); font-style:normal; font-size:10px; opacity:.78; margin-top:2px; letter-spacing:.02em}
-  /* notes pinned just above the card corners — attached, never overlapping the card */
-  .tn-tl{top:-66px; left:10px; transform:rotate(-4deg)}   /* 2-line, needs more clearance */
-  .tn-tr{top:-38px; right:10px; transform:rotate(4deg)}   /* 1-line, sits lower */
-  @media(max-width:820px){ .tn-tl,.tn-tr{position:static; transform:none; max-width:none; display:inline-block; margin:6px 6px 8px 0} }
+  /* notes hang off the OUTSIDE of each column with an arrow pointing in at the ticket */
+  .tn-l1, .tn-l2{right:calc(100% - 24px)}    /* left-side notes peek 24px onto the ticket */
+  .tn-r1, .tn-r2{left:calc(100% - 24px)}     /* right-side notes peek 24px onto the ticket */
+  .tn-l1{top:26px;  transform:rotate(-5deg)}
+  .tn-l2{top:200px; transform:rotate(3deg)}
+  .tn-r1{top:26px;  transform:rotate(5deg)}
+  .tn-r2{top:200px; transform:rotate(-3deg)}
+  /* arrow on the inside edge of each note, pointing at the ticket */
+  .tnote.tn-l1::after, .tnote.tn-l2::after,
+  .tnote.tn-r1::after, .tnote.tn-r2::after{
+    position:absolute; font-family:var(--mono); font-style:normal; font-size:18px; font-weight:600;
+    top:50%; transform:translateY(-50%)
+  }
+  .tnote.tn-l1::after, .tnote.tn-l2::after{content:"→"; right:-22px}
+  .tnote.tn-r1::after, .tnote.tn-r2::after{content:"←"; left:-22px}
+  .tnote.good.tn-l1::after, .tnote.good.tn-l2::after,
+  .tnote.good.tn-r1::after, .tnote.good.tn-r2::after{color:#2c5a37}
+  .tnote.bad.tn-l1::after, .tnote.bad.tn-l2::after,
+  .tnote.bad.tn-r1::after, .tnote.bad.tn-r2::after{color:#7a3a26}
+  @media(max-width:980px){
+    /* keep side notes but inset them so they don't disappear off-screen */
+    .tn-l1, .tn-l2{right:calc(100% - 12px); width:130px}
+    .tn-r1, .tn-r2{left:calc(100% - 12px); width:130px}
+  }
+  @media(max-width:820px){
+    .tn-l1, .tn-l2, .tn-r1, .tn-r2{position:static; transform:none; width:auto; max-width:none; display:inline-block; margin:6px 6px 8px 0}
+    .tn-l1::after, .tn-l2::after, .tn-r1::after, .tn-r2::after{display:none}
+  }
 
   /* engineer comment thread at the bottom of each ticket */
   .tk-comment{position:relative; padding:20px 14px 13px; border-top:1px dashed var(--hair); display:flex; align-items:flex-start; gap:10px; background:rgba(26,22,18,.025)}
   .tk-c-label{position:absolute; top:-12px; left:14px; padding:3px 10px; font-family:var(--mono); font-size:10px; letter-spacing:.06em; background:#fff; border:1px solid var(--hair); border-radius:99px; display:inline-flex; align-items:center; gap:6px; font-weight:500; white-space:nowrap}
+  .tk-c-label::after{content:"↓"; margin-left:2px; font-family:var(--mono); font-size:12px; opacity:.7; font-weight:600}
   .ticket.good .tk-c-label{color:#0e6843; border-color:rgba(22,134,92,.45); background:#f4faf0}
   .ticket.bad  .tk-c-label{color:#b8492f; border-color:rgba(184,73,47,.45); background:#fef4ef}
   .tk-comment .av{width:24px; height:24px; border-radius:50%; flex:none; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-size:9.5px; font-weight:600; color:#fff; letter-spacing:.02em}
@@ -728,8 +752,8 @@
       <div class="ticket-pair">
 
         <div class="ticket-col">
-          <span class="tnote good tn-tl">assignable to your AI<span class="small">fewer hallucinations</span></span>
-          <span class="tnote good tn-tr">structured for triage <span class="arr">↓</span></span>
+          <span class="tnote good tn-l1">assignable to your AI<span class="small">fewer hallucinations</span></span>
+          <span class="tnote good tn-l2">structured for triage<span class="small">AI or human ships it</span></span>
           <div class="ticket good">
             <div class="tk-bar">
               <span class="tk-id">ENG-242</span>
@@ -770,8 +794,8 @@
         </div>
 
         <div class="ticket-col">
-          <span class="tnote bad tn-tl">vague, no specifics <span class="arr">↓</span></span>
-          <span class="tnote bad tn-tr">AI hallucinates the fix</span>
+          <span class="tnote bad tn-r1">AI hallucinates the fix<span class="small">no context</span></span>
+          <span class="tnote bad tn-r2">vague, no specifics<span class="small">3 rounds of triage</span></span>
           <div class="ticket bad">
             <div class="tk-bar">
               <span class="tk-id">ENG-241</span>
