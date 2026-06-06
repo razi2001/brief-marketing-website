@@ -265,8 +265,43 @@
   .vis-tk .chips span{font-family:var(--mono); font-size:8.5px; padding:2px 6px; border-radius:99px; background:rgba(22,134,92,.10); color:#0e6843; border:1px solid rgba(22,134,92,.28); display:inline-flex; align-items:center; gap:3px}
   .vis-tk .chips span::before{content:"✓"; font-size:8px; color:#168a5c}
 
+  /* benchmark strip — head-to-head comparison above the tickets */
+  .benchmark{display:grid; grid-template-columns:1fr auto 1fr; gap:30px; align-items:center; max-width:940px; margin:40px auto 0; padding:24px 36px; background:rgba(255,255,255,.55); border:1px solid var(--hair-2); border-radius:18px; position:relative; z-index:2}
+  .b-side{display:flex; flex-direction:column; gap:12px}
+  .b-good{text-align:right}
+  .b-bad{text-align:left}
+  .b-eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.14em; font-weight:500; display:inline-flex; align-items:center; gap:7px}
+  .b-good .b-eyebrow{color:var(--success); justify-content:flex-end}
+  .b-bad .b-eyebrow{color:#b8492f}
+  .b-eyebrow .dot{width:7px; height:7px; border-radius:50%}
+  .b-good .b-eyebrow .dot{background:var(--success)}
+  .b-bad .b-eyebrow .dot{background:#d8553a}
+  .b-line{font-family:var(--display); font-style:italic; font-size:17px; color:var(--ink-2); line-height:1.3}
+  .b-stats{display:flex; gap:22px}
+  .b-good .b-stats{justify-content:flex-end}
+  .b-bad .b-stats{justify-content:flex-start}
+  .b-stats > div{display:flex; flex-direction:column; align-items:flex-start; gap:2px}
+  .b-good .b-stats > div{align-items:flex-end}
+  .b-stats b{font-family:var(--display); font-size:26px; line-height:1; font-weight:400}
+  .b-good .b-stats b{color:#0e6843}
+  .b-bad .b-stats b{color:#b8492f}
+  .b-stats span{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:.04em; text-transform:lowercase}
+  .b-vs{font-family:var(--display); font-style:italic; font-size:34px; color:var(--acc); padding:0 4px; line-height:1; position:relative}
+  .b-vs::before, .b-vs::after{content:""; position:absolute; left:50%; width:1px; height:18px; background:rgba(221,105,54,.35); transform:translateX(-50%)}
+  .b-vs::before{top:-26px}
+  .b-vs::after{bottom:-26px}
+  @media(max-width:780px){
+    .benchmark{grid-template-columns:1fr; gap:18px; padding:22px 22px}
+    .b-good,.b-bad{text-align:center}
+    .b-good .b-eyebrow,.b-bad .b-eyebrow{justify-content:center}
+    .b-good .b-stats,.b-bad .b-stats{justify-content:center}
+    .b-good .b-stats > div,.b-bad .b-stats > div{align-items:center}
+    .b-vs{padding:4px 0}
+    .b-vs::before,.b-vs::after{display:none}
+  }
+
   /* the ticket (merged before/after) — equal columns, with annotation notes */
-  .ticket-stage{margin-top:56px; display:grid; grid-template-columns:1fr; gap:24px; max-width:1000px; margin-left:auto; margin-right:auto; position:relative}
+  .ticket-stage{margin-top:40px; display:grid; grid-template-columns:1fr; gap:24px; max-width:1000px; margin-left:auto; margin-right:auto; position:relative}
   .ticket-pair{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:stretch; padding:64px 0 24px}
   @media(max-width:820px){ .ticket-pair{grid-template-columns:1fr; gap:80px; padding:64px 0 24px} }
   .ticket-col{position:relative}
@@ -660,7 +695,28 @@
   <div class="wrap">
     <div class="sec-tag">WITH BRIEF vs WITHOUT</div>
     <h2 class="sec-h">Same bug. Two tickets.</h2>
-    <p class="sec-sub">Left, what your agent writes from a brief. Right, what a hosted chatbot guesses with <strong>no screen</strong> and <strong>no code</strong>.</p>
+
+    <div class="benchmark">
+      <div class="b-side b-good">
+        <span class="b-eyebrow"><span class="dot"></span> With Brief</span>
+        <span class="b-line">the brief, your screen, your code in hand</span>
+        <div class="b-stats">
+          <div><b>30s</b><span>to write</span></div>
+          <div><b>5</b><span>attachments</span></div>
+          <div><b>0</b><span>follow-ups</span></div>
+        </div>
+      </div>
+      <div class="b-vs">vs</div>
+      <div class="b-side b-bad">
+        <span class="b-eyebrow"><span class="dot"></span> Without</span>
+        <span class="b-line">a chatbot guessing, no context</span>
+        <div class="b-stats">
+          <div><b>5min</b><span>to write</span></div>
+          <div><b>0</b><span>attachments</span></div>
+          <div><b>3</b><span>follow-ups</span></div>
+        </div>
+      </div>
+    </div>
 
     <div class="ticket-stage">
       <div class="ticket-pair">
