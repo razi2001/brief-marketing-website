@@ -302,8 +302,8 @@
 
   /* the ticket (merged before/after) — equal columns, with annotation notes */
   .ticket-stage{margin-top:40px; display:grid; grid-template-columns:1fr; gap:24px; max-width:1000px; margin-left:auto; margin-right:auto; position:relative}
-  .ticket-pair{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:stretch; padding:64px 0 24px}
-  @media(max-width:820px){ .ticket-pair{grid-template-columns:1fr; gap:80px; padding:64px 0 24px} }
+  .ticket-pair{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:stretch; padding:86px 0 24px}
+  @media(max-width:820px){ .ticket-pair{grid-template-columns:1fr; gap:90px; padding:86px 0 24px} }
   .ticket-col{position:relative}
   .ticket{border-radius:14px; overflow:hidden; background:#fff; box-shadow:var(--shadow); border:1px solid var(--hair); font-size:13px; display:flex; flex-direction:column; position:relative; z-index:2; height:100%}
   .ticket.bad{opacity:.92}
@@ -319,9 +319,9 @@
   .tnote.bad{background:#ffe1d6; border:1px solid #e8b0a0; color:#7a3a26}
   .tnote .arr{display:inline-block; margin:0 3px; color:inherit; font-style:normal; opacity:.75}
   .tnote .small{display:block; font-family:var(--mono); font-style:normal; font-size:10px; opacity:.78; margin-top:2px; letter-spacing:.02em}
-  /* notes pinned just above the card corners — attached, never on the title or body */
-  .tn-tl{top:-26px; left:10px; transform:rotate(-4deg)}
-  .tn-tr{top:-26px; right:10px; transform:rotate(4deg)}
+  /* notes pinned just above the card corners — attached, never overlapping the card */
+  .tn-tl{top:-66px; left:10px; transform:rotate(-4deg)}   /* 2-line, needs more clearance */
+  .tn-tr{top:-38px; right:10px; transform:rotate(4deg)}   /* 1-line, sits lower */
   @media(max-width:820px){ .tn-tl,.tn-tr{position:static; transform:none; max-width:none; display:inline-block; margin:6px 6px 8px 0} }
 
   /* engineer comment thread at the bottom of each ticket */
@@ -721,7 +721,7 @@
       <div class="ticket-pair">
 
         <div class="ticket-col">
-          <span class="tnote good tn-tl">✦ assignable to your AI<span class="small">fewer hallucinations</span></span>
+          <span class="tnote good tn-tl">assignable to your AI<span class="small">fewer hallucinations</span></span>
           <span class="tnote good tn-tr">structured for triage <span class="arr">↓</span></span>
           <div class="ticket good">
             <div class="tk-bar">
