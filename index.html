@@ -45,7 +45,7 @@
   .theme-apricot{background:#f4e2cc; --cloud:#fef0d4 }
   .theme-honey { background:#ebe1c8; --cloud:#f7eed8 } /* watch — subtle warm */
   .theme-bright{ background:#f5f1e8; --cloud:#fffdf6 } /* quiet CTA — base cream, calming */
-  .theme-grey  { background:#d4cfc4; --cloud:#e2ddd1 } /* footer — neutral grey grounding */
+  .theme-grey  { background:#e6e4df; --cloud:#efedea } /* footer — light neutral grey, uniform */
   /* every full-width band gets a 1px soft divider into the next */
   section + section, header + section, section + .quiet-cta, .quiet-cta + footer{box-shadow:inset 0 1px 0 rgba(26,22,18,.05)}
 
@@ -428,11 +428,11 @@
   .quiet-cta{padding:80px 0 60px; text-align:center; position:relative; z-index:2}
   .quiet-cta .lead{font-family:var(--display); font-style:italic; font-size:24px; color:var(--muted); margin-bottom:10px}
   .quiet-cta .link{font-family:var(--display); font-size:clamp(34px,4.6vw,48px); color:var(--ink); text-decoration:none; position:relative; display:inline-block; transition:transform .15s, color .15s}
-  .quiet-cta .link:hover{color:#0e6843; transform:translateY(-2px)}
-  .quiet-cta .link em{font-style:italic; color:#0e6843; position:relative}
-  .quiet-cta .cta-arr{color:#0e6843; margin-left:6px}
+  .quiet-cta .link:hover{color:var(--acc); transform:translateY(-2px)}
+  .quiet-cta .link em{font-style:italic; color:var(--acc); position:relative}
+  .quiet-cta .cta-arr{color:var(--acc); margin-left:6px}
   .quiet-cta .uline{position:absolute; left:-4px; right:-4px; bottom:-4px; width:calc(100% + 8px); height:8px; pointer-events:none}
-  .quiet-cta .uline path{stroke:#0e6843; stroke-width:2; fill:none; stroke-linecap:round;
+  .quiet-cta .uline path{stroke:var(--acc); stroke-width:2; fill:none; stroke-linecap:round;
     stroke-dasharray:160; stroke-dashoffset:160}
   .quiet-cta.in-view .uline path{animation:draw 1.2s ease-out forwards}
 
@@ -795,7 +795,6 @@
                 <span class="lbl good">📷 screenshot</span>
                 <span class="lbl good">🧾 console logs</span>
                 <span class="lbl good">📋 repro steps</span>
-                <span class="lbl good">🔗 source</span>
               </div>
             </div>
             <div class="tk-comment">
@@ -842,7 +841,6 @@
                 <span class="lbl">✕ no screenshot</span>
                 <span class="lbl">✕ no logs</span>
                 <span class="lbl">✕ no repro</span>
-                <span class="lbl">✕ no source</span>
               </div>
             </div>
             <div class="tk-comment">
@@ -887,7 +885,7 @@
   </div>
 </section>
 
-<section class="quiet-cta theme-bright" id="ready">
+<section class="quiet-cta theme-sage" id="ready">
   <div class="sec-clouds" aria-hidden="true">
     <div class="cloud bg-2"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
     <div class="cloud mid-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
