@@ -47,7 +47,7 @@
   .theme-bright{ background:#f5f1e8; --cloud:#fffdf6 } /* quiet CTA — base cream, calming */
   .theme-grey  { background:#dde2d6; --cloud:#e8ece2 } /* footer — light sage-grey, flows from the CTA's sage */
   /* every full-width band gets a 1px soft divider into the next */
-  section + section, header + section, section + .quiet-cta, .quiet-cta + footer{box-shadow:inset 0 1px 0 rgba(26,22,18,.05)}
+  section + section, header + section, section + .quiet-cta{box-shadow:inset 0 1px 0 rgba(26,22,18,.05)}
 
   /* clouds — one container per section, parallax layers for 2.5D drift */
   .sec-clouds{position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden}
@@ -900,7 +900,7 @@
   </div>
 </section>
 
-<footer class="theme-grey">
+<footer class="theme-sage">
   <div class="wrap">
     <div class="foot-mark">
       <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#brieflogo"/></svg>
