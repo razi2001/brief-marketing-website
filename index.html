@@ -428,7 +428,10 @@
   .video-shell iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
   .video-placeholder{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
     justify-content:center; gap:18px; cursor:pointer;
-    background: radial-gradient(700px 380px at 50% 40%, rgba(221,105,54,.18), transparent 70%), #1c1814;
+    background:
+      linear-gradient(180deg, rgba(28,24,20,.25), rgba(28,24,20,.55)),
+      url("https://img.youtube.com/vi/tl35INNubcI/maxresdefault.jpg") center/cover no-repeat,
+      #1c1814;
     color:var(--cream); text-align:center; border:0}
   .play{width:74px; height:74px; border-radius:50%; background:var(--acc); display:flex;
     align-items:center; justify-content:center; box-shadow:0 10px 34px rgba(221,105,54,.45); transition:transform .15s}
