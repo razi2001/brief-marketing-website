@@ -56,6 +56,12 @@ Near the bottom of `index.html` in the `<script>` block:
 - **`VIDEO`** — your demo embed (YouTube or Loom). Until set, the video tile
   shows "Demo video coming soon".
 
+The **Cloud waitlist** on `pricing.html` posts to Formspree form `mqeoqvey`
+(`https://formspree.io/f/mqeoqvey`) — submissions land in the Formspree
+dashboard. To send the list elsewhere, change the `<form action>` on the Cloud
+card; the inline submit handler in the page's `<script>` block reads that same
+URL, so no other edit is needed.
+
 The Chrome Web Store URL is hard-coded across all "Add to Chrome" buttons
 (home, pricing, nav, final CTA) and points at the live listing:
 `https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig`.
