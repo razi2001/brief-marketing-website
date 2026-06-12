@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Brief</title>
-<meta name="description" content="Pricing." />
+<title>Brief — pricing</title>
+<meta name="description" content="Brief Local is free forever — your agent, your machine. Brief Cloud is hosted and free during early access — we write and file the tickets for you." />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><defs><linearGradient id='t' x1='20' y1='6' x2='112' y2='124' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23f08147'/><stop offset='0.52' stop-color='%23dd6936'/><stop offset='1' stop-color='%23bd4f1c'/></linearGradient></defs><rect width='128' height='128' rx='28' fill='url(%23t)'/><g fill='%23f7f3ea'><path d='M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z'/><path d='M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z'/></g></svg>" />
 
@@ -76,31 +76,27 @@
 
   .card{border-radius:18px; padding:30px 28px 26px; position:relative; display:flex; flex-direction:column}
   .card.now{background:linear-gradient(180deg,#fffdf9,#fbf6ee); border:1px solid rgba(221,105,54,.32); box-shadow:var(--shadow-lg)}
-  .card.soon{background:rgba(228,221,202,.55); border:1px dashed rgba(26,22,18,.22)}
+  .card.cloud{background:linear-gradient(180deg,#fbfdfe,#eef4f6); border:1px solid rgba(70,120,142,.4); box-shadow:var(--shadow-lg)}
 
   .card-top{display:flex; align-items:center; gap:11px; margin-bottom:18px}
   .card-ic{width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center; flex:none}
   .card.now .card-ic{background:var(--acc-soft); color:var(--acc)}
-  .card.soon .card-ic{background:rgba(140,131,120,.18); color:var(--muted)}
+  .card.cloud .card-ic{background:rgba(70,120,142,.12); color:#46788e}
   .card-badge{margin-left:auto; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; padding:4px 10px; border-radius:99px; font-weight:500}
   .card.now .card-badge{background:var(--acc); color:#fff}
-  .card.soon .card-badge{background:rgba(140,131,120,.24); color:#6b6459}
+  .card.cloud .card-badge{background:#46788e; color:#fff}
 
   .card h2{font-family:var(--display); font-weight:400; font-size:30px; color:var(--ink); margin-bottom:6px; line-height:1.1}
-  .card.soon h2{color:var(--ink-2)}
   .card .tag{font-size:14px; color:var(--ink-2); line-height:1.55; margin-bottom:18px}
-  .card.soon .tag{color:var(--muted)}
 
   .price{display:flex; align-items:baseline; gap:8px; margin:6px 0 22px}
   .price .v{font-family:var(--display); font-size:48px; line-height:1; color:var(--ink)}
-  .card.soon .price .v{color:var(--ink-2); font-style:italic; font-size:38px}
   .price .u{font-size:13px; color:var(--muted)}
 
   .feat{list-style:none; display:flex; flex-direction:column; gap:11px; margin:0 0 24px; flex:1}
   .feat li{font-size:14px; color:var(--ink-2); display:flex; align-items:flex-start; gap:10px; line-height:1.5}
-  .card.soon .feat li{color:var(--muted)}
   .feat li .tick{flex:none; margin-top:1px; color:var(--acc); font-size:13px}
-  .card.soon .feat li .tick{color:var(--muted)}
+  .card.cloud .feat li .tick{color:#46788e}
 
   .cta-row{display:flex; gap:10px; flex-wrap:wrap}
   .btn{display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:14px; font-weight:500;
@@ -108,6 +104,8 @@
     transition:transform .15s, box-shadow .15s, background .15s; color:inherit; position:relative}
   .btn-primary{background:var(--ink); color:var(--cream); box-shadow:0 3px 0 var(--acc)}
   .btn-primary:hover{transform:translate(-1px,-2px); box-shadow:0 5px 0 var(--acc); background:#000}
+  .btn-cloud{background:#46788e; color:#fff; box-shadow:0 3px 0 #2e586b}
+  .btn-cloud:hover{transform:translate(-1px,-2px); box-shadow:0 5px 0 #2e586b; background:#3c6a7e}
   .btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--hair)}
   .btn-ghost:hover{border-color:var(--ink); transform:translate(-1px,-2px)}
   .btn-quiet{background:transparent; color:var(--ink-2); border:1px solid var(--hair)}
@@ -190,7 +188,7 @@
     </a>
     <div class="nav-links">
       <a href="/#how">How it works</a>
-      <a href="/#why">Why Brief</a>
+      <a href="/#solutions">Local vs Cloud</a>
       <a href="/#watch">Demo</a>
       <a href="/pricing.html" class="current">Pricing</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
@@ -202,8 +200,8 @@
 <header>
   <div class="wrap">
     <span class="eyebrow">pricing</span>
-    <h1>free if you bring an agent.</h1>
-    <p class="lede">Self-host with your own coding agent and it stays free forever.<br>Want a managed version for your team? A hosted one is <em>on the way<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>.</p>
+    <h1>bring an agent — or don't.</h1>
+    <p class="lede"><b>Brief Local</b> runs with your own coding agent and stays free forever.<br><b>Brief Cloud</b> files the tickets for you — and it's <em>free in early access<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>.</p>
   </div>
 </header>
 
@@ -216,10 +214,10 @@
           <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
         </svg>
       </div>
-      <span class="card-badge">Available now</span>
+      <span class="card-badge">Free forever</span>
     </div>
-    <h2>Self-hosted</h2>
-    <p class="tag">Free and open source. Your agent, your machine, your code.</p>
+    <h2>Brief Local</h2>
+    <p class="tag">You bring the agent. Open source, and nothing ever leaves your machine.</p>
     <div class="price"><span class="v">$0</span><span class="u">forever</span></div>
     <ul class="feat">
       <li><span class="tick">✓</span> Fully local. Audio and screen never leave your computer.</li>
@@ -241,35 +239,41 @@
     <p class="card-foot">You bring the agent. We don't take a cut.</p>
   </article>
 
-  <article class="card soon">
+  <article class="card cloud">
     <div class="card-top">
       <div class="card-ic">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M17.5 19a4.5 4.5 0 0 0 0-9 6.5 6.5 0 0 0-12.5 2.2A4.5 4.5 0 0 0 6.5 19z"/>
         </svg>
       </div>
-      <span class="card-badge">Coming soon</span>
+      <span class="card-badge">New · early access</span>
     </div>
-    <h2>Cloud</h2>
-    <p class="tag">For small teams who want it managed. No local agent, no setup.</p>
-    <div class="price"><span class="v">soon</span><span class="u">we'll keep it fair</span></div>
+    <h2>Brief Cloud</h2>
+    <p class="tag">We bring the agent. Record, stop — a finished ticket lands in your tracker.</p>
+    <div class="price"><span class="v">$0</span><span class="u">during early access — fair pricing at launch</span></div>
     <ul class="feat">
-      <li><span class="tick">✓</span> No local agent needed. We file the tickets for you.</li>
-      <li><span class="tick">✓</span> Built for small teams. Briefs shared across the squad.</li>
-      <li><span class="tick">✓</span> Same trackers: Linear, Jira, GitHub Issues, Notion.</li>
-      <li><span class="tick">✓</span> SSO, audit log, team templates.</li>
-      <li><span class="tick">✓</span> Hosted in EU and US. Encrypted at rest.</li>
+      <li><span class="tick">✓</span> No local agent, no setup. Sign in and pair the extension in one click.</li>
+      <li><span class="tick">✓</span> Connect Linear in two clicks. Jira is next.</li>
+      <li><span class="tick">✓</span> A hosted agent writes a teammate-grade ticket: summary, repro steps, expected vs. actual, console errors.</li>
+      <li><span class="tick">✓</span> Evidence embedded in the issue — keyframes, recording, logs.</li>
+      <li><span class="tick">✓</span> Source media deleted once the ticket is filed.</li>
     </ul>
-    <form class="waitlist" action="https://formspree.io/f/mqeoqvey" method="POST">
+    <div class="cta-row">
+      <a class="btn btn-cloud" href="https://cloud.get-brief.app" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6.5 6.5 0 0 0-12.5 2.2A4.5 4.5 0 0 0 6.5 19z"/></svg>
+        Start with Cloud
+      </a>
+    </div>
+    <form class="waitlist" action="https://formspree.io/f/mqeoqvey" method="POST" style="margin-top:14px">
       <input type="email" name="email" required autocomplete="email"
              placeholder="you@team.com" aria-label="Email address">
       <input type="hidden" name="_subject" value="Brief Cloud waitlist">
       <!-- honeypot: bots fill this, humans never see it -->
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
-      <button type="submit" class="btn btn-primary">Join the waitlist</button>
+      <button type="submit" class="btn btn-quiet">Get launch updates</button>
     </form>
     <p class="waitlist-msg" role="status" aria-live="polite"></p>
-    <p class="card-foot">We'll ship it when it's good.</p>
+    <p class="card-foot">Early access is free while we polish. We'll email before pricing kicks in.</p>
   </article>
 
 </div>
@@ -277,16 +281,24 @@
 <div class="pricing-faq">
   <h2 class="pf-h">A few questions.</h2>
   <details open>
-    <summary>Why is self-hosted free?</summary>
+    <summary>Why is Brief Local free?</summary>
     <div class="ans">You bring the agent, which means we don't pay for inference and you don't pay us. The extension is MIT licensed; source is on <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener" style="color:var(--acc); text-decoration:none">GitHub</a>.</div>
   </details>
   <details>
-    <summary>How is Cloud different?</summary>
-    <div class="ans">Same captures, hosted backend. We file the tickets for you. Good if you'd rather not wire up an agent.</div>
+    <summary>How is Brief Cloud different?</summary>
+    <div class="ans">Same extension, same capture — but when you hit stop, the brief uploads and a hosted agent writes the ticket and files it. No local agent, nothing to wire up. Good for PMs, sales, and support who see bugs but don't run coding agents.</div>
+  </details>
+  <details>
+    <summary>Which trackers does Cloud support?</summary>
+    <div class="ans">Linear today — connect it in two clicks. Jira is built and next in line. Brief Local already files anywhere your own agent can reach: Linear, Jira, GitHub Issues, Notion.</div>
+  </details>
+  <details>
+    <summary>What happens to my recordings on Cloud?</summary>
+    <div class="ans">They're uploaded to private storage, used once to write the ticket, embedded as evidence in the issue, and the source media is deleted once the ticket is filed. On Brief Local, nothing ever leaves your machine at all.</div>
   </details>
   <details>
     <summary>Will Cloud replace the open-source version?</summary>
-    <div class="ans">No. Self-hosted stays free and open forever. Cloud is for teams who'd rather we run it.</div>
+    <div class="ans">No. Brief Local stays free and open forever. Cloud is for people who'd rather we run the agent.</div>
   </details>
 </div>
 
@@ -300,12 +312,14 @@
     </div>
     <nav class="flinks" aria-label="Footer">
       <a href="/#how">How it works</a>
+      <a href="/#solutions">Local vs Cloud</a>
+      <a href="https://cloud.get-brief.app" target="_blank" rel="noopener">Brief Cloud</a>
       <a href="/pricing.html">Pricing</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
     </nav>
-    <p>Local first. Open source. © <span id="yr"></span> Brief</p>
+    <p>Local-first and open source — with a cloud when you want it. © <span id="yr"></span> Brief</p>
   </div>
 </footer>
 
@@ -331,7 +345,7 @@ if (wl) {
       });
       if (!res.ok) throw new Error('bad response');
       wl.style.display = 'none';
-      msg.textContent = "You're on the list. ✓ We'll email you when Cloud opens.";
+      msg.textContent = "You're on the list. ✓ We'll email you launch and pricing news.";
     } catch {
       btn.disabled = false;
       btn.textContent = label;

@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Brief</title>
-<meta name="description" content="Voice your bug." />
+<title>Brief — talk through a bug, get a perfect ticket</title>
+<meta name="description" content="Talk through a bug. Brief writes the ticket — 100% local with your own coding agent, or hosted with Brief Cloud. Files to Linear, Jira, GitHub, Notion." />
 
 <meta property="og:title" content="Brief" />
-<meta property="og:description" content="Talk through a bug. Your agent writes the ticket." />
+<meta property="og:description" content="Talk through a bug. Get a perfect ticket. Run it 100% local with your agent — or let Brief Cloud file it for you." />
 <meta property="og:type" content="website" />
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><defs><linearGradient id='t' x1='20' y1='6' x2='112' y2='124' gradientUnits='userSpaceOnUse'><stop offset='0' stop-color='%23f08147'/><stop offset='0.52' stop-color='%23dd6936'/><stop offset='1' stop-color='%23bd4f1c'/></linearGradient></defs><rect width='128' height='128' rx='28' fill='url(%23t)'/><g fill='%23f7f3ea'><path d='M26 38 Q26 26 38 26 L52 26 L52 34 L40 34 Q34 34 34 40 L34 52 L26 52 Z M102 38 Q102 26 90 26 L76 26 L76 34 L88 34 Q94 34 94 40 L94 52 L102 52 Z M26 90 Q26 102 38 102 L52 102 L52 94 L40 94 Q34 94 34 88 L34 76 L26 76 Z M102 90 Q102 102 90 102 L76 102 L76 94 L88 94 Q94 94 94 88 L94 76 L102 76 Z'/><path d='M64 40 C67 52, 76 61, 88 64 C76 67, 67 76, 64 88 C61 76, 52 67, 40 64 C52 61, 61 52, 64 40 Z'/></g></svg>" />
@@ -265,6 +265,44 @@
   .vis-tk .chips span{font-family:var(--mono); font-size:8.5px; padding:2px 6px; border-radius:99px; background:rgba(22,134,92,.10); color:#0e6843; border:1px solid rgba(22,134,92,.28); display:inline-flex; align-items:center; gap:3px}
   .vis-tk .chips span::before{content:"✓"; font-size:8px; color:#168a5c}
 
+  /* TWO SOLUTIONS — Brief Local vs Brief Cloud */
+  .cta-under{margin-top:14px; font-size:12.5px; color:var(--muted)}
+  .cta-under a{color:var(--acc); text-decoration:none}
+  .cta-under a:hover{text-decoration:underline}
+  .duo{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:46px}
+  @media(max-width:860px){ .duo{grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto} }
+  .duo-card{background:#fffdf9; border:1px solid var(--hair); border-radius:20px; padding:30px 28px 26px;
+    box-shadow:var(--shadow); display:flex; flex-direction:column; position:relative;
+    transition:transform .18s, box-shadow .18s}
+  .duo-card:hover{transform:translateY(-4px); box-shadow:var(--shadow-lg)}
+  .duo-card.local{border-color:rgba(221,105,54,.35)}
+  .duo-card.cloud{background:linear-gradient(180deg,#fbfdfe,#eef4f6); border-color:rgba(70,120,142,.4)}
+  .duo-badge{position:absolute; top:-13px; left:24px; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase;
+    padding:4px 12px; border-radius:99px; font-weight:500}
+  .duo-card.local .duo-badge{background:var(--acc); color:#fff}
+  .duo-card.cloud .duo-badge{background:#46788e; color:#fff}
+  .duo-h{font-family:var(--display); font-weight:400; font-size:30px; color:var(--ink); line-height:1.1; margin-bottom:4px}
+  .duo-h em{font-style:italic}
+  .duo-card.cloud .duo-h em{color:#46788e}
+  .duo-tag{font-family:var(--display); font-style:italic; font-size:17px; color:var(--ink-2); margin-bottom:16px}
+  .duo-flow{font-family:var(--mono); font-size:11.5px; color:var(--ink-2); background:rgba(255,255,255,.65);
+    border:1px dashed var(--hair); border-radius:10px; padding:10px 12px; margin-bottom:18px;
+    display:flex; align-items:center; gap:7px; flex-wrap:wrap; line-height:1.4}
+  .duo-flow .arr{color:var(--acc)}
+  .duo-card.cloud .duo-flow .arr{color:#46788e}
+  .duo-flow .ok{color:var(--success); font-weight:500}
+  .duo-feat{list-style:none; display:flex; flex-direction:column; gap:10px; margin:0 0 22px; flex:1}
+  .duo-feat li{font-size:13.5px; color:var(--ink-2); display:flex; align-items:flex-start; gap:10px; line-height:1.5}
+  .duo-feat li .tick{flex:none; margin-top:1px; color:var(--acc); font-size:13px}
+  .duo-card.cloud .duo-feat li .tick{color:#46788e}
+  .btn-cloud{background:#46788e; color:#fff; box-shadow:0 3px 0 #2e586b}
+  .btn-cloud:hover{transform:translate(-1px,-2px); box-shadow:0 5px 0 #2e586b; background:#3c6a7e}
+  .duo-foot{margin-top:16px; padding-top:14px; border-top:1px solid var(--hair-2); font-size:12px; color:var(--muted)}
+  .duo-pick{text-align:center; margin:38px auto 0; max-width:62ch;
+    font-family:var(--display); font-style:italic; font-size:19px; color:var(--ink-2); line-height:1.5}
+  .duo-pick b{font-weight:400; color:var(--acc)}
+  .duo-pick .c{color:#46788e}
+
   /* benchmark strip — head-to-head comparison above the tickets */
   .benchmark{display:grid; grid-template-columns:1fr auto 1fr; gap:36px; align-items:center; max-width:1000px; margin:48px auto 0; padding:30px 40px; background:#fff; border:1px solid rgba(26,22,18,.12); border-radius:20px; box-shadow:0 2px 6px rgba(26,22,18,.05), 0 18px 50px rgba(26,22,18,.08); position:relative; z-index:2}
   .b-side{display:flex; flex-direction:column; gap:18px; min-width:0}
@@ -509,7 +547,7 @@
     </a>
     <div class="nav-links">
       <a href="#how">How it works</a>
-      <a href="#why">Why Brief</a>
+      <a href="#solutions">Local vs Cloud</a>
       <a href="#watch">Demo</a>
       <a href="/pricing.html">Pricing</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
@@ -573,9 +611,9 @@
         <span class="line">what's the</span>
         <span class="line"><em>brief<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>?</span>
       </h1>
-      <p class="tagline"><b>Talk through a bug.<br>Your agent writes the ticket.</b></p>
+      <p class="tagline"><b>Talk through a bug.<br>Get a perfect ticket.</b></p>
       <p class="lede">
-        Hit the toolbar, say what's broken, hit export. Your coding agent reads the capture and files a <strong>proper ticket</strong>.
+        Hit the toolbar, say what's broken, hit stop. A <strong>proper ticket</strong> lands in your tracker — written by <strong>your own coding agent</strong>, 100% local, or by <strong>Brief Cloud</strong>, no agent needed.
       </p>
 
       <div class="cta-row">
@@ -583,11 +621,12 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
           Add to Chrome
         </a>
-        <a class="btn btn-ghost" href="https://github.com/razi2001/brief" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          Star on GitHub
+        <a class="btn btn-ghost" href="https://cloud.get-brief.app" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6.5 6.5 0 0 0-12.5 2.2A4.5 4.5 0 0 0 6.5 19z"/></svg>
+          Try Brief Cloud
         </a>
       </div>
+      <p class="cta-under">One extension, two ways to file. <a href="#solutions">Which one is for me? ↓</a></p>
 
     </div>
   </div>
@@ -598,18 +637,18 @@
         <span>see a bug, <i>talk it through</i></span><span class="sep">✦</span>
         <span>captures <i>voice + screen + logs</i></span><span class="sep">✦</span>
         <span><i>30 seconds,</i> not 5 minutes</span><span class="sep">✦</span>
-        <span>your <i>agent</i> writes the ticket</span><span class="sep">✦</span>
+        <span>your agent files it — <i>or ours does</i></span><span class="sep">✦</span>
         <span>ships to <i>Linear, Jira, GitHub…</i></span><span class="sep">✦</span>
-        <span>no accounts, <i>no upload</i></span><span class="sep">✦</span>
-        <span><i>100% local</i></span><span class="sep">✦</span>
+        <span><i>100% local</i> with Brief Local</span><span class="sep">✦</span>
+        <span><i>zero setup</i> with Brief Cloud</span><span class="sep">✦</span>
         <span><i>open source,</i> MIT</span><span class="sep">✦</span>
         <span>see a bug, <i>talk it through</i></span><span class="sep">✦</span>
         <span>captures <i>voice + screen + logs</i></span><span class="sep">✦</span>
         <span><i>30 seconds,</i> not 5 minutes</span><span class="sep">✦</span>
-        <span>your <i>agent</i> writes the ticket</span><span class="sep">✦</span>
+        <span>your agent files it — <i>or ours does</i></span><span class="sep">✦</span>
         <span>ships to <i>Linear, Jira, GitHub…</i></span><span class="sep">✦</span>
-        <span>no accounts, <i>no upload</i></span><span class="sep">✦</span>
-        <span><i>100% local</i></span><span class="sep">✦</span>
+        <span><i>100% local</i> with Brief Local</span><span class="sep">✦</span>
+        <span><i>zero setup</i> with Brief Cloud</span><span class="sep">✦</span>
         <span><i>open source,</i> MIT</span><span class="sep">✦</span>
       </div>
     </div>
@@ -667,7 +706,7 @@
   <div class="wrap">
     <div class="sec-tag">HOW IT WORKS</div>
     <h2 class="sec-h">Three steps.<br>About thirty seconds.</h2>
-    <p class="sec-sub">Brief captures everything. Your agent does the writing. <strong>Your team actually files things.</strong> Engineering actually <strong>fixes</strong> them.</p>
+    <p class="sec-sub">Brief captures everything. An agent does the writing — <strong>yours or ours</strong>. Your team actually <strong>files</strong> things. Engineering actually <strong>fixes</strong> them.</p>
 
     <div class="steps">
       <div class="step">
@@ -700,8 +739,8 @@
           </div>
         </div>
         <div class="step-body">
-          <h3>Export</h3>
-          <p>Drop the prompt into Claude Code, Cursor, or any agent.</p>
+          <h3>Hand off</h3>
+          <p>Drop the prompt into Claude Code, Cursor, any agent — or pair Brief Cloud and skip this step entirely.</p>
         </div>
       </div>
       <div class="step">
@@ -723,6 +762,66 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="solutions" class="theme-cream">
+  <div class="sec-clouds" aria-hidden="true">
+    <div class="cloud bg-1"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud mid-2"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+    <div class="cloud mid-3"><svg viewBox="0 0 120 40"><use href="#cloudB"/></svg></div>
+    <div class="cloud fg-1"><svg viewBox="0 0 100 36"><use href="#cloudA"/></svg></div>
+  </div>
+  <div class="wrap">
+    <div class="sec-tag">PICK YOUR BRIEF</div>
+    <h2 class="sec-h">Same capture. <em>Two<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em> ways to file.</h2>
+    <p class="sec-sub">The extension records the same brief either way. The only question is <strong>who writes the ticket</strong>: the coding agent on your machine, or the one we host.</p>
+
+    <div class="duo">
+
+      <article class="duo-card local">
+        <span class="duo-badge">Free forever · open source</span>
+        <h3 class="duo-h">Brief <em>Local</em></h3>
+        <p class="duo-tag">You bring the agent. Nothing ever leaves your machine.</p>
+        <div class="duo-flow">✦ stop <span class="arr">→</span> brief.zip in Downloads <span class="arr">→</span> your agent <span class="arr">→</span> <span class="ok">ENG-242 filed ✓</span></div>
+        <ul class="duo-feat">
+          <li><span class="tick">✓</span> 100% local — recordings, audio, and logs never upload anywhere.</li>
+          <li><span class="tick">✓</span> Works with Claude Code, Cursor, Codex, or any agent that reads files. The filing playbook ships inside every brief.</li>
+          <li><span class="tick">✓</span> Files wherever your agent can reach: Linear, Jira, GitHub Issues, Notion.</li>
+          <li><span class="tick">✓</span> Unlimited captures. MIT licensed. Fork it, audit it, run it.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
+            Add to Chrome
+          </a>
+        </div>
+        <p class="duo-foot">For builders who already run a coding agent all day.</p>
+      </article>
+
+      <article class="duo-card cloud">
+        <span class="duo-badge">New · early access</span>
+        <h3 class="duo-h">Brief <em>Cloud</em></h3>
+        <p class="duo-tag">We bring the agent. Record, stop — the ticket appears.</p>
+        <div class="duo-flow">✦ stop <span class="arr">→</span> uploads to Brief Cloud <span class="arr">→</span> hosted agent <span class="arr">→</span> <span class="ok">ENG-242 filed ✓</span></div>
+        <ul class="duo-feat">
+          <li><span class="tick">✓</span> No local agent, no setup — sign in and pair the extension in one click.</li>
+          <li><span class="tick">✓</span> Connect Linear in two clicks. Jira is next.</li>
+          <li><span class="tick">✓</span> A hosted agent writes a teammate-grade ticket: summary, repro steps, expected vs. actual, console errors — evidence embedded.</li>
+          <li><span class="tick">✓</span> Source media is deleted once the ticket is filed.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-cloud" href="https://cloud.get-brief.app" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6.5 6.5 0 0 0-12.5 2.2A4.5 4.5 0 0 0 6.5 19z"/></svg>
+            Try Brief Cloud
+          </a>
+        </div>
+        <p class="duo-foot">For PMs, sales, support — anyone who sees bugs but doesn't run agents.</p>
+      </article>
+
+    </div>
+
+    <p class="duo-pick">Run a coding agent all day? Go <b>Local</b>. Want the rest of the team filing perfect tickets too? Point them at <span class="c">Cloud</span>. Mix both on one team — same extension.</p>
   </div>
 </section>
 
@@ -907,6 +1006,7 @@
       <em>Add to Chrome<svg class="uline" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q30,1 60,5 T120,5 T198,4"/></svg></em>
       <span class="cta-arr">→</span>
     </a>
+    <p class="cta-under" style="margin-top:18px">then go fully local with your agent — or <a href="https://cloud.get-brief.app" target="_blank" rel="noopener">pair Brief Cloud</a> and let us file.</p>
   </div>
 </section>
 
@@ -920,12 +1020,14 @@
     </div>
     <nav class="flinks" aria-label="Footer">
       <a href="#how">How it works</a>
+      <a href="#solutions">Local vs Cloud</a>
+      <a href="https://cloud.get-brief.app" target="_blank" rel="noopener">Brief Cloud</a>
       <a href="/pricing.html">Pricing</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
       <a href="https://github.com/razi2001/brief" target="_blank" rel="noopener">GitHub</a>
     </nav>
-    <p>Local first. Open source. For people who'd rather talk than write tickets. © <span id="yr"></span> Brief</p>
+    <p>Local-first and open source — with a cloud when you want it. For people who'd rather talk than write tickets. © <span id="yr"></span> Brief</p>
   </div>
 </footer>
 

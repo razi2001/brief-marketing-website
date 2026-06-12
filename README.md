@@ -1,8 +1,13 @@
 # Brief — marketing site
 
 The one-page marketing site for **Brief**, the Chrome extension that turns a
-30-second voice note, screenshot, or scribble into a clean tracker ticket —
-filed by your own coding agent.
+30-second voice note, screenshot, or scribble into a clean tracker ticket.
+The site presents both solutions:
+
+- **Brief Local** — free, open source; your own coding agent files the ticket,
+  100% on your machine.
+- **Brief Cloud** — hosted at https://cloud.get-brief.app; a hosted agent
+  writes and files the ticket (Linear today, Jira next). Early access.
 
 → Extension repo: https://github.com/razi2001/brief
 
@@ -14,8 +19,8 @@ to Google Fonts (Instrument Serif + JetBrains Mono).
 
 ```
 .
-├── index.html      ← landing page
-├── pricing.html    ← Self-hosted (free) and Cloud (coming soon)
+├── index.html      ← landing page (pain → how it works → Local vs Cloud → ticket comparison → demo)
+├── pricing.html    ← Brief Local (free forever) and Brief Cloud (early access)
 ├── privacy.html    ← Privacy Policy (required by the Chrome Web Store)
 ├── terms.html      ← Terms of Service
 ├── 404.html        ← fallback page
@@ -56,11 +61,14 @@ Near the bottom of `index.html` in the `<script>` block:
 - **`VIDEO`** — your demo embed (YouTube or Loom). Until set, the video tile
   shows "Demo video coming soon".
 
-The **Cloud waitlist** on `pricing.html` posts to Formspree form `mqeoqvey`
-(`https://formspree.io/f/mqeoqvey`) — submissions land in the Formspree
-dashboard. To send the list elsewhere, change the `<form action>` on the Cloud
-card; the inline submit handler in the page's `<script>` block reads that same
-URL, so no other edit is needed.
+The **"Get launch updates" form** on `pricing.html`'s Cloud card posts to
+Formspree form `mqeoqvey` (`https://formspree.io/f/mqeoqvey`) — submissions
+land in the Formspree dashboard. To send the list elsewhere, change the
+`<form action>` on the Cloud card; the inline submit handler in the page's
+`<script>` block reads that same URL, so no other edit is needed.
+
+All **Brief Cloud** links point at `https://cloud.get-brief.app` (hero ghost
+button, `#solutions` card, quiet CTA, footers, pricing card).
 
 The Chrome Web Store URL is hard-coded across all "Add to Chrome" buttons
 (home, pricing, nav, final CTA) and points at the live listing:
