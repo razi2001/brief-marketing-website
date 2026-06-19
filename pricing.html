@@ -81,6 +81,8 @@
     stroke-dasharray:160; stroke-dashoffset:160; animation:draw 1.2s .5s ease-out forwards}
   @keyframes draw{to{stroke-dashoffset:0}}
   .lede{font-size:16px; color:var(--ink-2); margin:0 auto 12px; max-width:54ch; line-height:1.6}
+  .lede .by-local{color:var(--acc); font-weight:600}
+  .lede .by-cloud{color:#46788e; font-weight:600}
   .lede em{font-style:italic; color:var(--acc); position:relative; display:inline-block}
   .lede em .uline{position:absolute; left:-3px; right:-3px; bottom:-3px; width:calc(100% + 6px); height:7px; pointer-events:none}
   .lede em .uline path{stroke:var(--acc); stroke-width:1.8; fill:none; stroke-linecap:round; stroke-dasharray:160; stroke-dashoffset:160; animation:draw 1.2s .6s ease-out forwards}
@@ -199,18 +201,13 @@
   </div>
 </nav>
 
-<header>
+<header id="solutions">
   <div class="wrap">
     <span class="eyebrow">pricing</span>
-    <h1>bring an agent, or don't.</h1>
-    <p class="lede"><b>Brief Local</b> runs with your own coding agent and stays free forever.<br><b>Brief Cloud</b> files the tickets for you, and it's <em>free in early access<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em>.</p>
+    <h1>Same capture. <em>Two<svg class="uline" viewBox="0 0 120 8" preserveAspectRatio="none" aria-hidden="true"><path d="M2,5 Q20,1 40,5 T80,5 T118,4"/></svg></em> ways to file.</h1>
+    <p class="lede">Both capture the same brief. The only difference is who writes the ticket: bring <span class="by-local">your own coding agent</span>, or let <span class="by-cloud">Brief Cloud</span> do it.</p>
   </div>
 </header>
-
-<div class="wrap" id="solutions" style="text-align:center; margin-top:36px">
-  <h2 class="pf-h" style="margin-bottom:10px">Same capture. <em>Two</em> ways to file.</h2>
-  <p class="lede" style="margin:0 auto">Both extensions record the same brief. The only question is who writes the ticket: the coding agent on your machine, or the one we host.</p>
-</div>
 
 <div class="cards">
 
