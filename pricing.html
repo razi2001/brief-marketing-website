@@ -47,8 +47,8 @@
   a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:6px}
 
   .clouds{position:absolute; left:0; right:0; top:0; height:140vh; z-index:0; pointer-events:none; overflow:hidden}
-  .cloud{position:absolute}
-  .cloud svg{display:block; width:100%; height:auto}
+  .clouds .cloud{position:absolute}
+  .clouds .cloud svg{display:block; width:100%; height:auto}
   .c1{top:6%;  left:4%;  width:170px; opacity:.7;  animation:drift1 60s linear infinite}
   .c2{top:14%; right:6%; width:220px; opacity:.7;  animation:drift2 80s -20s linear infinite}
   .c3{top:30%; left:42%; width:130px; opacity:.5;  animation:drift1 90s -40s linear infinite}
@@ -115,6 +115,7 @@
   .card.cloud .feat li .tick{color:#46788e}
 
   .cta-row{display:flex; gap:10px; flex-wrap:wrap}
+  .cta-row .btn{flex:1 1 140px; justify-content:center; white-space:nowrap}
   .btn{display:inline-flex; align-items:center; gap:9px; font-family:var(--mono); font-size:14px; font-weight:500;
     padding:12px 18px; border-radius:11px; text-decoration:none; cursor:pointer; border:0;
     transition:transform .15s, box-shadow .15s, background .15s; color:inherit; position:relative}
@@ -254,7 +255,7 @@
     </div>
     <h2>Brief Cloud</h2>
     <p class="tag">We bring the agent. Record, stop, and a finished ticket lands in your tracker.</p>
-    <div class="price"><span class="v">$0</span><span class="u">during early access, fair pricing at launch</span></div>
+    <div class="price"><span class="v">$0</span><span class="u">in early access</span></div>
     <ul class="feat">
       <li><span class="tick">✓</span> Install from the Chrome Web Store, sign in, pair in one click. No local agent.</li>
       <li><span class="tick">✓</span> Connect Linear in two clicks. Jira is next.</li>
@@ -272,7 +273,7 @@
         Open web app
       </a>
     </div>
-    <p class="card-foot">Install free during early access. We'll announce pricing before anything changes.</p>
+    <p class="card-foot">Free while we polish. Fair pricing at launch.</p>
   </article>
 
 </div>
