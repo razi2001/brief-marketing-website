@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Acme — Account settings (Brief demo sandbox)</title>
+<meta name="description" content="A deliberately buggy demo page for trying Brief. Record it, talk through the bugs, and let your agent file the ticket." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%234f46e5'/><text x='12' y='17' font-family='Arial,sans-serif' font-size='13' font-weight='700' text-anchor='middle' fill='white'>A</text></svg>" />
+
+<style>
+  /* A neutral, modern SaaS "app under test" — intentionally NOT the Brief
+     marketing theme; this is the third-party app you'd record a bug on.
+     UI bugs below are PLANTED ON PURPOSE; each is tagged with a BUG note. */
+  :root{
+    --bg:#f4f5f8; --card:#ffffff; --ink:#1d2330; --ink-2:#444b5a;
+    --muted:#737b8c; --line:#e4e7ee; --line-2:#eef0f5;
+    --indigo:#4f46e5; --indigo-d:#4338ca; --danger:#d92d20; --danger-bg:#fef3f2;
+    --radius:12px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg); color:var(--ink); line-height:1.55;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--indigo); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* sandbox banner */
+  .sandbox-bar{background:#111827; color:#e5e7eb; font-size:13.5px; padding:9px 20px;
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; text-align:center}
+  .sandbox-bar .pill{background:#4f46e5; color:#fff; font-size:11px; font-weight:700; letter-spacing:.04em;
+    padding:2px 8px; border-radius:99px; text-transform:uppercase}
+  .sandbox-bar a{color:#c7d2fe; font-weight:600}
+
+  /* app top bar */
+  .topbar{background:var(--card); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:20}
+  .topbar-in{max-width:960px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:22px}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; color:var(--ink)}
+  .brand .logo{width:28px; height:28px; border-radius:7px; background:linear-gradient(135deg,#6366f1,#4338ca);
+    display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:15px}
+  .topnav{margin-left:14px; display:flex; gap:20px}
+  .topnav a{color:var(--muted); font-size:14px; font-weight:500}
+  .topnav a.active{color:var(--ink)}
+  .topbar .right{margin-left:auto; display:flex; align-items:center; gap:14px}
+  /* BUG 1 — avatar image forced out of aspect ratio (squished/stretched) */
+  .avatar{width:34px; height:34px; border-radius:50%; object-fit:fill; border:1px solid var(--line);
+    background:#ddd}
+
+  /* layout */
+  .page{max-width:960px; margin:0 auto; padding:32px 24px 80px}
+  .page h1{font-size:26px; letter-spacing:-.01em}
+  .subtitle{color:var(--muted); margin-top:4px; font-size:14.5px}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px; margin-top:22px; box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .card h2{font-size:16px; margin-bottom:2px}
+  .card .card-sub{color:var(--muted); font-size:13px; margin-bottom:18px}
+
+  label{display:block; font-size:13px; font-weight:600; color:var(--ink-2); margin-bottom:6px}
+  .input, textarea, select{width:100%; font:inherit; font-size:14px; color:var(--ink);
+    border:1px solid var(--line); border-radius:9px; padding:10px 12px; background:#fff; transition:border-color .15s}
+  .input:focus, textarea:focus, select:focus{outline:none; border-color:var(--indigo)}
+  textarea{resize:vertical; min-height:84px}
+  .field{margin-bottom:18px}
+  /* BUG 2 — help text fails contrast (light grey on white, ~1.6:1) */
+  .hint{font-size:12.5px; color:#cfcfcf; margin-top:6px}
+
+  /* BUG 3 — two-column grid never collapses; inputs have a min-width, so on a
+     phone the right column overflows the viewport (horizontal scroll + clipping) */
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  .grid-2 .input{min-width:280px}
+
+  /* "current plan" row */
+  .plan-row{display:flex; align-items:center; gap:14px}
+  .plan-row .label{font-weight:600; color:var(--ink-2); font-size:13px}
+  /* BUG 4 — plan pill clips its own text (nowrap + hidden, no ellipsis, fixed width) */
+  .plan-pill{display:inline-block; width:150px; white-space:nowrap; overflow:hidden;
+    background:#eef2ff; color:#4338ca; font-weight:600; font-size:13px; padding:6px 12px; border-radius:99px}
+
+  /* notification toggles */
+  /* BUG 5 — toggle switch is vertically misaligned with its label (pushed down) */
+  .toggle-row{display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
+    padding:14px 0; border-bottom:1px solid var(--line-2)}
+  .toggle-row:last-child{border-bottom:0}
+  .toggle-row .tr-text b{font-size:14px; font-weight:600}
+  .toggle-row .tr-text p{font-size:12.5px; color:var(--muted)}
+  .switch{position:relative; width:42px; height:24px; flex:none; margin-top:9px}
+  .switch input{opacity:0; width:0; height:0}
+  .switch .track{position:absolute; inset:0; background:#cbd2e0; border-radius:99px; transition:background .15s}
+  .switch .knob{position:absolute; top:3px; left:3px; width:18px; height:18px; background:#fff; border-radius:50%;
+    box-shadow:0 1px 2px rgba(0,0,0,.25); transition:transform .15s}
+  .switch input:checked + .track{background:var(--indigo)}
+  .switch input:checked + .track + .knob{transform:translateX(18px)}
+
+  /* agree checkbox */
+  .agree{display:flex; align-items:flex-start; gap:10px; margin-top:6px}
+  .agree input{margin-top:3px; width:16px; height:16px; flex:none}
+  /* BUG 6 — custom checkbox replaces the native one but never shows a checked
+     state, so the box gives no feedback when ticked */
+  .agree input{appearance:none; -webkit-appearance:none; border:1.5px solid #c3c9d6; border-radius:4px;
+    background:#fff; cursor:pointer}
+  .agree .txt{font-size:13px; color:var(--ink-2)}
+
+  /* BUG 7 — actions bar uses a fixed-width primary button and no wrap, so on a
+     phone "Save changes" overflows the card and overlaps "Cancel" */
+  .form-actions{display:flex; align-items:center; gap:14px; margin-top:26px}
+  .btn{font:inherit; font-size:14px; font-weight:600; border:0; border-radius:9px; cursor:pointer;
+    padding:11px 18px; transition:background .15s}
+  .btn-save{background:var(--indigo); color:#fff; width:240px}
+  .btn-save:hover{background:var(--indigo-d)}
+  .btn-cancel{background:transparent; color:var(--muted); padding:11px 8px}
+  .btn-cancel:hover{color:var(--ink); text-decoration:underline}
+
+  .error-banner{margin-top:18px; background:var(--danger-bg); border:1px solid #fda29b;
+    color:var(--danger); border-radius:9px; padding:12px 14px; font-size:13.5px; display:flex; gap:9px; align-items:flex-start}
+  .error-banner[hidden]{display:none}
+  .error-banner b{font-weight:700}
+
+  .spoilers{max-width:960px; margin:34px auto 0; padding:0 24px}
+  .spoilers details{background:#fffbe9; border:1px solid #f2e2a6; border-radius:10px; padding:4px 16px}
+  .spoilers summary{cursor:pointer; font-size:13.5px; font-weight:600; color:#7a5b00; padding:12px 0}
+  .spoilers ol{margin:4px 0 16px 20px; color:#5c4a14; font-size:13px; line-height:1.7}
+  .spoilers code{background:#f3ead0; padding:1px 5px; border-radius:4px; font-size:12px}
+</style>
+</head>
+<body>
+
+<div class="sandbox-bar">
+  <span class="pill">Brief demo sandbox</span>
+  <span>This page is broken on purpose. Record it with Brief, talk through the bugs, and watch it become a ticket.</span>
+  <a href="/">← Back to Brief</a>
+</div>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <span class="brand"><span class="logo">A</span> Acme</span>
+    <nav class="topnav">
+      <a href="#">Dashboard</a>
+      <a href="#">Projects</a>
+      <a href="#" class="active">Settings</a>
+    </nav>
+    <div class="right">
+      <a href="#" style="font-size:14px;color:var(--muted)">Help</a>
+      <img class="avatar" alt="Your avatar"
+           src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' fill='%23a5b4fc'/><circle cx='20' cy='15' r='7' fill='%23fff'/><path d='M6 38c0-9 7-14 14-14s14 5 14 14z' fill='%23fff'/></svg>" />
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <h1>Account settings</h1>
+  <p class="subtitle">Manage your Acme profile, security, and notification preferences.</p>
+
+  <form id="settings" novalidate>
+
+    <!-- PROFILE -->
+    <section class="card">
+      <h2>Profile</h2>
+      <p class="card-sub">This information appears on your public Acme profile.</p>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input class="input" id="name" type="text" value="Jordan Rivera" />
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input class="input" id="email" type="email" value="jordan.rivera@acme-internal-team.example.com" />
+          <p class="hint">We'll use this for account and security notifications.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input class="input" id="username" type="text" value="jordanr" />
+        <p class="hint">acme.example.com/u/jordanr — visible to your team.</p>
+      </div>
+
+      <div class="field" style="margin-bottom:0">
+        <label for="bio">Bio</label>
+        <textarea id="bio">Product lead. Coffee, bugs, and shipping fast.</textarea>
+      </div>
+    </section>
+
+    <!-- PLAN -->
+    <section class="card">
+      <h2>Plan</h2>
+      <p class="card-sub">Your current subscription.</p>
+      <div class="plan-row">
+        <span class="label">Current plan</span>
+        <span class="plan-pill">Acme Professional (annual)</span>
+        <a href="#">Manage billing</a>
+      </div>
+    </section>
+
+    <!-- NOTIFICATIONS -->
+    <section class="card">
+      <h2>Notifications</h2>
+      <p class="card-sub">Choose what you want to hear about.</p>
+
+      <div class="toggle-row">
+        <div class="tr-text"><b>Product updates</b><p>News about features and improvements.</p></div>
+        <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="knob"></span></label>
+      </div>
+      <div class="toggle-row">
+        <div class="tr-text"><b>Weekly digest</b><p>A summary of your team's activity every Monday.</p></div>
+        <label class="switch"><input type="checkbox"><span class="track"></span><span class="knob"></span></label>
+      </div>
+      <div class="toggle-row">
+        <div class="tr-text"><b>Security alerts</b><p>Sign-ins from new devices and password changes.</p></div>
+        <label class="switch"><input type="checkbox" checked><span class="track"></span><span class="knob"></span></label>
+      </div>
+    </section>
+
+    <!-- CONFIRM -->
+    <section class="card">
+      <h2>Confirm changes</h2>
+      <p class="card-sub">A quick check before we save.</p>
+      <div class="agree">
+        <input type="checkbox" id="agree" />
+        <label class="txt" for="agree" style="font-weight:400;margin:0">I understand these changes apply to my whole team and take effect immediately.</label>
+      </div>
+    </section>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-save" id="saveBtn">Save changes</button>
+      <button type="button" class="btn btn-cancel" id="cancelBtn">Cancel</button>
+    </div>
+
+    <p class="error-banner" id="saveError" hidden role="alert">
+      <span aria-hidden="true">⚠</span>
+      <span><b>Something went wrong.</b> We couldn't save your changes. Please try again.</span>
+    </p>
+
+  </form>
+</main>
+
+<div class="spoilers">
+  <details>
+    <summary>🐞 Planted bugs (spoilers for the demo)</summary>
+    <ol>
+      <li><b>Squished avatar</b> — top-right photo uses <code>object-fit:fill</code>, so it stretches.</li>
+      <li><b>Unreadable help text</b> — the grey hint lines fail colour-contrast (about 1.6:1).</li>
+      <li><b>Mobile overflow</b> — the two-column profile grid never collapses; on a phone the right column runs off-screen.</li>
+      <li><b>Clipped plan pill</b> — "Acme Professional (annual)" is cut off inside a fixed-width pill.</li>
+      <li><b>Misaligned toggles</b> — the notification switches sit lower than their labels.</li>
+      <li><b>Dead checkbox</b> — the "I understand…" box shows no checked state when you tick it.</li>
+      <li><b>Overlapping buttons</b> — on a phone the fixed-width "Save changes" button overflows and overlaps "Cancel".</li>
+      <li><b>Broken save</b> — clicking <b>Save changes</b> errors out (visible banner + console error + a failed <code>PUT /api/account</code>).</li>
+    </ol>
+  </details>
+</div>
+
+<script>
+  (function () {
+    var form = document.getElementById('settings');
+    var errEl = document.getElementById('saveError');
+    var saveBtn = document.getElementById('saveBtn');
+
+    document.getElementById('cancelBtn').addEventListener('click', function () {
+      errEl.hidden = true;
+    });
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // BUG 8 — saving always fails. Show the visible error...
+      errEl.hidden = false;
+      saveBtn.textContent = 'Save changes';
+
+      // ...and emit real diagnostics that Brief captures while recording:
+      // (1) a failed network request (PUT to a route that doesn't exist -> 404)
+      try {
+        var res = await fetch('/api/account', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: 'jordanr', plan: 'professional' })
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status + ' while saving account settings');
+      } catch (err) {
+        // (2) a console error
+        console.error('SettingsSaveError: PUT /api/account failed —', err);
+      }
+
+      // (3) an uncaught exception (deferred so it doesn't break this handler)
+      setTimeout(function () {
+        var account = undefined;
+        account.persist(); // TypeError: Cannot read properties of undefined
+      }, 0);
+
+      errEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
+</script>
+</body>
+</html>
