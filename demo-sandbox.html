@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Acme — Account settings (Brief demo sandbox)</title>
+<title>Acme Account settings (Brief demo sandbox)</title>
 <meta name="description" content="A deliberately buggy demo page for trying Brief. Record it, talk through the bugs, and let your agent file the ticket." />
 <meta name="robots" content="noindex" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%234f46e5'/><text x='12' y='17' font-family='Arial,sans-serif' font-size='13' font-weight='700' text-anchor='middle' fill='white'>A</text></svg>" />
@@ -173,7 +173,7 @@
       <div class="field">
         <label for="username">Username</label>
         <input class="input" id="username" type="text" value="jordanr" />
-        <p class="hint">acme.example.com/u/jordanr — visible to your team.</p>
+        <p class="hint">acme.example.com/u/jordanr, visible to your team.</p>
       </div>
 
       <div class="field" style="margin-bottom:0">
@@ -239,14 +239,14 @@
   <details>
     <summary>🐞 Planted bugs (spoilers for the demo)</summary>
     <ol>
-      <li><b>Squished avatar</b> — top-right photo uses <code>object-fit:fill</code>, so it stretches.</li>
-      <li><b>Unreadable help text</b> — the grey hint lines fail colour-contrast (about 1.6:1).</li>
-      <li><b>Mobile overflow</b> — the two-column profile grid never collapses; on a phone the right column runs off-screen.</li>
-      <li><b>Clipped plan pill</b> — "Acme Professional (annual)" is cut off inside a fixed-width pill.</li>
-      <li><b>Misaligned toggles</b> — the notification switches sit lower than their labels.</li>
-      <li><b>Dead checkbox</b> — the "I understand…" box shows no checked state when you tick it.</li>
-      <li><b>Overlapping buttons</b> — on a phone the fixed-width "Save changes" button overflows and overlaps "Cancel".</li>
-      <li><b>Broken save</b> — clicking <b>Save changes</b> errors out (visible banner + console error + a failed <code>PUT /api/account</code>).</li>
+      <li><b>Squished avatar</b>: the top-right photo uses <code>object-fit:fill</code>, so it stretches.</li>
+      <li><b>Unreadable help text</b>: the grey hint lines fail colour-contrast (about 1.6:1).</li>
+      <li><b>Mobile overflow</b>: the two-column profile grid never collapses; on a phone the right column runs off-screen.</li>
+      <li><b>Clipped plan pill</b>: "Acme Professional (annual)" is cut off inside a fixed-width pill.</li>
+      <li><b>Misaligned toggles</b>: the notification switches sit lower than their labels.</li>
+      <li><b>Dead checkbox</b>: the "I understand…" box shows no checked state when you tick it.</li>
+      <li><b>Overlapping buttons</b>: on a phone the fixed-width "Save changes" button overflows and overlaps "Cancel".</li>
+      <li><b>Broken save</b>: clicking <b>Save changes</b> errors out (visible banner + console error + a failed <code>PUT /api/account</code>).</li>
     </ol>
   </details>
 </div>
@@ -279,7 +279,7 @@
         if (!res.ok) throw new Error('HTTP ' + res.status + ' while saving account settings');
       } catch (err) {
         // (2) a console error
-        console.error('SettingsSaveError: PUT /api/account failed —', err);
+        console.error('SettingsSaveError: PUT /api/account failed:', err);
       }
 
       // (3) an uncaught exception (deferred so it doesn't break this handler)
