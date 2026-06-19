@@ -475,14 +475,22 @@
   .ticket-caption{text-align:center; font-size:13px; color:var(--ink-2); margin-top:24px; max-width:52ch; margin-left:auto; margin-right:auto; font-style:italic; font-family:var(--display); font-size:17px}
 
   /* watch */
-  .video-shell{margin-top:40px; border-radius:18px; overflow:hidden; border:1px solid var(--hair);
+  /* two demos side by side: Brief Local + Brief Cloud */
+  .demos{display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:40px}
+  @media(max-width:780px){ .demos{grid-template-columns:1fr; gap:30px} }
+  .demo{margin:0; display:flex; flex-direction:column; gap:12px}
+  .demo-cap{display:flex; align-items:center; gap:9px; font-family:var(--display); font-size:20px; color:var(--ink)}
+  .demo-dot{width:10px; height:10px; border-radius:50%; flex:none}
+  .demo-dot.local{background:var(--acc)}
+  .demo-dot.cloud{background:#46788e}
+  .video-shell{border-radius:18px; overflow:hidden; border:1px solid var(--hair);
     box-shadow:var(--shadow-lg); background:#15110d; aspect-ratio:16/9; position:relative}
   .video-shell iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
   .video-placeholder{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center;
-    justify-content:center; gap:18px; cursor:pointer;
+    justify-content:center; gap:16px; cursor:pointer;
     background:
       linear-gradient(180deg, rgba(28,24,20,.25), rgba(28,24,20,.55)),
-      url("https://img.youtube.com/vi/tl35INNubcI/maxresdefault.jpg") center/cover no-repeat,
+      var(--thumb, none) center/cover no-repeat,
       #1c1814;
     color:var(--cream); text-align:center; border:0}
   .play{width:74px; height:74px; border-radius:50%; background:var(--acc); display:flex;
@@ -933,16 +941,37 @@
   <div class="wrap">
     <div class="sec-tag">WATCH</div>
     <h2 class="sec-h" style="max-width:none">Watch a bug become a ticket.</h2>
-    <p class="sec-sub">One bug, talked through, becomes a filed ticket.</p>
+    <p class="sec-sub">The same bug, filed two ways.</p>
 
-    <div class="video-shell" id="videoShell">
-      <button class="video-placeholder" id="videoPlaceholder" aria-label="Play demo video">
-        <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
-        <div>
-          <div class="vp-cap">Play</div>
-          <div class="vp-sub">60 seconds. No sound needed.</div>
+    <div class="demos">
+
+      <figure class="demo">
+        <figcaption class="demo-cap"><span class="demo-dot local"></span> Brief Local</figcaption>
+        <div class="video-shell" data-video="https://www.youtube.com/embed/tl35INNubcI?autoplay=1" style="--thumb:url('https://img.youtube.com/vi/tl35INNubcI/maxresdefault.jpg')">
+          <button class="video-placeholder" aria-label="Play the Brief Local demo">
+            <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+            <div>
+              <div class="vp-cap">Play</div>
+              <div class="vp-sub">Your agent files it</div>
+            </div>
+          </button>
         </div>
-      </button>
+      </figure>
+
+      <figure class="demo">
+        <figcaption class="demo-cap"><span class="demo-dot cloud"></span> Brief Cloud</figcaption>
+        <!-- PLACEHOLDER: pointing at the Brief Local demo for now. Swap data-video and --thumb (the video id in both) when the Brief Cloud demo is uploaded. -->
+        <div class="video-shell" data-video="https://www.youtube.com/embed/tl35INNubcI?autoplay=1" style="--thumb:url('https://img.youtube.com/vi/tl35INNubcI/maxresdefault.jpg')">
+          <button class="video-placeholder" aria-label="Play the Brief Cloud demo">
+            <div class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+            <div>
+              <div class="vp-cap">Play</div>
+              <div class="vp-sub">We file it for you</div>
+            </div>
+          </button>
+        </div>
+      </figure>
+
     </div>
   </div>
 </section>
@@ -986,19 +1015,21 @@
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // Lazy-load the demo video on click (set VIDEO to your embed URL).
-  var VIDEO = "https://www.youtube.com/embed/tl35INNubcI?autoplay=1";
-  var ph = document.getElementById('videoPlaceholder');
-  if(ph){
+  // Lazy-load each demo video on click. To set a demo, change the data-video
+  // (and the --thumb video id) on its .video-shell above.
+  document.querySelectorAll('.video-shell').forEach(function(shell){
+    var ph = shell.querySelector('.video-placeholder');
+    if(!ph) return;
     ph.addEventListener('click', function(){
-      if(!VIDEO){ ph.querySelector('.vp-sub').textContent = "Demo video coming soon"; return; }
+      var src = shell.getAttribute('data-video');
+      if(!src){ ph.querySelector('.vp-sub').textContent = "Demo video coming soon"; return; }
       var f = document.createElement('iframe');
-      f.src = VIDEO; f.allow = "autoplay; fullscreen; picture-in-picture";
+      f.src = src; f.allow = "autoplay; fullscreen; picture-in-picture";
       f.setAttribute('allowfullscreen','');
-      document.getElementById('videoShell').appendChild(f);
+      shell.appendChild(f);
       ph.remove();
     });
-  }
+  });
 
   // Trigger the quiet-cta underline once it scrolls in
   var qcta = document.getElementById('ready');
