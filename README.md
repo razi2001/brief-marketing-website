@@ -1,86 +1,85 @@
-# Brief — marketing site
+# Brief Cloud: marketing site
 
-The one-page marketing site for **Brief**, the Chrome extension that turns a
-30-second voice note, screenshot, or scribble into a clean tracker ticket.
-The site presents both solutions, each its own Chrome extension:
+The one-page marketing site for **Brief Cloud**, the Chrome extension that turns a
+screen recording, a screenshot, or the last minute on a page into a clear ticket,
+written and filed for you in Linear, Jira, GitHub, GitLab, Azure DevOps, ClickUp,
+Notion, Trello, Asana or Monday.
 
-- **Brief Local** — free, open source; your own coding agent files the ticket,
-  100% on your machine.
-- **Brief Cloud** — its own Web Store listing; install it, connect Linear (Jira
-  next), pair, and a hosted agent writes and files the ticket. Web app for sign-in
-  and tracker setup at https://cloud.get-brief.app. Early access, free while we polish.
-
-→ Brief Local repo: https://github.com/razi2001/brief
+- Chrome Web Store: https://chromewebstore.google.com/detail/brief-cloud/heekinkibhgbilagcdnmcjajijaalpcc
+- Web app (sign in, connect a tracker): https://cloud.get-brief.app
+- Privacy policy: https://cloud.get-brief.app/privacy
 
 ## What's here
 
-A single, self-contained static page. No build step, no dependencies, no
-framework — just `index.html` with inline CSS/JS. The only external request is
-to Google Fonts (Instrument Serif + JetBrains Mono).
+A static site. No build step, no framework. Each page is one HTML file with inline
+CSS and JS. The only external requests are Google Fonts (Instrument Serif, Inter,
+JetBrains Mono) and, on click, the YouTube player.
 
 ```
 .
-├── index.html         ← landing page (pain → how it works → Local vs Cloud → ticket comparison → demo)
-├── pricing.html       ← Brief Local (free forever) and Brief Cloud (early access)
-├── demo-sandbox.html  ← deliberately buggy demo page for trying Brief (served at /demo-sandbox)
-├── privacy.html       ← Privacy Policy (required by the Chrome Web Store)
-├── terms.html         ← Terms of Service
+├── index.html         ← the landing page (see below)
+├── pricing.html       ← redirects to /#pricing, so old links keep working
+├── demo-sandbox.html  ← a page that's broken on purpose, to try Brief Cloud on (/demo-sandbox)
 ├── 404.html           ← fallback page
-├── og.png             ← 1200×630 social share card (Open Graph / Twitter)
+├── og.png             ← 1200×630 social share card
+├── privacy.html       ← legacy policy for the old local "Brief" extension (not linked)
+├── terms.html         ← legacy terms for the old local "Brief" extension (not linked)
+├── Caddyfile, Dockerfile, fly.toml  ← hosting (Fly.io, Caddy serving clean URLs)
 ├── robots.txt
 ├── LICENSE
 └── README.md
 ```
 
+### The landing page, top to bottom
+
+1. **Hero**: the pitch and Add to Chrome on the left, a **live demo** on the right
+   (stacked on smaller screens). It opens on a start screen ("Try it live",
+   Start the interactive demo) over a blurred checkout; nothing moves until the
+   visitor clicks. The demo is a fake checkout with two planted bugs,
+   each with its own card on the left, played in order with a short intro card:
+   Bug 1, the CVC field hangs off the card (take a screenshot and circle it), then
+   Bug 2, Pay fails with a 500 (click it, then report it with Replay, which already
+   kept the last minute). Visitors use the real-looking Brief Cloud popup, and the
+   ticket writes itself in Linear, Jira or GitHub, matching the bug they captured.
+   Hints point at the next click; each card ticks to "Reported". After Bug 1, the
+   bar under the ticket says it's in Linear and moves on to Bug 2 by itself after
+   3.5 seconds (Let's go skips the wait). "Create free account" sits in the demo's tab bar and
+   leads the bar once both bugs are reported.
+2. Tracker logos, Claude vs Brief Cloud (the same bug as two tickets),
+   features, the demo video, pricing and setup in one section (free while in early
+   access), FAQ, final CTA. Each section has its own warm tint.
+
+The demo is plain JS at the bottom of `index.html` (`initDemo`): one small state
+machine, with the ticket copy for each bug in `BUGS`.
+
 ## Run it locally
 
-It's static, so anything that serves a folder works:
-
 ```bash
-# Python
-python3 -m http.server 8000
+python -m http.server 8000
 # then open http://localhost:8000
-
-# or just open the file directly
-open index.html
 ```
 
 ## Deploy
 
-### GitHub Pages
-1. Push this folder to a repo.
-2. Settings → Pages → Source: **Deploy from a branch** → `main` / root.
-3. (Optional) add a custom domain: drop a `CNAME` file containing your domain
-   (e.g. `brief.sh`) in the root, and point your DNS at GitHub Pages.
+Fly.io, with Caddy serving the folder (`/privacy.html` → `/privacy`, clean URLs,
+custom 404):
 
-### Netlify / Vercel / Cloudflare Pages
-No build command. Output/publish directory: the repo root. Drag-and-drop the
-folder or connect the repo — it just serves `index.html`.
+```bash
+fly deploy
+```
 
-## Before you launch
+## Things to keep in sync
 
-- **Demo video** — `index.html`'s `<script>` sets `VIDEO` to the YouTube embed
-  (`tl35INNubcI`). Swap it for your own embed (YouTube or Loom); clear it and the
-  video tile falls back to "Demo video coming soon".
-
-### Links baked into the pages
-
-Two Chrome Web Store listings are hard-coded across both pages:
-
-- **Brief Local** — `https://chromewebstore.google.com/detail/brief/dbceddgckljkggbghaddpclblfbkmfig`
-  (hero, `#solutions` card, nav, final CTA, pricing card).
-- **Brief Cloud** — `https://chromewebstore.google.com/detail/brief-cloud/heekinkibhgbilagcdnmcjajijaalpcc`
-  (hero, `#solutions` card, quiet CTA, footers, pricing card).
-
-Each Brief Cloud card pairs its **Add to Chrome** button with an **Open web app**
-button pointing at `https://cloud.get-brief.app` — where you sign in and connect a
-tracker. Swap the GitHub links if the repo URL changes.
-
-Once deployed, your Privacy Policy lives at `https://<your-domain>/privacy.html` — that's
-the URL the Chrome Web Store asks for when you submit an extension. Terms are at
-`/terms.html`. Both have a couple of placeholders to fill before publishing (a contact
-email, and the governing-law jurisdiction in Terms §8).
+- **The main CTA is account sign-up**: `https://cloud.get-brief.app/sign-up`
+  (nav, hero, the demo's tab bar, the bar under a finished ticket, setup step 1,
+  final section). New accounts land on the app's onboarding.
+- **Store link** (`heekinkibhgbilagcdnmcjajijaalpcc`) is only in setup step 2 and
+  the footer.
+- **Demo video**: `dmD8thJvMww` in the `#watch` section (`data-video` and `--thumb`).
+- **Tracker list** (10 trackers): the logo row (`lg-*` symbols, the same marks the
+  web app's `TrackerLogo.tsx` uses) and the setup step "Connect your tracker".
+- **Copy rules**: short, plain words, no em or en dashes.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).
