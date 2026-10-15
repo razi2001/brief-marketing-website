@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Brief Cloud: show the bug, get the ticket</title>
-<meta name="description" content="Record your screen and say what's wrong. Brief Cloud writes a clear ticket and files it to Linear, Jira, GitHub and 7 more. Free while in early access." />
+<title>Brief: show the bug, get the ticket</title>
+<meta name="description" content="Record your screen and say what's wrong. Brief writes a clear ticket and files it to Linear, Jira, GitHub and 7 more. Free while in early access." />
 <link rel="canonical" href="https://get-brief.app/" />
 
-<meta property="og:title" content="Brief Cloud: show the bug, get the ticket" />
-<meta property="og:description" content="Record your screen and say what's wrong. Brief Cloud writes a clear ticket and files it in your tracker. 30 seconds, not 5 minutes." />
+<meta property="og:title" content="Brief: show the bug, get the ticket" />
+<meta property="og:description" content="Record your screen and say what's wrong. Brief writes a clear ticket and files it in your tracker. 30 seconds, not 5 minutes." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://get-brief.app/" />
-<meta property="og:site_name" content="Brief Cloud" />
+<meta property="og:site_name" content="Brief" />
 <meta property="og:image" content="https://get-brief.app/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Brief Cloud: show the bug, get the ticket." />
+<meta property="og:image:alt" content="Brief: show the bug, get the ticket." />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Brief Cloud: show the bug, get the ticket" />
-<meta name="twitter:description" content="Record your screen and say what's wrong. Brief Cloud writes the ticket and files it for you." />
+<meta name="twitter:title" content="Brief: show the bug, get the ticket" />
+<meta name="twitter:description" content="Record your screen and say what's wrong. Brief writes the ticket and files it for you." />
 <meta name="twitter:image" content="https://get-brief.app/og.png" />
 <meta name="theme-color" content="#f5efe4" />
 
@@ -85,7 +85,6 @@
   .brand svg{width:32px;height:32px;border-radius:9px;box-shadow:0 3px 10px -2px rgba(189,79,28,.35);transition:transform .4s var(--ease)}
   .brand:hover svg{transform:rotate(-8deg) scale(1.06)}
   .wm{font-family:var(--serif);font-size:25px;line-height:1;letter-spacing:-.01em}
-  .wm i{font-style:italic;color:var(--acc)}
   .nav-links{display:flex;gap:26px}
   .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-2);position:relative;transition:color .2s}
   .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1.5px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
@@ -139,8 +138,17 @@
   .js .rv.in{opacity:1;transform:none}
 
   /* ── hero: the pitch on the left, the live demo on the right ── */
-  .hero{padding:34px 0 8px}
-  .hero-wrap{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(320px,430px) minmax(0,1fr);gap:56px;align-items:center}
+  .hero{padding:34px 0 72px}
+  /* where tickets go: a row of small logo tiles under the buttons */
+  .hero-logos{margin-top:36px}
+  .hero-logos p{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .hero-logos ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+  .hero-logos li{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.75);box-shadow:inset 0 0 0 1px var(--hair-2),0 4px 10px -8px rgba(26,22,18,.3);
+    display:grid;place-items:center;transition:transform .25s var(--ease)}
+  .hero-logos li:hover{transform:translateY(-3px)}
+  .hero-logos svg{width:20px;height:20px}
+  @media(max-width:600px){.hero-logos ul{gap:5px}.hero-logos li{width:29px;height:29px;border-radius:8px}.hero-logos svg{width:17px;height:17px}}
+  .hero-wrap{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(320px,470px) minmax(0,1fr);gap:56px;align-items:center}
   @media(max-width:1099px){.hero-wrap{grid-template-columns:minmax(0,1fr);gap:28px;max-width:1120px}}
   @media(max-width:600px){.hero-wrap{padding:0 16px}.hero{padding-top:20px}}
   .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(48px,5.2vw,74px);line-height:.95;letter-spacing:-.025em}
@@ -151,23 +159,15 @@
   html:not(.js) .uline path{stroke-dashoffset:0}
   @keyframes draw{to{stroke-dashoffset:0}}
   .sub{font-size:18px;line-height:1.55;color:var(--ink-2);margin-top:20px;max-width:30em}
-  .bugs{margin-top:28px;display:flex;flex-direction:column;gap:10px;max-width:420px}
-  .bugs-lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:2px;width:100%}
-  .bug{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 14px 11px 11px;border-radius:14px;background:rgba(255,255,255,.62);
-    box-shadow:inset 0 0 0 1px var(--hair);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .2s}
-  .bug:hover{transform:translateY(-2px);background:#fff;box-shadow:inset 0 0 0 1px rgba(26,22,18,.16),0 12px 26px -16px rgba(26,22,18,.35)}
-  .bug.on{background:#fff;box-shadow:inset 0 0 0 1.5px var(--acc),0 12px 28px -14px rgba(221,105,54,.6)}
-  .bug-ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--acc-soft);color:var(--acc);flex:none}
-  .bug-ic svg{width:19px;height:19px}
-  .bug-tx{flex:1;min-width:0}
-  .bug-tx b{display:block;font-size:15px;font-weight:600;color:var(--ink);line-height:1.3}
-  .bug-tx small{font-size:13px;color:var(--muted)}
-  .bug-st{font-size:12.5px;font-weight:600;color:var(--acc);white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
-  .bug-st svg{width:14px;height:14px}
-  .bug.done .bug-st{color:var(--green)}
-  .bug.done .bug-ic{background:rgba(47,158,95,.12);color:var(--green)}
-  .hero-cta{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:32px}
-  @media(max-width:1099px){.bugs{max-width:none;flex-direction:row;flex-wrap:wrap}.bug{flex:1 1 260px}.hero-cta{margin-top:24px}}
+  .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:32px}
+  .hero-cta .btn{padding:16px 22px;font-size:16px;border-radius:13px}
+  @media(max-width:600px){.hero-cta .btn{flex:1 1 100%}}
+  /* the Chrome button: second to sign-up, but with some life */
+  .btn-chrome{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px rgba(221,105,54,.45),0 10px 24px -14px rgba(221,105,54,.6)}
+  .btn-chrome svg{color:var(--acc);transition:transform .5s var(--ease)}
+  .btn-chrome:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1.5px var(--acc),0 16px 30px -14px rgba(221,105,54,.7)}
+  .btn-chrome:hover svg{transform:rotate(120deg)}
+  @media(max-width:1099px){.hero-cta{margin-top:24px}}
   .fx{animation:up .9s var(--ease) both;animation-delay:calc(var(--d,0) * 100ms + 60ms)}
   @keyframes up{from{opacity:0;transform:translateY(18px)}}
   .fx-stage{animation:stagein 1.1s var(--ease) both;animation-delay:.25s}
@@ -256,7 +256,7 @@
   .a-line.mut{color:#6b7485}
   .a-tot{display:flex;justify-content:space-between;font-weight:650;font-size:15px;border-top:1px solid #e6e9f0;margin-top:8px;padding-top:12px}
 
-  /* the Brief Cloud popup, drawn like the real one */
+  /* the Brief popup, drawn like the real one */
   .pop{position:absolute;top:86px;right:14px;width:340px;z-index:30;background:var(--cream);border-radius:12px;font-family:var(--mono);color:var(--ink);line-height:1.4;
     box-shadow:0 0 0 1px rgba(0,0,0,.1),0 18px 50px -10px rgba(40,25,10,.42);transform-origin:top right;overflow:hidden;
     opacity:0;visibility:hidden;transform:translateY(-6px) scale(.96);transition:opacity .18s,transform .25s var(--ease),visibility 0s .25s}
@@ -501,11 +501,6 @@
   @keyframes cbob{50%{transform:translateY(-3px)}}
   .fly{position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:var(--acc);z-index:95;pointer-events:none;box-shadow:0 0 0 4px rgba(221,105,54,.25),0 0 18px rgba(221,105,54,.8)}
 
-  .demo-foot{display:flex;justify-content:center;align-items:center;gap:8px 14px;margin-top:16px;font-size:13.5px;color:var(--muted);flex-wrap:wrap;text-align:center}
-  .linkbtn{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--ink-2);padding:4px 8px;border-radius:8px}
-  .stage:not(.started) .linkbtn{visibility:hidden}
-  .linkbtn:hover{background:rgba(26,22,18,.06);color:var(--ink)}
-  .linkbtn svg{width:14px;height:14px}
 
   @media(max-width:760px){
     .win{height:600px;border-radius:13px}
@@ -536,14 +531,6 @@
     .cap{bottom:auto;top:16px}
   }
 
-  /* ── tracker logos ── */
-  .logos{padding:64px 0 72px}
-  .tr-lbl{text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .lg-row{list-style:none;display:grid;grid-template-columns:repeat(5,auto);justify-content:center;gap:20px 44px;margin:24px auto 0}
-  @media(max-width:760px){.lg-row{grid-template-columns:repeat(2,minmax(0,150px));gap:16px 28px}}
-  .lg-row li{display:inline-flex;align-items:center;gap:9px;font-size:16px;font-weight:600;color:var(--ink-2);letter-spacing:-.01em;transition:transform .3s var(--ease)}
-  .lg-row li:hover{transform:translateY(-3px)}
-  .lg-row svg{width:24px;height:24px}
 
   /* ── section bands ── */
   .band-peach{background:rgba(241,227,206,.86)}
@@ -649,7 +636,7 @@
   @keyframes bar{0%,18%{opacity:0;transform:translate(-50%,6px)}26%,58%{opacity:1;transform:translate(-50%,0)}66%,100%{opacity:0}}
   .f6-k{position:absolute;right:22px;bottom:16px;display:flex;gap:4px;align-items:center;font-size:11.5px;color:var(--muted)}
 
-  /* ── Claude vs Brief Cloud: two equal cards, one never ends ── */
+  /* ── Claude vs Brief: two equal cards, one never ends ── */
   .vs{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:26px;align-items:stretch;margin-top:58px}
   .vs-col{display:flex;flex-direction:column;min-width:0}
   .js .vs-col.rv{transform:translateX(var(--from,0));opacity:0}
@@ -711,7 +698,7 @@
   .cl-doc code.fake{text-decoration:underline wavy #e5484d;text-decoration-thickness:1px;text-underline-offset:3px}
   .cl-doc pre{font-family:var(--mono);font-size:10.5px;line-height:1.55;background:#f6f5f2;border:1px solid #e9e6e0;border-radius:8px;padding:9px 11px;margin-top:6px;color:#3a3e45;white-space:pre;overflow:hidden}
 
-  /* Brief Cloud's side: short, with proof, written line by line */
+  /* Brief's side: short, with proof, written line by line */
   .bf-body{flex:1;padding:18px 22px;display:flex;flex-direction:column;gap:13px;min-height:0}
   .bf-body>*{flex-shrink:0}
   .bf-body h3{font-size:18px;font-weight:650;letter-spacing:-.01em;color:#1f2328}
@@ -813,7 +800,7 @@
 </head>
 <body>
 
-<!-- shared shapes: the Brief Cloud mark, three clouds, icons -->
+<!-- shared shapes: the Brief mark, three clouds, icons -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <linearGradient id="mk-tile" x1="20" y1="6" x2="112" y2="124" gradientUnits="userSpaceOnUse">
@@ -892,9 +879,9 @@
 
 <nav class="nav" aria-label="Primary">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="Brief Cloud, home">
+    <a class="brand" href="#top" aria-label="Brief, home">
       <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#mark"/></svg>
-      <span class="wm">Brief <i>Cloud</i></span>
+      <span class="wm">Brief</span>
     </a>
     <div class="nav-links">
       <a href="#compare">Claude vs Brief</a>
@@ -915,28 +902,30 @@
   <div class="hero-wrap">
     <div class="hero-copy">
       <h1 class="fx">Show the bug.<br>Get the <em>ticket.<svg class="uline" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3,6 Q40,1 80,6 T150,5 T197,4"/></svg></em></h1>
-      <p class="sub fx" style="--d:1">Record it and say what's wrong. Brief Cloud writes a clear ticket and files it in your tracker.</p>
-      <div class="bugs fx" style="--d:2">
-        <p class="bugs-lbl">Try it now: 2 bugs to report</p>
-        <button class="bug on" type="button" data-goal="look">
-          <span class="bug-ic"><svg aria-hidden="true"><use href="#i-shot"/></svg></span>
-          <span class="bug-tx"><b>1. The CVC field is off</b><small>Take a screenshot</small></span>
-          <span class="bug-st">Report it</span>
-        </button>
-        <button class="bug" type="button" data-goal="pay">
-          <span class="bug-ic"><svg aria-hidden="true"><use href="#i-replay"/></svg></span>
-          <span class="bug-tx"><b>2. Pay fails</b><small>Click it, then use Replay</small></span>
-          <span class="bug-st">Report it</span>
-        </button>
+      <p class="sub fx" style="--d:1">Record it and say what's wrong. Brief writes a clear ticket and files it in your tracker.</p>
+      <div class="hero-cta fx" style="--d:2">
+        <a class="btn btn-acc" href="https://cloud.get-brief.app/sign-up" target="_blank" rel="noopener">Create free account<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-chrome" href="https://chromewebstore.google.com/detail/brief-cloud/heekinkibhgbilagcdnmcjajijaalpcc" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chrome"/></svg>Add to Chrome</a>
       </div>
-      <div class="hero-cta fx" style="--d:3">
-        <a class="btn btn-acc btn-lg" href="https://cloud.get-brief.app/sign-up" target="_blank" rel="noopener">Create free account<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-        <a class="chrome-link" href="https://chromewebstore.google.com/detail/brief-cloud/heekinkibhgbilagcdnmcjajijaalpcc" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chrome"/></svg>Or add the Chrome extension</a>
+      <div class="hero-logos fx" style="--d:3">
+        <p>Files straight into</p>
+        <ul aria-label="Supported trackers">
+          <li title="Linear"><svg aria-hidden="true"><use href="#lg-linear"/></svg><span class="sr">Linear</span></li>
+          <li title="Jira"><svg aria-hidden="true"><use href="#lg-jira"/></svg><span class="sr">Jira</span></li>
+          <li title="GitHub"><svg aria-hidden="true"><use href="#lg-github"/></svg><span class="sr">GitHub</span></li>
+          <li title="GitLab"><svg aria-hidden="true"><use href="#lg-gitlab"/></svg><span class="sr">GitLab</span></li>
+          <li title="Azure DevOps"><svg aria-hidden="true"><use href="#lg-azure"/></svg><span class="sr">Azure DevOps</span></li>
+          <li title="ClickUp"><svg aria-hidden="true"><use href="#lg-clickup"/></svg><span class="sr">ClickUp</span></li>
+          <li title="Notion"><svg aria-hidden="true"><use href="#lg-notion"/></svg><span class="sr">Notion</span></li>
+          <li title="Trello"><svg aria-hidden="true"><use href="#lg-trello"/></svg><span class="sr">Trello</span></li>
+          <li title="Asana"><svg aria-hidden="true"><use href="#lg-asana"/></svg><span class="sr">Asana</span></li>
+          <li title="Monday"><svg aria-hidden="true"><use href="#lg-monday"/></svg><span class="sr">Monday</span></li>
+        </ul>
       </div>
     </div>
 
     <!-- the live demo: a checkout with two planted bugs -->
-    <div class="stage fx-stage" id="try" data-phase="idle" role="region" aria-label="Live demo of Brief Cloud">
+    <div class="stage fx-stage" id="try" data-phase="idle" role="region" aria-label="Live demo of Brief">
       <div class="win-wrap">
         <div class="win">
           <div class="wt">
@@ -948,7 +937,7 @@
             <span class="navs" aria-hidden="true"><svg><use href="#i-back"/></svg><svg><use href="#i-fwd"/></svg><svg><use href="#i-reload"/></svg></span>
             <div class="url"><svg aria-hidden="true"><use href="#i-lock"/></svg><span class="url-t">acme.shop/checkout</span></div>
             <span class="ext ext-puzzle" aria-hidden="true"><svg><use href="#i-puzzle"/></svg></span>
-            <button class="ext ext-brief" type="button" data-t="brief" data-act="brief" aria-label="Open Brief Cloud">
+            <button class="ext ext-brief" type="button" data-t="brief" data-act="brief" aria-label="Open Brief">
               <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#mark"/></svg><span class="rec-dot"></span>
             </button>
           </div>
@@ -1020,7 +1009,7 @@
                   <article class="tk-main">
                     <div class="tk-draftnote" data-r>Saved in Drafts. Read it over, then file it.</div>
                     <h3 class="tk-title"></h3>
-                    <div><span class="tk-by" data-r><svg viewBox="0 0 128 128" aria-hidden="true"><use href="#mark"/></svg>Written by Brief Cloud in 9 seconds</span></div>
+                    <div><span class="tk-by" data-r><svg viewBox="0 0 128 128" aria-hidden="true"><use href="#mark"/></svg>Written by Brief in 9 seconds</span></div>
                     <section data-r>
                       <h4>Summary</h4>
                       <p class="tk-sum"></p>
@@ -1069,8 +1058,8 @@
             </div>
           </div>
 
-          <!-- the Brief Cloud popup -->
-          <div class="pop" role="dialog" aria-label="Brief Cloud">
+          <!-- the Brief popup -->
+          <div class="pop" role="dialog" aria-label="Brief">
             <div class="pop-hd">
               <svg class="mk" viewBox="0 0 128 128" aria-hidden="true"><use href="#mark"/></svg>
               <span class="pop-title">What's the <em>brief</em>?</span>
@@ -1115,7 +1104,7 @@
             <div class="gate-card">
               <span class="gate-ic"><svg aria-hidden="true"><use href="#i-pointer"/></svg></span>
               <h3>Try it live</h3>
-              <p>Report 2 real bugs with Brief Cloud, right here. About a minute.</p>
+              <p>Report 2 real bugs with Brief, right here. About a minute.</p>
               <button class="btn btn-acc" type="button">Start the interactive demo<svg class="arr" aria-hidden="true"><use href="#i-arrow"/></svg></button>
             </div>
           </div>
@@ -1125,40 +1114,17 @@
         </div>
       </div>
 
-      <div class="demo-foot">
-        <span>A live demo. Nothing you do here leaves this page.</span>
-        <button class="linkbtn" type="button" data-act="again"><svg aria-hidden="true"><use href="#i-reset"/></svg>Start over</button>
-      </div>
     </div>
   </div>
 </header>
 
-<!-- ───────────────────────── tracker logos ───────────────────────── -->
-<div class="logos">
-  <div class="wrap">
-    <p class="tr-lbl rv">Files straight into</p>
-    <ul class="lg-row" aria-label="Supported trackers">
-      <li class="rv" style="--d:0"><svg aria-hidden="true"><use href="#lg-linear"/></svg>Linear</li>
-      <li class="rv" style="--d:1"><svg aria-hidden="true"><use href="#lg-jira"/></svg>Jira</li>
-      <li class="rv" style="--d:2"><svg aria-hidden="true"><use href="#lg-github"/></svg>GitHub</li>
-      <li class="rv" style="--d:3"><svg aria-hidden="true"><use href="#lg-gitlab"/></svg>GitLab</li>
-      <li class="rv" style="--d:4"><svg aria-hidden="true"><use href="#lg-azure"/></svg>Azure DevOps</li>
-      <li class="rv" style="--d:0"><svg aria-hidden="true"><use href="#lg-clickup"/></svg>ClickUp</li>
-      <li class="rv" style="--d:1"><svg aria-hidden="true"><use href="#lg-notion"/></svg>Notion</li>
-      <li class="rv" style="--d:2"><svg aria-hidden="true"><use href="#lg-trello"/></svg>Trello</li>
-      <li class="rv" style="--d:3"><svg aria-hidden="true"><use href="#lg-asana"/></svg>Asana</li>
-      <li class="rv" style="--d:4"><svg aria-hidden="true"><use href="#lg-monday"/></svg>Monday</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ───────────────────────── Claude vs Brief Cloud ───────────────────────── -->
+<!-- ───────────────────────── Claude vs Brief ───────────────────────── -->
 <section id="compare" class="band-peach">
   <div class="wrap">
     <div class="head-c">
-      <div class="tag rv">Claude vs Brief Cloud</div>
-      <h2 class="rv" style="--d:1">Claude writes essays.<br><em>Brief Cloud writes tickets.</em></h2>
-      <p class="lead rv" style="--d:2">Paste one line about a bug into Claude and you get pages of guesses about code it has never seen. Brief Cloud saw the bug, so you get a short ticket with proof.</p>
+      <div class="tag rv">Claude vs Brief</div>
+      <h2 class="rv" style="--d:1">Claude writes essays.<br><em>Brief writes tickets.</em></h2>
+      <p class="lead rv" style="--d:2">Paste one line about a bug into Claude and you get pages of guesses about code it has never seen. Brief saw the bug, so you get a short ticket with proof.</p>
     </div>
     <div class="vs">
       <div class="vs-col rv anim">
@@ -1221,7 +1187,7 @@ const { mutateAsync } = useMutation({
       <div class="vs-mid rv" style="--d:2" aria-hidden="true">vs</div>
       <div class="vs-col rv anim" style="--d:1">
         <article class="vs-card brief">
-          <header class="vs-hd"><span class="vs-id"><svg class="vs-logo bf" aria-hidden="true"><use href="#mark"/></svg><span><b>Brief Cloud</b><small><svg aria-hidden="true"><use href="#lg-linear"/></svg>Filed in Linear</small></span></span><span class="vs-count"><b data-count="84">84</b> words</span></header>
+          <header class="vs-hd"><span class="vs-id"><svg class="vs-logo bf" aria-hidden="true"><use href="#mark"/></svg><span><b>Brief</b><small><svg aria-hidden="true"><use href="#lg-linear"/></svg>Filed in Linear</small></span></span><span class="vs-count"><b data-count="84">84</b> words</span></header>
           <div class="bf-body">
             <h3 class="bf-r">Pay fails at checkout with a 500</h3>
             <div class="bf-r"><div class="bf-h">Steps to reproduce</div><ol><li>Open acme.shop/checkout.</li><li>Fill in the card details.</li><li>Click Pay $49.00. It says “Something went wrong.”</li></ol></div>
@@ -1331,7 +1297,7 @@ const { mutateAsync } = useMutation({
       <p class="lead rv" style="--d:2">From click to filed ticket, start to finish.</p>
     </div>
     <div class="vid rv" style="--d:2">
-      <button class="vbtn" type="button" data-video="https://www.youtube-nocookie.com/embed/dmD8thJvMww?autoplay=1&rel=0" style="--thumb:url('https://img.youtube.com/vi/dmD8thJvMww/maxresdefault.jpg')" aria-label="Play the Brief Cloud demo video">
+      <button class="vbtn" type="button" data-video="https://www.youtube-nocookie.com/embed/dmD8thJvMww?autoplay=1&rel=0" style="--thumb:url('https://img.youtube.com/vi/dmD8thJvMww/maxresdefault.jpg')" aria-label="Play the Brief demo video">
         <span class="vplay"><svg aria-hidden="true"><use href="#i-play"/></svg></span>
         <span class="vlbl">Play the demo</span>
       </button>
@@ -1359,7 +1325,7 @@ const { mutateAsync } = useMutation({
         <span class="s3-time">30 sec</span>
         <span class="s3-n">2</span>
         <h3>Add to Chrome</h3>
-        <p>Install Brief Cloud, then click the cloud in its popup to link it to your account.</p>
+        <p>Install Brief, then click the cloud in its popup to link it to your account.</p>
         <a class="btn btn-ghost btn-sm" href="https://chromewebstore.google.com/detail/brief-cloud/heekinkibhgbilagcdnmcjajijaalpcc" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-chrome"/></svg>Add to Chrome</a>
       </div>
       <div class="s3 rv" style="--d:3">
@@ -1383,7 +1349,7 @@ const { mutateAsync } = useMutation({
     <div class="faq rv" style="--d:2">
       <details open>
         <summary>Do I need a coding agent or any setup?<span class="pm"><svg aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
-        <div class="ans">No. Brief Cloud writes and files the ticket for you. Create an account, connect your tracker, add the extension. That's it.</div>
+        <div class="ans">No. Brief writes and files the ticket for you. Create an account, connect your tracker, add the extension. That's it.</div>
       </details>
       <details>
         <summary>What goes into a ticket?<span class="pm"><svg aria-hidden="true"><use href="#i-plus"/></svg></span></summary>
@@ -1423,9 +1389,9 @@ const { mutateAsync } = useMutation({
 <footer>
   <div class="wrap">
     <div class="foot">
-      <a class="brand" href="#top" aria-label="Brief Cloud, back to top">
+      <a class="brand" href="#top" aria-label="Brief, back to top">
         <svg viewBox="0 0 128 128" aria-hidden="true"><use href="#mark"/></svg>
-        <span class="wm">Brief <i>Cloud</i></span>
+        <span class="wm">Brief</span>
       </a>
       <span class="foot-tag">Show the bug. Get the ticket.</span>
       <nav class="flinks" aria-label="Footer">
@@ -1438,7 +1404,7 @@ const { mutateAsync } = useMutation({
         <a href="https://cloud.get-brief.app/privacy" target="_blank" rel="noopener">Privacy</a>
       </nav>
     </div>
-    <p class="copy">© <span data-year>2026</span> Brief Cloud</p>
+    <p class="copy">© <span data-year>2026</span> Brief</p>
   </div>
 </footer>
 
@@ -1491,7 +1457,7 @@ const { mutateAsync } = useMutation({
   document.querySelectorAll('.vbtn').forEach(b => b.addEventListener('click', () => {
     const f = document.createElement('iframe');
     f.src = b.dataset.video;
-    f.title = 'Brief Cloud demo';
+    f.title = 'Brief demo';
     f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
     f.setAttribute('allowfullscreen', '');
     b.replaceWith(f);
@@ -1537,7 +1503,6 @@ const { mutateAsync } = useMutation({
     const coachT = coach.querySelector('.coach-t');
     const ring = win.querySelector('.ring');
     const T = k => win.querySelector('[data-t="' + k + '"]');
-    const bugBtns = document.querySelectorAll('.bug[data-goal]');
 
     const LINE_A = 'Okay, my card is in. Now I click Pay…';
     const LINE_B = 'It spins, then “Something went wrong.” I expected a confirmation.';
@@ -1614,12 +1579,6 @@ const { mutateAsync } = useMutation({
       T('choice-video').disabled = st.tiles.some(t => t.kind === 'video');
       T('choice-replay').disabled = st.tiles.some(t => t.kind === 'replay');
       addBtn.hidden = st.tiles.length >= 3;
-      bugBtns.forEach(b => {
-        const k = b.dataset.goal;
-        b.classList.toggle('on', k === goal && !reported[k]);
-        b.classList.toggle('done', reported[k]);
-        b.querySelector('.bug-st').innerHTML = reported[k] ? '<svg aria-hidden="true"><use href="#i-check"/></svg>Reported' : 'Report it';
-      });
       coachUpdate();
     }
 
@@ -1880,10 +1839,7 @@ const { mutateAsync } = useMutation({
       if (!started) { started = true; demo.classList.add('started'); gate.classList.add('off'); }
       intro(k);
       reset();
-      /* stacked layout: the cards sit above the demo, so bring it into view */
-      if (innerWidth < 1100) demo.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     }
-    bugBtns.forEach(b => b.addEventListener('click', () => setGoal(b.dataset.goal)));
 
     demo.addEventListener('click', e => {
       const b = e.target.closest('[data-act]');
