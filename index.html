@@ -28,7 +28,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<script>document.documentElement.classList.add('js')</script>
+<script>
+  document.documentElement.classList.add('js');
+  /* on short desktop screens the live demo shrinks to fit under the nav */
+  (function () {
+    var fit = function () {
+      var z = Math.max(0.62, Math.min(1, (window.innerHeight - 118) / 612));
+      document.documentElement.style.setProperty('--dz', z.toFixed(3));
+    };
+    fit();
+    addEventListener('resize', fit);
+  })();
+</script>
 
 <style>
   :root{
@@ -69,9 +80,9 @@
   @keyframes breathe{50%{transform:scale(1.08)}}
   .sky .cl{position:absolute;left:0;will-change:transform;animation:travel linear infinite}
   .sky .cl svg{display:block;width:100%;height:auto;overflow:visible}
-  .sky .far{opacity:.6;filter:blur(1.5px)}
-  .sky .mid{opacity:.78}
-  .sky .near{opacity:.92;filter:drop-shadow(0 12px 22px rgba(170,130,90,.08))}
+  .sky .far{opacity:.8;filter:blur(1px) drop-shadow(0 8px 14px rgba(160,110,70,.10))}
+  .sky .mid{opacity:.95;filter:drop-shadow(0 10px 18px rgba(160,110,70,.13))}
+  .sky .near{opacity:1;filter:drop-shadow(0 14px 24px rgba(160,110,70,.17))}
   .sky .bob{animation:bob 9s ease-in-out infinite}
   @keyframes travel{from{transform:translate3d(110vw,0,0)}to{transform:translate3d(-40vw,0,0)}}
   @keyframes bob{50%{transform:translateY(-6px)}}
@@ -138,7 +149,18 @@
   .js .rv.in{opacity:1;transform:none}
 
   /* ── hero: the pitch on the left, the live demo on the right ── */
-  .hero{padding:34px 0 72px}
+  .hero{position:relative;z-index:2;padding:14px 0 104px}
+  .hero-wrap{position:relative;z-index:2}
+  /* a bank of clouds along the bottom, spilling over into the next band */
+  .hero-clouds{position:absolute;left:0;right:0;bottom:-58px;height:200px;z-index:1;pointer-events:none;overflow:hidden}
+  .hero-clouds .hc{position:absolute;bottom:0}
+  .hero-clouds svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 16px 24px rgba(160,105,60,.22)) drop-shadow(0 2px 4px rgba(160,105,60,.10))}
+  .hc1{left:-4%;width:480px;animation:bob 10s ease-in-out infinite}
+  .hc2{left:24%;width:300px;bottom:22px!important;animation:bob 12s -3s ease-in-out infinite}
+  .hc3{left:45%;width:400px;animation:bob 11s -6s ease-in-out infinite}
+  .hc4{right:17%;width:290px;bottom:26px!important;animation:bob 13s -8s ease-in-out infinite}
+  .hc5{right:-5%;width:520px;animation:bob 14s -2s ease-in-out infinite}
+  @media(max-width:760px){.hero-clouds{height:140px;bottom:-40px}.hc2,.hc4{display:none}.hc1{width:260px}.hc3{width:230px;left:36%}.hc5{width:280px}}
   /* where tickets go: a row of small logo tiles under the buttons */
   .hero-logos{margin-top:36px}
   .hero-logos p{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -176,7 +198,7 @@
   /* ── interactive demo ── */
   .stage{position:relative;min-width:0;text-align:left;scroll-margin-top:84px}
   .win-wrap{position:relative}
-  @media(min-width:1100px){.win{height:clamp(550px,calc(100svh - 180px),610px)}}
+  @media(min-width:1100px){.win{height:610px}.stage{zoom:var(--dz,1)}}
   .win{position:relative;height:600px;border-radius:16px;background:#fff;overflow:hidden;isolation:isolate;
     box-shadow:0 0 0 1px rgba(26,22,18,.08),0 2px 6px rgba(26,22,18,.05),0 50px 110px -40px rgba(90,55,20,.5)}
   .wt{height:42px;background:#ebe5da;display:flex;align-items:flex-end;padding:0 14px;gap:16px}
@@ -533,10 +555,10 @@
 
 
   /* ── section bands ── */
-  .band-peach{background:rgba(241,227,206,.86)}
-  .band-sage{background:rgba(231,237,224,.88)}
-  .band-honey{background:rgba(235,225,200,.86)}
-  .band-apricot{background:rgba(244,226,204,.86)}
+  .band-peach{background:rgba(241,227,206,.76)}
+  .band-sage{background:rgba(231,237,224,.78)}
+  .band-honey{background:rgba(235,225,200,.76)}
+  .band-apricot{background:rgba(244,226,204,.76)}
   .band-cream{background:rgba(250,246,238,.72)}
   section[class*="band-"]{box-shadow:inset 0 1px 0 rgba(26,22,18,.05)}
 
@@ -810,7 +832,7 @@
       <stop offset="0" stop-color="#fff" stop-opacity=".3"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="cloudFill" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="84">
-      <stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#fffcf6"/><stop offset="1" stop-color="#f4ece0"/>
+      <stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fffcf7"/><stop offset="1" stop-color="#eee2d1"/>
     </linearGradient>
   </defs>
   <symbol id="mark" viewBox="0 0 128 128">
@@ -899,6 +921,13 @@
 
 <!-- ───────────────────────── hero + live demo ───────────────────────── -->
 <header class="hero">
+  <div class="hero-clouds" aria-hidden="true">
+    <div class="hc hc1"><svg viewBox="0 0 240 90"><use href="#cloudB"/></svg></div>
+    <div class="hc hc2"><svg viewBox="0 0 200 90"><use href="#cloudA"/></svg></div>
+    <div class="hc hc3"><svg viewBox="0 0 180 80"><use href="#cloudC"/></svg></div>
+    <div class="hc hc4"><svg viewBox="0 0 200 90"><use href="#cloudA"/></svg></div>
+    <div class="hc hc5"><svg viewBox="0 0 240 90"><use href="#cloudB"/></svg></div>
+  </div>
   <div class="hero-wrap">
     <div class="hero-copy">
       <h1 class="fx">Show the bug.<br>Get the <em>ticket.<svg class="uline" viewBox="0 0 200 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3,6 Q40,1 80,6 T150,5 T197,4"/></svg></em></h1>
@@ -1689,45 +1718,52 @@ const { mutateAsync } = useMutation({
       });
       return Promise.all(busy.map(a => a.finished.catch(() => {})));
     }
+    /* a box relative to the window, in the window's own (unzoomed) pixels */
+    function box(el) {
+      const wr = win.getBoundingClientRect(), r = el.getBoundingClientRect();
+      const z = wr.width / win.offsetWidth || 1;
+      const left = (r.left - wr.left) / z, top = (r.top - wr.top) / z, width = r.width / z, height = r.height / z;
+      return { left, top, width, height, right: left + width, bottom: top + height };
+    }
     function place(el) {
       if (!el) return;
-      const wr = win.getBoundingClientRect();
-      const r = el.getBoundingClientRect();
+      const r = box(el);
       if (!r.width) return;
+      const W = win.offsetWidth, H = win.offsetHeight;
       const pad = 4;
-      ring.style.left = (r.left - wr.left - pad) + 'px';
-      ring.style.top = (r.top - wr.top - pad) + 'px';
+      ring.style.left = (r.left - pad) + 'px';
+      ring.style.top = (r.top - pad) + 'px';
       ring.style.width = (r.width + pad * 2) + 'px';
       ring.style.height = (r.height + pad * 2) + 'px';
       const br = parseFloat(getComputedStyle(el).borderTopLeftRadius) || 8;
       ring.style.borderRadius = (br + pad) + 'px';
       const cw = coach.offsetWidth, ch = coach.offsetHeight;
-      const pr = pop.getBoundingClientRect();
-      if (pop.contains(el) && pr.left - wr.left > cw + 30) {
+      const pr = box(pop);
+      if (pop.contains(el) && pr.left > cw + 30) {
         /* inside the popup: sit to its left so no option is covered */
-        const lx = pr.left - wr.left - cw - 16;
-        const ly = clamp(r.top - wr.top + r.height / 2 - ch / 2, 8, wr.height - ch - 8);
+        const lx = pr.left - cw - 16;
+        const ly = clamp(r.top + r.height / 2 - ch / 2, 8, H - ch - 8);
         coach.style.transform = 'translate(' + lx + 'px,' + ly + 'px)';
         coach.classList.remove('above');
         coach.classList.add('side');
-        coach.style.setProperty('--ay', clamp(r.top - wr.top + r.height / 2 - ly, 12, ch - 12) + 'px');
+        coach.style.setProperty('--ay', clamp(r.top + r.height / 2 - ly, 12, ch - 12) + 'px');
         return;
       }
       coach.classList.remove('side', 'right');
-      const cx = r.left - wr.left + r.width / 2;
-      const below = r.bottom - wr.top + ch + 20 < wr.height;
-      if (!below && r.right - wr.left + cw + 30 < wr.width) {
+      const cx = r.left + r.width / 2;
+      const below = r.bottom + ch + 20 < H;
+      if (!below && r.right + cw + 30 < W) {
         /* no room under it: sit to its right */
-        const rx = r.right - wr.left + 16;
-        const ry = clamp(r.top - wr.top + r.height / 2 - ch / 2, 8, wr.height - ch - 8);
+        const rx = r.right + 16;
+        const ry = clamp(r.top + r.height / 2 - ch / 2, 8, H - ch - 8);
         coach.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
         coach.classList.remove('above');
         coach.classList.add('right');
-        coach.style.setProperty('--ay', clamp(r.top - wr.top + r.height / 2 - ry, 12, ch - 12) + 'px');
+        coach.style.setProperty('--ay', clamp(r.top + r.height / 2 - ry, 12, ch - 12) + 'px');
         return;
       }
-      const top = below ? r.bottom - wr.top + 14 : r.top - wr.top - ch - 14;
-      const left = clamp(cx - cw / 2, 8, wr.width - cw - 8);
+      const top = below ? r.bottom + 14 : r.top - ch - 14;
+      const left = clamp(cx - cw / 2, 8, W - cw - 8);
       coach.style.transform = 'translate(' + left + 'px,' + top + 'px)';
       coach.classList.toggle('above', !below);
       coach.style.setProperty('--ax', clamp(cx - left, 14, cw - 14) + 'px');
@@ -1980,9 +2016,9 @@ const { mutateAsync } = useMutation({
     }
     function fly(a, b) {
       if (reduce || !a.animate) return;
-      const wr = win.getBoundingClientRect(), ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
-      const x0 = ra.left - wr.left + ra.width / 2, y0 = ra.top - wr.top + ra.height / 2;
-      const x1 = rb.left - wr.left + rb.width / 2, y1 = rb.top - wr.top + rb.height / 2;
+      const ra = box(a), rb = box(b);
+      const x0 = ra.left + ra.width / 2, y0 = ra.top + ra.height / 2;
+      const x1 = rb.left + rb.width / 2, y1 = rb.top + rb.height / 2;
       const mx = (x0 + x1) / 2 - 50, my = Math.min(y0, y1) + (Math.abs(y1 - y0) * 0.25);
       const dot = document.createElement('span');
       dot.className = 'fly';
