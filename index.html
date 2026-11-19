@@ -114,7 +114,18 @@
   .chrome-link svg{width:17px;height:17px;transition:transform .6s var(--ease)}
   .chrome-link:hover{color:var(--acc)}
   .chrome-link:hover svg{transform:rotate(120deg)}
-  @media(max-width:900px){.nav-links{display:none}}
+  .nav-links a{white-space:nowrap}
+  @media(max-width:1000px){.nav-links{display:none}}
+  /* header: a white pill with a Chrome-colored ring, so it reads on the cream */
+  .nav .chrome-link{gap:8px;padding:6px 13px 6px 8px;border-radius:10px;font-weight:600;color:var(--ink);
+    border:1.5px solid transparent;
+    background:linear-gradient(#fff,#fff) padding-box,conic-gradient(from 210deg,#ea4335,#fbbc04,#34a853,#4285f4,#ea4335) border-box;
+    box-shadow:0 6px 16px -10px rgba(26,22,18,.35);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+  .nav .chrome-link svg{width:20px;height:20px}
+  .nav .chrome-link:hover{color:var(--ink);transform:translateY(-1px);box-shadow:0 10px 22px -10px rgba(66,133,244,.55)}
+  .nav .chrome-link,.nav .btn{white-space:nowrap}
+  /* tablets: the header's Chrome and Star buttons go icon-only so nothing wraps */
+  @media(max-width:700px){.nav .chrome-link .cl-t,.nav .gh-star .gh-t{display:none}.nav .chrome-link{padding:6px 8px}.nav-r{gap:10px}}
   @media(max-width:520px){.nav .chrome-link{display:none}.nav-in{height:62px}}
 
   /* ── buttons ── */
@@ -977,7 +988,7 @@
     </div>
     <div class="nav-r">
       <a class="gh-star" href="https://github.com/razi2001/brief" target="_blank" rel="noopener" aria-label="Star Brief on GitHub"><span class="gh-l"><svg aria-hidden="true"><use href="#lg-github"/></svg><svg class="st" aria-hidden="true"><use href="#i-star"/></svg><span class="gh-t">Star</span></span><span class="gh-n" data-stars hidden></span></a>
-      <a class="chrome-link" href="https://chromewebstore.google.com/detail/brief-cloud/heekinkibhgbilagcdnmcjajijaalpcc" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#lg-chrome"/></svg>Add to Chrome</a>
+      <a class="chrome-link" href="https://chromewebstore.google.com/detail/brief-cloud/heekinkibhgbilagcdnmcjajijaalpcc" target="_blank" rel="noopener" aria-label="Add to Chrome"><svg aria-hidden="true"><use href="#lg-chrome"/></svg><span class="cl-t">Add to Chrome</span></a>
       <a class="btn btn-acc btn-sm" href="https://cloud.get-brief.app/sign-up" target="_blank" rel="noopener">Sign up free</a>
     </div>
   </div>
