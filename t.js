@@ -63,7 +63,8 @@
       /chromewebstore\.google\.com/.test(href) ? 'chrome' :
       a.hasAttribute('data-video') ? 'video' :
       a.hasAttribute('data-try') ? 'demo' :
-      /demo-sandbox/.test(href) ? 'sandbox' : '';
+      /demo-sandbox/.test(href) ? 'sandbox' :
+      /github\.com\/razi2001\/brief/.test(href) ? 'github' : '';
     if (target) send('site.click', { target: target, where: where(a) });
   }, true);
 })();
